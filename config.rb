@@ -2,11 +2,11 @@
 # Blog settings
 ###
 
-# Time.zone = "UTC"
+Time.zone = "UTC"
 
 activate :blog do |blog|
   # blog.prefix = "blog"
-  # blog.permalink = ":year/:month/:day/:title.html"
+  blog.permalink = ":year:month:day-:title.html"
   # blog.sources = ":year-:month-:day-:title.html"
   blog.taglink = ":tag.html"
   # blog.layout = "layout"
@@ -18,7 +18,7 @@ activate :blog do |blog|
   # blog.default_extension = ".markdown"
 
   blog.tag_template = "tag.html"
-  blog.calendar_template = "calendar.html"
+  #blog.calendar_template = "calendar.html"
 
   # blog.paginate = true
   # blog.per_page = 10
@@ -70,11 +70,11 @@ page "/feed.xml", :layout => false
 # activate :automatic_image_sizes
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def app_name
+    "Novosco Engineering"
+  end
+end
 
 activate :deploy do |deploy|
   deploy.method = :git
