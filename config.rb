@@ -76,6 +76,15 @@ page "/feed.xml", :layout => false
 #   end
 # end
 
+activate :deploy do |deploy|
+  deploy.method = :git
+  # Optional Settings
+  # deploy.remote = "custom-remote" # remote name or git url, default: origin
+  # deploy.branch = "custom-branch" # default: gh-pages
+
+  deploy.build_before = true # default: false
+end
+
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'
