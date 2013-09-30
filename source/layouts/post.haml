@@ -8,5 +8,6 @@
       %h1= current_page.data.title
       %h2= current_page.data.date
       %h2= current_page.data.tags
+      %h2= author_link(current_page.data.author)
       = yield
     = partial "shared/footer"

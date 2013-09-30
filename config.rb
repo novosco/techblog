@@ -62,6 +62,12 @@ page "/feed.xml", :layout => false
 #   @which_fake_page = "Rendering a fake page with a variable"
 # end
 
+data.authors.each_with_index do |author_array, i|
+  author = author_array[1]
+  proxy "/#{author['slug']}.html", '/templates/author_template.html', :locals => { :author => author }
+end
+ignore "/templates/author_template.html"
+
 ###
 # Helpers
 ###
@@ -73,6 +79,10 @@ page "/feed.xml", :layout => false
 helpers do
   def app_name
     "Novosco Engineering"
+  end
+
+  def author_link(author_id)
+    link_to data.authors[author_id].name, "/#{data.authors[author_id].slug}"
   end
 end
 

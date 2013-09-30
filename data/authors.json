@@ -1,0 +1,34 @@
+{
+  "jimboefx": {
+    "name": "James Montgomery",
+    "slug":"james-montgomery",
+    "bio": "Once upon a time, a young lad turned up for an interview at 4sol...",
+    "avatar": "",
+    "twitter": "jimboefx",
+    "email": "james.montgomery@novosco.com"
+  },
+  "stejoh": {
+    "name": "Steven Johnston",
+    "slug":"steven-johnston",
+    "bio": "lorem ipsum so it is.",
+    "avatar": "",
+    "twitter": "stejoh",
+    "email": "steven.johnston@novosco.com"
+  },
+  "alan": {
+    "name": "Alan McBurney",
+    "slug":"alan-mcburney",
+    "bio": "lorem ipsum so it is.",
+    "avatar": "alan.jpg",
+    "twitter": "alan",
+    "email": "alan.mcburney@novosco.com"
+  },
+  "crod": {
+    "name": "Claudio Rodrigues",
+    "slug":"claudio-rodrigues",
+    "bio": "lorem ipsum so it is.",
+    "avatar": "",
+    "twitter": "crod",
+    "email": ""
+  }
+}
