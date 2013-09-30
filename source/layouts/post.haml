@@ -1,0 +1,12 @@
+!!!
+%html{dir: "ltr", lang: "en", "xmlns:fb" => "http://ogp.me/ns/fb#"}
+  %head
+    = partial "shared/meta"
+  %body{:class => page_classes}
+    = partial "shared/header"
+    #main
+      %h1= current_page.data.title
+      %h2= current_page.data.date
+      %h2= current_page.data.tags
+      = yield
+    = partial "shared/footer"
