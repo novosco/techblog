@@ -12,6 +12,26 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+body {
+  font-family: "myriad-pro",arial, sans-serif;
+}
+
+a:link, a:visited {
+  color: $link-color;
+  font-weight:normal;
+  text-decoration: none;
+  -webkit-transition: top .04s ease-in;
+}
+a:hover, a.hover {
+  color: $link-hover;
+  -webkit-transition: top .04s ease-out;
+}
+a:active {
+  color: $link-active;
+  position: relative;
+  top: 1px;
+}
+
 html,
 button,
 input,
@@ -104,6 +124,10 @@ header {
   width: 100%;
   background-color: $light-grey;
   height: 60px;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  //z-index: 999;
 }
 
 .header-inner {
@@ -114,9 +138,60 @@ header {
 
 
 
+.logo {
+  display:block;
+  text-indent: -9999px;
+  background: inline-image("logo.png") no-repeat;
+  width:224px;
+  height:29px;
+  margin-top:16px;
+  position: relative;
+  float:left;
+  background-size: cover;
+}
 
 
+.header-nav {
+  color: red;
+  height: 60px;
+}
 
+.header-nav nav ul{
+  margin: 0;
+  float: right;
+  list-style: none;
+}
+.header-nav nav li{
+  margin: 0 25px 0 0;
+  width: auto;
+  height: 60px;
+  line-height:60px;
+  font-size: 18px;
+  float:left;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:first-child {
+    margin-left: 0;
+  }
+}
+.header-nav nav a{
+  display: block;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+.container {
+  width: 100%;
+}
+
+#main {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
 
 
 

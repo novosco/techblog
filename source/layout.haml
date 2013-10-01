@@ -2,6 +2,12 @@
 %html{dir: "ltr", lang: "en", "xmlns:fb" => "http://ogp.me/ns/fb#"}
   %head
     = partial "shared/meta"
+
+    = javascript_include_tag "//use.typekit.net/tjm4emr.js"
+    %script{:type => "text/javascript"}
+      try{Typekit.load();}catch(e){};
+
+
   %body{:class => page_classes}
     = partial "shared/header"
     = yield
