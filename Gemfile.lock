@@ -94,6 +94,7 @@ GEM
     rouge (0.3.10)
       thor
     sass (3.2.11)
+    simple-rss (1.2.3)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -122,3 +123,4 @@ DEPENDENCIES
   middleman-livereload (~> 3.1.0)
   middleman-syntax
   redcarpet
+  simple-rss
