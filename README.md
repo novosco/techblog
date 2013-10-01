@@ -1,4 +1,4 @@
-# Novosco Engineering
+# Novosco Tech Blog
 
 ## Dependencies
 
@@ -33,3 +33,9 @@ Running the app in development
 The site is hosted on Github using the **gh-pages** branch. To deploy the website to Github pages, use
 
     middleman deploy
+
+## Posting Blogs
+
+### Syntax Highlighting
+
+We're using the Rouge Gem (). Demos of supported syntax can be seen here (http://rouge.jayferd.us/demo)

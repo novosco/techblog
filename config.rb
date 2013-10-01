@@ -78,7 +78,7 @@ ignore "/templates/author_template.html"
 # Methods defined in the helpers block are available in templates
 helpers do
   def app_name
-    "Novosco Engineering"
+    "Novosco Tech Blog"
   end
 
   def author_link(author_id)
