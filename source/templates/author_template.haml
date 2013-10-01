@@ -9,3 +9,11 @@
     %h2= author.twitter
     %h2= author.email
     = partial "shared/footer"
+
+    %section#author-posts
+      %h1 Author's posts
+      %ol
+        - blog.articles.select { |a| a.data.author == author.twitter }.each do |article|
+          %li
+            = link_to article.title, article
+            %span= article.date.strftime('%b %e')

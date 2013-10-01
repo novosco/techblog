@@ -10,8 +10,6 @@ FEEDS = [
 desc "Synchronise feeds"
 task :sync_feeds do
   puts "## Synching dem feeds"
-  #status = system("middleman build --clean")
-  #puts status ? "OK" : "FAILED"
   FEEDS.each do |feed|
     rss = SimpleRSS.parse open(feed[:url])
     rss.items.each do |entry|

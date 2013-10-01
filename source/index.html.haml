@@ -6,10 +6,11 @@
       .articles-list
         %h2 Recent Articles
         %ol
-          - blog.articles[0...10].each do |article|
+          - blog.articles.each do |article|
             %li
               = link_to article.title, article
               %span= article.date.strftime('%b %e')
+              %span= author_link(article.data.author)
     %aside.sidebar
       %h2 Tags
       %ol
