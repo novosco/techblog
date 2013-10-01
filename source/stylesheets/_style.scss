@@ -14,6 +14,9 @@
 
 body {
   font-family: "myriad-pro",arial, sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  color: $black;
 }
 
 a:link, a:visited {
@@ -40,10 +43,6 @@ textarea {
     color: #222;
 }
 
-html {
-    font-size: 1em;
-    line-height: 1.4;
-}
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -209,13 +208,16 @@ header {
 
 .article-featured {
   border: 1px solid $border-grey;
-  padding: 60px;
-  background-image: -o-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
-  background-image: -moz-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
-  background-image: -webkit-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
-  background-image: -ms-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
-  background-image: linear-gradient(4deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
+  padding: 8%;
+  @include box-grey-gradient;
+}
 
+.article-header {
+  margin-top: 0;
+  font-size: 40px;
+  line-height: 48px;
+  a {
+  }
 }
 
 .articles-list {
@@ -225,10 +227,45 @@ header {
 .sidebar {
   float: right;
   width: 33.333%;
-  background-color: grey;
 }
 
+.latest-tweet {
+  background: $blue;
+  color: $white;
+  font-size: 15px;
+  line-height: 20px;
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    width: 110px;
+    margin: 0;
+    padding: 5px 0;
+    background-color: $dark-blue;
+  }
+  .tweet {
+    padding: 0 20px 2px 20px;
+  }
+  .follow {
+    background-color: $dark-blue;
+    width: auto;
+    height: 40px;
+    padding: 0 20px;
+    line-height: 40px;
+    .follow-text {
+      float: left;
+    }
+    .twitter-account a{
+      float: right;
+      color: white;
+      font-weight: 600;
+    }
+  }
+}
 
+.tag-cloud {
+  margin: 60px 0 0 0;
+}
 
 /* ==========================================================================
    Helper classes

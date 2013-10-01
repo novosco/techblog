@@ -2,7 +2,11 @@
   #main
     .articles
       .article-featured
-        %h2 Article Title Goes here
+        %h2.article-header
+          = link_to  "Featured Article Title Goes Here", "/"
+        %span By Alan McBurney on 21 Sept 2013
+        %p In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis.
+        %p Pellentesque eu est a nulla placerat dignissim. Morbi a enim in magna semper bibendum. Etiam scelerisque, nunc ac egestas consequat, odio nibh euismod nulla, eget auctor orci nibh vel nisi. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis.
       .articles-list
         %h2 Recent Articles
         %ol
@@ -11,9 +15,21 @@
               = link_to article.title, article
               %span= article.date.strftime('%b %e')
     %aside.sidebar
-      %h2 Tags
-      %ol
-        - blog.tags.each do |tag, articles|
-          %li
-            = link_to tag, tag_path(tag)
-            (#{articles.size})
+      .latest-tweet
+        .tweet
+          %h3 Latest Tweet
+          %p Looking forward to our sold out event tomorrow at @FitzwilliamDUB with @IDC and Apres Match's Barry Murphy #COTTP  about 8 hours ago
+        .follow
+          %span.follow-text Follow us on Twitter
+          %span.twitter-account
+            = link_to  "@novoscotechblog", "http://twitter.com/novoscotechblog"
+      .authors-list
+        %h2 Our Engineers
+        %p Authors here
+      .tag-cloud
+        %h2 Tags
+        %ol
+          - blog.tags.each do |tag, articles|
+            %li
+              = link_to tag, tag_path(tag)
+              (#{articles.size})
