@@ -35,8 +35,9 @@ author: #{author}
 
 #{ReverseMarkdown.parse(entry.content_encoded)}
 tpl
-
-  File.open("./source/#{slug}.markdown", 'w') do |file|
+  
+  filename = "./source/#{slug}.markdown"
+  File.open(filename, 'w') do |file|
     file.write(content)
-  end
+  end unless File.file?(filename)
 end
