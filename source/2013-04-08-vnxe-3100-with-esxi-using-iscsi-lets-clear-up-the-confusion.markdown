@@ -1,7 +1,7 @@
 ---
 title: VNXe 3100 with ESXi using iSCSI, lets clear up the confusion.
 date: 2013-04-08 10:41:00 +0100
-tags:
+tags: EMC
 author: stejoh
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Zerto Virtual Replication the PoSh way.
 date: 2012-05-06 02:56:14 +0100
-tags:
+tags: Zerto
 author: stejoh
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Install Certificate Services on Server 2012 Core
 date: 2013-07-24 20:29:56 +0100
-tags:
+tags: Certificate Authority
 author: alan
 ---
 

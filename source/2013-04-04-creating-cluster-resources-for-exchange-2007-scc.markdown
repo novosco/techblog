@@ -1,7 +1,7 @@
 ---
 title: Creating Cluster Resources for Exchange 2007 SCC
 date: 2013-04-04 14:46:00 +0100
-tags:
+tags: Uncategorized
 author: alan
 ---
 

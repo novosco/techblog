@@ -1,7 +1,7 @@
 ---
 title: Change Windows 2012 Server Edition
 date: 2013-04-08 12:34:00 +0100
-tags:
+tags: Windows Server 2012
 author: alan
 ---
 

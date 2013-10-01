@@ -1,7 +1,7 @@
 ---
 title: Beware Server 2012 Essentials NIC Teaming
 date: 2013-07-24 10:30:31 +0100
-tags:
+tags: Server 2012 Essentials
 author: alan
 ---
 

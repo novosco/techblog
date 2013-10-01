@@ -1,7 +1,7 @@
 ---
 title: Started this blog with good intentions&#8230;
 date: 2012-03-01 22:36:08 +0000
-tags:
+tags: Uncategorized
 author: stejoh
 ---
 

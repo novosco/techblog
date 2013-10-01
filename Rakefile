@@ -15,14 +15,14 @@ task :sync_feeds do
   FEEDS.each do |feed|
     rss = SimpleRSS.parse open(feed[:url])
     rss.items.each do |entry|
-      puts entry.title
+      #puts entry
       slug = "#{entry.pubDate.year}-#{entry.pubDate.month.to_s.rjust(2, '0')}-#{entry.pubDate.day.to_s.rjust(2, '0')}-#{entry.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')}"
       
       File.open("./source/#{slug}.markdown", 'w') do |file|
         file.write("---
 title: #{entry.title}
 date: #{entry.pubDate}
-tags:
+tags: #{entry.category}
 author: #{feed[:author]}
 ---
 
@@ -30,15 +30,6 @@ author: #{feed[:author]}
 
         ")
       end
-      
-      #puts entry.pubDate
-      #puts entry.description
-      #puts entry.link      
-      #puts entry.author    
-      #puts entry.summary   
-      #puts entry.content   
-      #puts entry.published 
-      #puts entry.categories
     end
   end
 end

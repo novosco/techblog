@@ -1,7 +1,7 @@
 ---
 title: FAST Cache&#8230; Its simple but think first.
 date: 2012-03-02 12:48:21 +0000
-tags:
+tags: EMC
 author: stejoh
 ---
 
