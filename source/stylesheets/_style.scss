@@ -130,6 +130,11 @@ header {
   //z-index: 999;
 }
 
+.header-wrapper {
+  width: 92%;
+  margin: 0 4%;
+}
+
 .header-inner {
   max-width: 1200px;
   width: 100%;
@@ -180,22 +185,48 @@ header {
   font-weight: normal;
   text-align: center;
   text-decoration: none;
+  color: grey;
 }
 
 
 .container {
-  width: 100%;
+  width: 92%;
+  padding: 0 4%;
+  margin-top: 60px;
 }
 
 #main {
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
+  margin: 60px auto;
+  padding: 60px 0;
+}
+
+.articles {
+  float: left;
+  width: 60%;
+}
+
+.article-featured {
+  border: 1px solid $border-grey;
+  padding: 60px;
+  background-image: -o-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
+  background-image: -moz-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
+  background-image: -webkit-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
+  background-image: -ms-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
+  background-image: linear-gradient(4deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
+
+}
+
+.articles-list {
 }
 
 
-
-
+.sidebar {
+  float: right;
+  width: 33.333%;
+  background-color: grey;
+}
 
 
 
