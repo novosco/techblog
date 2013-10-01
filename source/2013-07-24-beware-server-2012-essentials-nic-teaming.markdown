@@ -19,5 +19,3 @@ All in all its pretty poor when bugs like this get released in a RTM version of 
 
     
 [ ![](http://feeds.wordpress.com/1.0/comments/everythingsysadmin.wordpress.com/593/) ](http://feeds.wordpress.com/1.0/gocomments/everythingsysadmin.wordpress.com/593/) ![](http://stats.wordpress.com/b.gif?host=everythingsysadmin.wordpress.com&blog=8998607&post=593&subd=everythingsysadmin&ref=&feed=1)
-
-        

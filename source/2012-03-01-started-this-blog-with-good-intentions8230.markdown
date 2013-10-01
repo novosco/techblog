@@ -12,5 +12,3 @@ I design and implement solutions based on Cisco UCS, EMC VNX and VMware vSphere.
 I am very busy but see the value in maintaining an online record of interesting things I come across in work. I would love it to spawn some discussion on the topics I cover as well so I want to use this blog not just as a tool to share but to build on my on knowledge and skills also. Mutually beneficial is the goal of this blog.
 
 I bought this domain 1 year ago (I know because I just got the renewal through) and I want to make it work. Lets see how I go.
-
-        

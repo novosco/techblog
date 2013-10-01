@@ -15,22 +15,30 @@ task :sync_feeds do
   FEEDS.each do |feed|
     rss = SimpleRSS.parse open(feed[:url])
     rss.items.each do |entry|
-      #puts entry
-      slug = "#{entry.pubDate.year}-#{entry.pubDate.month.to_s.rjust(2, '0')}-#{entry.pubDate.day.to_s.rjust(2, '0')}-#{entry.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')}"
-      
-      File.open("./source/#{slug}.markdown", 'w') do |file|
-        file.write("---
-title: #{entry.title}
-date: #{entry.pubDate}
-tags: #{entry.category}
-author: #{feed[:author]}
----
-
-#{ReverseMarkdown.parse(entry.content_encoded)}
-
-        ")
-      end
+      create_post entry, feed[:author]
     end
   end
 end
 
+
+def create_post entry, author
+  #puts entry
+  slug_date = "#{entry.pubDate.year}-#{entry.pubDate.month.to_s.rjust(2, '0')}-#{entry.pubDate.day.to_s.rjust(2, '0')}"
+  slug_title = entry.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+  slug = "#{slug_date}-#{slug_title}"
+
+  content = <<tpl
+---
+title: #{entry.title}
+date: #{entry.pubDate}
+tags: #{entry.category}
+author: #{author}
+---
+
+#{ReverseMarkdown.parse(entry.content_encoded)}
+tpl
+
+  File.open("./source/#{slug}.markdown", 'w') do |file|
+    file.write(content)
+  end
+end

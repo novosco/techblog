@@ -62,5 +62,3 @@ For convenience you can download the Powershell script and example csv files in 
 If you extract this to the “C:\ZertoScripts\” directory and copy Dnscmd.exe to this folder on each ZVM server you will be able to run the script.
 
 I must caveat this post by saying although my initial revision of this script worked and the changes since then are minor, I currently don’t have access to an environment where I can test this. I have requested a trial license, when I get it I will test this script thoroughly and then remove this comment from my post.
-
-        

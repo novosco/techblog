@@ -61,5 +61,3 @@ Once installed I can now manage the CA from any workstation or  server running 
 
     
 [ ![](http://feeds.wordpress.com/1.0/comments/everythingsysadmin.wordpress.com/605/) ](http://feeds.wordpress.com/1.0/gocomments/everythingsysadmin.wordpress.com/605/) ![](http://stats.wordpress.com/b.gif?host=everythingsysadmin.wordpress.com&blog=8998607&post=605&subd=everythingsysadmin&ref=&feed=1)
-
-        

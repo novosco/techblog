@@ -48,5 +48,3 @@ Ultimately the simplest configurations are normally the best and easiest to trou
  
 
 [ ![](http://www.neogeek.net/wp-content/uploads/2012/04/VNXe_Failover11-1024x654.jpg "VNXe_Failover1") ](http://www.neogeek.net/wp-content/uploads/2012/04/VNXe_Failover11.jpg)
-
-        

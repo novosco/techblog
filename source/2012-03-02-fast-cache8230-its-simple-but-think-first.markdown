@@ -39,5 +39,3 @@ Where the notation is “Bus”\_”Enclosure”\_”Disk” and they are sepera
 Something worth considering is that you will likely need to move the disks around from the configuration in which they were shipped. Typically they place a lot of EFD in the DPE and as mentioned above you wont want to mix these with disks in other enclosures.
 
 In my case I am working with VNX 5300′s. As I mentioned they have two buses, Bus0 and Bus1. The array I am working with has the DPE and 3 additional DAE’s, they have 4 disks to use for FAST Cache and a Hotspare. After a chat with a very helpful TC about the Primus articles above I relocated all the EFD in the top two DAE’s. This means they are spread across Bus0 and Bus1 whilst not being protected by the SPS. I also set it so for FAST Cache one primary disk is in Bus0 with its secondary in Bus1 and the other primary is in Bus1 with its secondary in Bus0. This part I decided based on common sense and wanting to spread the load so two primarys were not on the same bus (comments on this welcome).
-
-        

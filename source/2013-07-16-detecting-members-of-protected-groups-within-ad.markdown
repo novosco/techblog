@@ -25,5 +25,3 @@ Once the users have been removed from the Protected Groups its just a matter of 
 
     
 [ ![](http://feeds.wordpress.com/1.0/comments/everythingsysadmin.wordpress.com/584/) ](http://feeds.wordpress.com/1.0/gocomments/everythingsysadmin.wordpress.com/584/) ![](http://stats.wordpress.com/b.gif?host=everythingsysadmin.wordpress.com&blog=8998607&post=584&subd=everythingsysadmin&ref=&feed=1)
-
-        

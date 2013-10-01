@@ -21,11 +21,11 @@ To install** Server-Media-Foundation** open PowerShell and run the following com
 
 **Shutdown –r -t 00**
 
-[ ![image](http://everythingsysadmin.files.wordpress.com/2012/11/image_thumb.png?w=244&h=67&h=67 "image") ](http://everythingsysadmin.files.wordpress.com/2012/11/image.png)
+[ ![image](http://everythingsysadmin.files.wordpress.com/2012/11/image_thumb.png?w=244&h=67 "image") ](http://everythingsysadmin.files.wordpress.com/2012/11/image.png)
 
 - When the server comes back up after its reboot install [Microsoft Unified Communications API 4.0 Runtime](http://www.microsoft.com/en-gb/download/details.aspx?id=34992)
 
-[ ![MBX Setup 12](http://everythingsysadmin.files.wordpress.com/2012/11/mbx-setup-12_thumb.png?w=244&h=229 "MBX Setup 12") ](http://everythingsysadmin.files.wordpress.com/2012/11/mbx-setup-12.png) [ ![UCMA](http://everythingsysadmin.files.wordpress.com/2012/11/ucma_thumb.png?w=244&h=229&h=229) ](http://everythingsysadmin.files.wordpress.com/2012/11/ucma.png) [ ![image](http://everythingsysadmin.files.wordpress.com/2012/11/image_thumb3.png?w=244&h=228 "image") ](http://everythingsysadmin.files.wordpress.com/2012/11/image3.png)  [ ![image](http://everythingsysadmin.files.wordpress.com/2012/11/image_thumb4.png?w=244&h=229 "image") ](http://everythingsysadmin.files.wordpress.com/2012/11/image4.png)
+[ ![MBX Setup 12](http://everythingsysadmin.files.wordpress.com/2012/11/mbx-setup-12_thumb.png?w=244&h=229 "MBX Setup 12") ](http://everythingsysadmin.files.wordpress.com/2012/11/mbx-setup-12.png) [ ![UCMA](http://everythingsysadmin.files.wordpress.com/2012/11/ucma_thumb.png?w=244&h=229) ](http://everythingsysadmin.files.wordpress.com/2012/11/ucma.png) [ ![image](http://everythingsysadmin.files.wordpress.com/2012/11/image_thumb3.png?w=244&h=228 "image") ](http://everythingsysadmin.files.wordpress.com/2012/11/image3.png)  [ ![image](http://everythingsysadmin.files.wordpress.com/2012/11/image_thumb4.png?w=244&h=229 "image") ](http://everythingsysadmin.files.wordpress.com/2012/11/image4.png)
 
 - Then we install the [Office 2010 Filter Packs Version 2.0](http://go.microsoft.com/fwlink/?LinkId=191548)  
 [ ![Filter Pack 1](http://everythingsysadmin.files.wordpress.com/2012/11/filter-pack-1_thumb.png?w=244&h=201 "Filter Pack 1") ](http://everythingsysadmin.files.wordpress.com/2012/11/filter-pack-1.png) [ ![Filter Pack 2](http://everythingsysadmin.files.wordpress.com/2012/11/filter-pack-2_thumb.png?w=244&h=212 "Filter Pack 2") ](http://everythingsysadmin.files.wordpress.com/2012/11/filter-pack-2.png)
@@ -62,5 +62,3 @@ Next time out I will configure up the Client Access Server Client URLs and setup
 
     
 [ ![](http://feeds.wordpress.com/1.0/comments/everythingsysadmin.wordpress.com/512/) ](http://feeds.wordpress.com/1.0/gocomments/everythingsysadmin.wordpress.com/512/) ![](http://stats.wordpress.com/b.gif?host=everythingsysadmin.wordpress.com&blog=8998607&post=512&subd=everythingsysadmin&ref=&feed=1)
-
-        
