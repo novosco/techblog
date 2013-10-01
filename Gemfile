@@ -13,5 +13,9 @@ gem "middleman-deploy"
 
 gem "middleman-blog", "~> 3.3.0"
 
+gem "middleman-syntax"
+
+gem "redcarpet"
+
 # For feed.xml.builder
 gem "builder", "~> 3.0"

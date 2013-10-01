@@ -101,6 +101,11 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
+set :markdown_engine, :redcarpet
+set :markdown, :fenced_code_blocks => true, :smartypants => true
+
+set :haml, { ugly: true }
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
@@ -126,4 +131,5 @@ configure :build do
   # set :http_path, "/Content/images/"
 end
 
+activate :syntax
 activate :directory_indexes
