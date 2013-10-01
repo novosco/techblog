@@ -26,7 +26,11 @@
             = link_to  "@novoscotechblog", "http://twitter.com/novoscotechblog"
       .authors-list
         %h2 Our Engineers
-        %p Authors here
+        %ol
+          - data.authors.each do |author_array|
+            - author = author_array[1]
+            %li
+              = link_to author['name'], "/#{author['slug']}"
       .tag-cloud
         %h2 Tags
         %ol
