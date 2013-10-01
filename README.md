@@ -1,4 +1,4 @@
-# Novosco Engineering
+# Novosco Tech Blog
 
 ## Dependencies
 
