@@ -19,5 +19,7 @@ gem 'redcarpet'
 
 gem 'simple-rss'
 
+gem 'reverse_markdown'
+
 # For feed.xml.builder
 gem 'builder', '~> 3.0'
