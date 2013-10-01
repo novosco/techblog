@@ -1,14 +1,13 @@
 %header
   .header-wrapper
     .header-inner
-      .logo
-        Novosco Tech Blog
+      = link_to "<span class='logo'>Novosco Tech Blog</span>".html_safe, "/"
       .header-nav
         %nav
           %ul
             %li
               = link_to  "Home", "http://novosco.com/"
             %li
-              = link_to  "Tech Blog", "http://tech.novosco.com/"
+              = link_to  "Tech Blog", "/"
             %li
-              = link_to  "Company Blog", "http://novosco.com/blog"
+              = link_to  "Company Blog", "http://blog.novosco.com/"
