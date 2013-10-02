@@ -1,15 +1,16 @@
 .container
   #main
     .articles
-      .article-featured
-        %h2.article-header
+      %article.article-featured
+        %h1.article-header
           = link_to featured_article.title, featured_article
-        %span By #{author_link(featured_article.data.author)} on #{featured_article.date.strftime('%e %B %Y')}
+        %span By #{author_link(featured_article.data.author)} on 
+        %time #{featured_article.date.strftime('%e %B %Y')}
         .body
           = featured_article.summary
           = link_to "Read more...", featured_article
-      .articles-list
-        %h2 Recent Articles
+      %section.articles-list
+        %h1 Recent Articles
         %ol
           - blog.articles.each do |article|
             %li
@@ -17,7 +18,7 @@
               %span= article.date.strftime('%e %b %Y')
               %span= author_link(article.data.author)
     %aside.sidebar
-      .latest-tweet
+      %section.latest-tweet
         .tweet
           %h3 Latest Tweet
           %p Looking forward to our sold out event tomorrow at @FitzwilliamDUB with @IDC and Apres Match's Barry Murphy #COTTP  about 8 hours ago
@@ -25,15 +26,15 @@
           %span.follow-text Follow us on Twitter
           %span.twitter-account
             = link_to  "@novoscotechblog", "http://twitter.com/novoscotechblog"
-      .authors-list
-        %h2 Our Engineers
+      %section.authors-list
+        %h1 Our Engineers
         %ol
           - data.authors.each do |author_array|
             - author = author_array[1]
             %li
               = link_to author['name'], "/#{author['slug']}"
-      .tag-cloud
-        %h2 Tags
+      %section.tag-cloud
+        %h1 Tags
         %ol
           - blog.tags.each do |tag, articles|
             %li
