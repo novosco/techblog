@@ -21,6 +21,5 @@
       %h1.small-h1 Tags
       %ol
         - blog.tags.each do |tag, articles|
-          %li
-            = link_to "#{tag} (#{articles.size})", tag_path(tag)
+          %li= blog_tag(tag, articles.size)
               

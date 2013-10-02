@@ -88,6 +88,11 @@ helpers do
   def featured_article
     blog.articles.first
   end
+
+  def blog_tag(tag, articles_size=nil)
+    size = articles_size.nil? ? "" : " (#{articles_size})"
+    link_to "#{tag}#{size}", tag_path(tag), :class => "tag"
+  end
 end
 
 activate :deploy do |deploy|

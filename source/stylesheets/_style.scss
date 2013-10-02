@@ -409,7 +409,9 @@ header {
   li {
     display: inline-block;
   }
-  a {
+}
+
+a.tag {
     padding: 0 10px;
     background-color: $tag-grey;
     font-size: 15px;
@@ -450,7 +452,6 @@ header {
       top: 1px;
     }
   }
-}
 
 
 .latest-tweet {

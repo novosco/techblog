@@ -12,4 +12,8 @@
         = partial "shared/article_header", :locals => { :article => current_page }
         .body
           = yield
+          .tags
+            %ol
+              - current_page.tags.each do |tag|
+                %li= blog_tag(tag)
     = partial "shared/footer"
