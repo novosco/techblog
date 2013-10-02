@@ -9,6 +9,8 @@ I love finding out how technology features work, It’s like finding out the sec
 
 Recently I have been working on getting an environment ready to run a VDI workload. The customer uses EMC products extensively, want to do VDI but want it isolated from their other storage. VNX with FAST Cache and FAST VP is the solution. It’s whilst working with this I have come to some conclusions and I wanted to share them.
 
+READMORE
+
 Most in this industry are aware of the high IOps which can be achieved through the use of flash storage (EFD). This presents some challenges to storage vendors because the architecture in which sets of disks reside are limited by the backend bus on which they sit. It doesn’t take much to realise spreading this load around on different buses is beneficial and will help maximise the benefits of the flash you have in your array.
 
 There are a number of EMC Primus articles covering FAST Cache and the location of the flash drives used for it, if you work in this space. I recommend you read them, emc251589 and emc285141 (a Powerlink account is required to do that). I will share my experiences in the hope it can help others.

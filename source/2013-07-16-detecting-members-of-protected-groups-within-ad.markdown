@@ -11,6 +11,8 @@ Some typical issues include insufficient rights to modify users within Lync, Act
 
 What all these issues have in common is that users affected are members of what’s termed as Protected Groups within AD and security inheritance is being stripped from the user object.
 
+READMORE
+
 If you need a primer or a deep dive for that matter into Protected Groups see John Policelli’s article [here](http://policelli.com/blog/archive/2009/11/06/understanding-adminsdholder-and-protected-groups/)
 
 The following Active Directory PowerShell commands can be used detect which users and groups are affected by Protected Group status.

@@ -11,6 +11,8 @@ Got the Exchange server bits installed and then tried creating the DAG which fai
 
 After a bit of analysis it transpires that the customer built the base OS with Windows 2012 Standard and not DataCenter (Server 2012 doesn’t include an Enterprise Edition any more)
 
+READMORE
+
 Luckily we can convert between editions of Windows Server on the fly via DISM ( [Deployment Image Service & Management](http://technet.microsoft.com/en-us/library/dd744256%28v=ws.10%29.aspx "http://technet.microsoft.com/en-us/library/dd744256%28v=ws.10%29.aspx"))
 
 TechNet documentation on converting between server 2012 versions can be found [here](http://technet.microsoft.com/en-gb/library/jj574204.aspx)

@@ -9,6 +9,8 @@ author: stejoh
 
 I do a lot of VNX work and until recently didn’t get an opportunity to deploy a VNXe. As with any product for the first time I did some research in to how it should be configured. It was a VNXe 3100 and would be used with ESXi 5.0 using iSCSI. I searched the web, asked colleagues and the results were that every configuration seemed to be slightly different. Part of the reason behind this is connectivity options. It comes with 2 on-board NICs per Storage Processor but some are also sold with an additional 4 port SLIC card in each SP and it supports link aggregation.
 
+READMORE
+
 The VNXe is designed to be simple to implement and it is exactly that. The VNXe itself is a very clever box and it is because of this that it’s hard not to implement in a way that will work under most failure situations (thanks in part to FSN). Even if most configurations will allow the VNXe to work, there are still better ways to do things.
 
 Part of the issue with VNXe is that it’s so simple, people who don’t normally dabble with storage solutions implement it and thats when people come up with these unnecessarily elaborate configurations because they aren’t familiar with multipathing, either with VMware ESXi or in general. This inspired me to create this blog post in the hope I can help steer people to the relevent documentation before they deploy their VNXe 3100.

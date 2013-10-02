@@ -11,6 +11,8 @@ This time around we will cover the installation of the Mailbox role.
 
 Lets get started by covering off the pre-requisites the Mailbox Role
 
+READMORE
+
 - Server Media Foundation roles  
 
 To install** Server-Media-Foundation** open PowerShell and run the following commands

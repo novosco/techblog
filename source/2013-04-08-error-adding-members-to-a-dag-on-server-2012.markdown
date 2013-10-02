@@ -11,6 +11,8 @@ When I try to add the nodes to the DAG I got the error
 
 “You must provide an value for this property”
 
+READMORE
+
 [ ![image](http://everythingsysadmin.files.wordpress.com/2013/04/image_thumb15.png?w=244&h=182 "image") ](http://everythingsysadmin.files.wordpress.com/2013/04/image15.png)
 
 Decided I better do some reading on [TechNet regarding 2010 DAGs and Server 2012](http://technet.microsoft.com/en-us/library/ff367878%28v=exchg.150%29.aspx) and it turns out that you must pre-stage the CNO (Cluster Named Object)

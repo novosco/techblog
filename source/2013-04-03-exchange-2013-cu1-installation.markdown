@@ -10,6 +10,8 @@ This updates allows for on-premises coexistence with Exchange 2010 SP3 & 2007 SP
 
 The admin display version from a pre and post CU1 install are shown below. (Ex2K13-01 running RTM & Ex2K13-02 running CU1)
 
+READMORE
+
 [ ![image](http://everythingsysadmin.files.wordpress.com/2013/04/image_thumb.png?w=244&h=52 "image") ](http://everythingsysadmin.files.wordpress.com/2013/04/image.png)
 
 CU1 also brings new Schema, AD & Domain updates so all three need to be prepared before running setup.

@@ -9,6 +9,8 @@ During a recent Windows Server 2012 Essentials install a NIC team was configured
 
 This has proved to be a problematic configuration when it comes to Anywhere Access as the server reports that its not connected to the Internet.
 
+READMORE
+
 [ ![image](http://everythingsysadmin.files.wordpress.com/2013/07/image_thumb.png?w=244&h=200 "image") ](http://everythingsysadmin.files.wordpress.com/2013/07/image.png)
 
 [ ![image](http://everythingsysadmin.files.wordpress.com/2013/07/image_thumb1.png?w=244&h=148 "image") ](http://everythingsysadmin.files.wordpress.com/2013/07/image1.png)

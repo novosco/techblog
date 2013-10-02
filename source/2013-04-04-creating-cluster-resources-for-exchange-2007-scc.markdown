@@ -11,6 +11,8 @@ A public folder replica has been added to the Exchange 2007 servers to include t
 
 After verification of data replication all 2007 databases were updated to have their public folder database point to the 2010 servers and the 2007 server removed from the replica in lieu of completely removing the 2007 public folders.
 
+READMORE
+
 After a few weeks of normal usage users started reporting that they could no longer access their public folders.
 
 To cut a long story short it was decided to add a replica back into Exchange 2007, as the Public Database was now removed I tried to recreate a new one.

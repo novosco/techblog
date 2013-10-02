@@ -5,11 +5,13 @@ tags: Exchange 2013
 author: alan
 ---
 
-This is the first of a multi part blog post on the setup and configuration of Exchange Server 2013
+This is the first of a multi part blog post on the setup and configuration of Exchange Server 2013.
 
-The Exchange environment will be split out over 4 servers (2x Client Access & 2x Mailbox)
+The Exchange environment will be split out over 4 servers (2x Client Access & 2x Mailbox).
 
-The backend mailbox will be configured in a DAG and the front end will be load balanced using a Kemp Virtual Load Master 
+The backend mailbox will be configured in a DAG and the front end will be load balanced using a Kemp Virtual Load Master.
+
+READMORE
 
 All servers are running Windows Server 2012 RTM in vSphere 5.1
 

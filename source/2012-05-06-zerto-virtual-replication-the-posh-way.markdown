@@ -7,6 +7,8 @@ author: stejoh
 
 Recently I have had the pleasure of deploying Zerto Virtual Replication ( [http://www.zerto.com/](http://www.zerto.com/)). My first impressions are very good, it’s a well polished product. The install and configuration was very straightforward and it worked without glitches. ZVR deals with all the replication and even reconfigures the networking i.e. re-IP’ing at the DR site, this is all made effortless. The replication is asynchronous and during our testing over a 100Mbit link we set the RPO to 2 minutes but were seeing actual RPO’s of around 12 seconds which is impressive.
 
+READMORE
+
 The architecture hinges around having a management server at each site called the Zerto Virtual Manager (ZVM) and having Virtual Replication Appliances (VRA) on each ESXi host. The product uses the concept of the Virtual Protection Group’s (VPG) to collate machines together with common configuration such as RPO and Journal CDP History which affects the point to which you can roll back to. When the VPG’s are protected you have the option to Move, Failover or Test the Failover. Among the configuration options on the VPG’s there are Pre and Post Scripts and this is where PowerShell (PoSh) comes in very handy. This post was inspired by a requirement at a customer’s site and focuses on a DNS record update script you may need to finish off your deployment.
 
 The Admin Guide is well put together, provides good guidance on the configuration and suggests some additional functionality you may wish to provide by using scripts. Functionality suggested includes updating DNS records at the DR site after Failover and also recording Failover Testing in text files on the Zerto Virtual Manager servers. I decided to put all this functionality into one PowerShell script since both of these suggestions are great, updating DNS is an absolute must and recording Test Failovers seems sensible. I used the DNS Update powershell script from the Admin Guide as the basis for my script and added extra bits so only a single script is required for all VPG’s and so the Failover Test history is recorded using the same script (the Admin Guide has a separate batch file script to do this).
@@ -37,7 +39,42 @@ In the Zerto tab within vCenter under the VPG’s options you’ll find the Post
 
 **DNS-Change.ps1 contains the following:**
 
-#### Zerto Failover Script  ## Timestamp $timestamp = get-date -format "dd-MM-yy\_HHmm"  ## Get Environment Variables $ZertoOperation = $args[0] $ZertoVPGName = $args[1]  if ($ZertoOperation -ne "Test"){  ## Set DNS servers $DNSservers= @("192.168.1.1", "192.168.1.2")  ## Filepath to script and CSV files $FP = "C:\ZertoScripts\" CD $FP Foreach($DNSserver in $DNSservers) { Import-CSV .\$ZertoVPGName\DNS-OldA.csv | foreach { .\dnscmd $DNSserver /RecordDelete $\_.zone $\_.hostname A $\_.ip /f} Import-CSV .\$ZertoVPGName\DNS-NewA.csv | foreach { .\dnscmd $DNSserver /RecordAdd $\_.zone $\_.hostname A $\_.ip} Import-CSV .\$ZertoVPGName\DNS-OldPTR.csv | foreach { .\dnscmd $DNSserver /RecordDelete $\_.reversezone $\_.lowip PTR $\_.fqdn /f} Import-CSV .\$ZertoVPGName\DNS-NewPTR.csv | foreach { .\dnscmd $DNSserver /RecordAdd $\_.reversezone $\_.lowip PTR $\_.fqdn} }  } Else {  $LogContent = $ZertoVPGName " " $timestamp Add-Content c:\ZertoScripts\Results\ListOfTestedVPGs.txt -value $LogContent  }
+#### Zerto Failover Script
+ 
+ ## Timestamp
+ $timestamp = get-date -format "dd-MM-yy\_HHmm"
+ 
+ ## Get Environment Variables
+ $ZertoOperation = $args[0]
+ $ZertoVPGName = $args[1]
+ 
+ if ($ZertoOperation -ne "Test"){
+ 
+ ## Set DNS servers
+ $DNSservers= @("192.168.1.1", "192.168.1.2")
+ 
+ ## Filepath to script and CSV files
+ $FP = "C:\ZertoScripts\"
+ CD $FP
+ Foreach($DNSserver in $DNSservers)
+ {
+ Import-CSV .\$ZertoVPGName\DNS-OldA.csv | foreach {
+ .\dnscmd $DNSserver /RecordDelete $\_.zone $\_.hostname A $\_.ip /f}
+ Import-CSV .\$ZertoVPGName\DNS-NewA.csv | foreach {
+ .\dnscmd $DNSserver /RecordAdd $\_.zone $\_.hostname A $\_.ip}
+ Import-CSV .\$ZertoVPGName\DNS-OldPTR.csv | foreach {
+ .\dnscmd $DNSserver /RecordDelete $\_.reversezone $\_.lowip PTR $\_.fqdn /f}
+ Import-CSV .\$ZertoVPGName\DNS-NewPTR.csv | foreach {
+ .\dnscmd $DNSserver /RecordAdd $\_.reversezone $\_.lowip PTR $\_.fqdn}
+ }
+ 
+ }
+ Else {
+ 
+ $LogContent = $ZertoVPGName " " $timestamp
+ Add-Content c:\ZertoScripts\Results\ListOfTestedVPGs.txt -value $LogContent
+ 
+ }
 
 Example contents of the csv files are shown below. Remember these are within subfolders which are named exactly the same as the VPG names. Also note the header line in each file is required:
 

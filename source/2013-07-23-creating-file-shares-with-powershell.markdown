@@ -11,7 +11,7 @@ Today I needed to create a new file share for a Lync 2013 Std Edition installati
 
 As it turns out that this is a very simple task so with no further ado here is the syntax
 
->
+READMORE
 
 > **_New-SmbShare –Name LyncShare -Path C:\LyncShare –Description “Lync 2013 File Share” –FullAccess Administrators_**
 
