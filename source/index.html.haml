@@ -33,6 +33,7 @@
                   = link_to article.title, article
                 .post-meta
                   .post-avatar
+                    %img{alt: "", src: image_path('default-avatar.png')}/
                   .post-meta-text
                     %span= article.date.strftime('%e %b %Y')
                     %span= author_link(article.data.author)
@@ -53,10 +54,12 @@
               - author = author_array[1]
               %li
                 .author-avatar
+                  %img{alt: "", src: image_path('default-avatar.png')}/
                 .author-details
                   %h3 Authors Name
                   %span Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.
-                  = link_to author['name'], "/#{author['slug']}"
+                  %span.author-posts-link
+                    = link_to author['name'], "/#{author['slug']}"
       %section.tag-cloud
         .tag-list
           %h1.small-h1 Tags
