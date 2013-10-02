@@ -84,6 +84,10 @@ helpers do
   def author_link(author_id)
     link_to data.authors[author_id].name, "/#{data.authors[author_id].slug}"
   end
+
+  def featured_article
+    blog.articles.first
+  end
 end
 
 activate :deploy do |deploy|

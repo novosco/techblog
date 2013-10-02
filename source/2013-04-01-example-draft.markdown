@@ -1,6 +1,6 @@
 ---
 title: Example Draft Article
-date: 2013-09-01
+date: 2013-04-01
 tags: example
 published: false
 author: stejoh

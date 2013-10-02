@@ -3,17 +3,18 @@
     .articles
       .article-featured
         %h2.article-header
-          = link_to  "Featured Article Title Goes Here", "/"
-        %span By Alan McBurney on 21 Sept 2013
-        %p In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis.
-        %p Pellentesque eu est a nulla placerat dignissim. Morbi a enim in magna semper bibendum. Etiam scelerisque, nunc ac egestas consequat, odio nibh euismod nulla, eget auctor orci nibh vel nisi. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis.
+          = link_to featured_article.title, featured_article
+        %span By #{author_link(featured_article.data.author)} on #{featured_article.date.strftime('%e %B %Y')}
+        .body
+          = featured_article.summary
+          = link_to "Read more...", featured_article
       .articles-list
         %h2 Recent Articles
         %ol
           - blog.articles.each do |article|
             %li
               = link_to article.title, article
-              %span= article.date.strftime('%b %e')
+              %span= article.date.strftime('%e %b %Y')
               %span= author_link(article.data.author)
     %aside.sidebar
       .latest-tweet

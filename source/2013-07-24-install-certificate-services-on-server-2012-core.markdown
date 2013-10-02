@@ -17,6 +17,8 @@ My reasoning for running DC’s using core is as follows:
 - Memory is also minimal. My server core installs are running with 512MB RAM
 - Disk requirements are reduced
 
+READMORE
+
 All of the above in my opinion leads to a more stable system.  
 On the downside though it takes a bit more work to get things up and running.
 
