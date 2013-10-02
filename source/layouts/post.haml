@@ -6,9 +6,8 @@
   %body{:class => page_classes}
     = partial "shared/header"
     #main
-      %h1= current_page.data.title
-      %h2= current_page.data.date
-      %h2= current_page.data.tags
-      %h2= author_link(current_page.data.author)
-      = yield
+      %article
+        = partial "shared/article_header", :locals => { :article => current_page }
+        .body
+          = yield
     = partial "shared/footer"
