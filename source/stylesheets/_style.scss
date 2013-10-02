@@ -282,6 +282,9 @@ header {
   li {
     padding: 60px 8%;
     @include grey-border-dashed;
+    &:last-child {
+      border: 0;
+    }
   }
 }
 
@@ -349,11 +352,11 @@ header {
       font-weight: 600;
     }
     :hover, .hover {
-      background-color: $link-hover;
+      color: $light-grey;
       -webkit-transition: top .04s ease-out;
     }
     :active {
-      background-color: $link-active;
+      color: $black;
       position: relative;
       top: 1px;
     }
@@ -386,6 +389,35 @@ header {
   }
 }
 
+
+
+footer {
+  width: 100%;
+  background-color: $black;
+  height: 60px;
+  padding: 0;
+  color: $white;
+  line-height: 60px;
+  //z-index: 999;
+}
+
+.footer-wrapper {
+  width: 92%;
+  margin: 0 4%;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.about-novosco {
+  float: left;
+}
+.copyright {
+  float: right;
+}
 
 
 /* ==========================================================================
