@@ -11,18 +11,19 @@
 
   #main
     .articles
-      %article.article-featured
-        %h3.small-box-title.featured-article-title Featured Article
-        %h1.article-header
-          = link_to featured_article.title, featured_article
-        .post-meta
-          .post-avatar
-          .post-meta-text
-            %span By #{author_link(featured_article.data.author)} on
-            %time #{featured_article.date.strftime('%e %B %Y')}
-        .body
-          = featured_article.summary
-          = link_to "Read more...", featured_article
+      %section.article-featured
+        %h1.small-box-title Featured Article
+        %article
+          %h1.article-header
+            = link_to featured_article.title, featured_article
+          .post-meta
+            .post-avatar
+            .post-meta-text
+              %span By #{author_link(featured_article.data.author)} on
+              %time #{featured_article.date.strftime('%e %B %Y')}
+          .body
+            = featured_article.summary
+            = link_to "Read more...", featured_article
       %section.articles-recent
         %h1.small-h1 Recent Articles
         .articles-list
@@ -40,7 +41,7 @@
     %aside.sidebar
       %section.latest-tweet
         .tweet
-          %h3.small-box-title Latest Tweet
+          %h1.small-box-title Latest Tweet
           %p Looking forward to our sold out event tomorrow at @FitzwilliamDUB with @IDC and Apres Match's Barry Murphy #COTTP  about 8 hours ago
         .follow
           %span.follow-text Follow us on Twitter

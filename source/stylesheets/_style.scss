@@ -239,6 +239,10 @@ header {
   padding: 0 8% 8% 8%;
   @include box-grey-gradient;
   margin-bottom: 8%;
+
+  .small-box-title {
+    margin: -1px 0 6% 0;
+  }
 }
 
 .article-header {
@@ -264,11 +268,6 @@ header {
   background-color: $dark-blue;
 }
 
-
-
-.featured-article-title {
-  margin: -1px 0 6% 0;
-}
 
 .post-meta {
   color: $grey;
