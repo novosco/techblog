@@ -2,25 +2,30 @@
   #main
     .articles
       %article.article-featured
+        %h3.small-box-title.featured-article-title Featured Article
         %h1.article-header
           = link_to featured_article.title, featured_article
-        %span By #{author_link(featured_article.data.author)} on 
-        %time #{featured_article.date.strftime('%e %B %Y')}
+        .post-meta
+          .post-avatar
+          .post-meta-text
+            %span By #{author_link(featured_article.data.author)} on
+            %time #{featured_article.date.strftime('%e %B %Y')}
         .body
           = featured_article.summary
           = link_to "Read more...", featured_article
-      %section.articles-list
-        %h1 Recent Articles
-        %ol
-          - blog.articles.each do |article|
-            %li
-              = link_to article.title, article
-              %span= article.date.strftime('%e %b %Y')
-              %span= author_link(article.data.author)
+      %section.articles-recent
+        %h1.small-h1 Recent Articles
+        .articles-list
+          %ol
+            - blog.articles.each do |article|
+              %li
+                = link_to article.title, article
+                %span= article.date.strftime('%e %b %Y')
+                %span= author_link(article.data.author)
     %aside.sidebar
       %section.latest-tweet
         .tweet
-          %h3 Latest Tweet
+          %h3.small-box-title Latest Tweet
           %p Looking forward to our sold out event tomorrow at @FitzwilliamDUB with @IDC and Apres Match's Barry Murphy #COTTP  about 8 hours ago
         .follow
           %span.follow-text Follow us on Twitter

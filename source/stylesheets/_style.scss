@@ -207,20 +207,87 @@ header {
 }
 
 .article-featured {
-  border: 1px solid $border-grey;
-  padding: 8%;
+  @include grey-border;
+  padding: 0 8% 8% 8%;
   @include box-grey-gradient;
+  margin-bottom: 8%;
 }
 
 .article-header {
-  margin-top: 0;
+  margin: 0 0 5px 0;
   font-size: 40px;
   line-height: 48px;
   a {
   }
 }
 
+
+
+.small-box-title {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  color: $white;
+  text-align: left;
+  width: auto;
+  display: inline-block;
+  margin: 0;
+  padding: 5px 15px;
+  background-color: $dark-blue;
+}
+
+
+
+.featured-article-title {
+  margin: -1px 0 6% 0;
+}
+
+.post-meta {
+  color: $grey;
+  height: 36px;
+  a {
+    text-decoration: underline;
+    color: $grey;
+  }
+  @include link-states;
+}
+
+.post-avatar {
+  width: 34px;
+  height: 34px;
+  float: left;
+  background-color: $white;
+  @include grey-border;
+}
+
+.post-meta-text {
+  float: left;
+  line-height: 36px;
+  margin-left: 10px;
+}
+
+
+
+
+.articles-recent {
+  width: 100%;
+}
+
 .articles-list {
+  ol {
+    list-style-type: none;
+    padding: 0;
+    @include grey-border-top;
+  }
+  li {
+    padding: 60px 0;
+    @include grey-border-dashed;
+  }
+}
+
+.small-h1 {
+  font-size: 21px;
+  line-height: 25px;
 }
 
 
@@ -234,15 +301,6 @@ header {
   color: $white;
   font-size: 15px;
   line-height: 20px;
-  h3 {
-    font-size: 15px;
-    font-weight: 600;
-    text-align: center;
-    width: 110px;
-    margin: 0;
-    padding: 5px 0;
-    background-color: $dark-blue;
-  }
   .tweet {
     padding: 0 20px 2px 20px;
   }
