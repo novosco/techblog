@@ -14,13 +14,14 @@
         - data.authors.each do |author_array|
           - author = author_array[1]
           %li
-            .author-avatar
-              %img{alt: "", src: image_path('default-avatar.png')}/
-            .author-details
-              %h3 Authors Name
-              %span Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.
-              %span.author-posts-link
-                = link_to author['name'], "/#{author['slug']}"
+            %article.author
+              .author-avatar
+                %img{alt: "", src: image_path('default-avatar.png')}/
+              .author-details
+                %h1.small-h1= author['name']
+                %span= author['bio']
+                %span.author-posts-link
+                  = link_to "View #{author['name']}'s posts", "/#{author['slug']}"
   %section.tag-cloud
     .tag-list
       %h1.small-h1 Tags

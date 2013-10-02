@@ -2,7 +2,7 @@
 title: Detecting members of Protected Groups within AD
 date: 2013-07-16 11:05:27 +0100
 tags: Active Directory
-author: alan
+author: alanmcburney
 ---
 
 I do a lot Exchange and Lync work and typically post project I get calls from customers that things aren’t working quite as expected.

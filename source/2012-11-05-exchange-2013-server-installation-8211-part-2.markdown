@@ -2,7 +2,7 @@
 title: Exchange 2013 Server installation &#8211; Part 2
 date: 2012-11-05 19:56:38 +0000
 tags: Exchange 2013
-author: alan
+author: alanmcburney
 ---
 
 In the [first part](http://everythingsysadmin.wordpress.com/2012/11/03/exchange-2013-server-installation-part-1/) of this multi part blog post I covered the installation of the Client Access Server

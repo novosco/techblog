@@ -2,7 +2,7 @@
 title: Creating Cluster Resources for Exchange 2007 SCC
 date: 2013-04-04 14:46:00 +0100
 tags: Uncategorized
-author: alan
+author: alanmcburney
 ---
 
 During a large scale Exchange migration for 2007 to 2010 an issue arose with Public Folder databases.

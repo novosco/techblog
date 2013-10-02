@@ -362,7 +362,7 @@ header {
     display: inline-block;
     @include grey-border-dashed;
   }
-  h3 {
+  h1 {
     margin: 0;
   }
 }
@@ -382,14 +382,7 @@ header {
   }
 }
 
-
-
 .author-details {
-  h3 {
-    font-size: 21px;
-    font-weight: 400;
-    margin-bottom: 5px;
-  }
   float: left;
   width: 70%;
   margin-left: 5%;
@@ -399,9 +392,11 @@ header {
 
 .author-posts-link {
   display: block;
-  text-decoration: underline;
   font-size: 18px;
   margin-top: 7px;
+  a {
+    text-decoration: underline;
+  }
 }
 
 

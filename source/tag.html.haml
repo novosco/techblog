@@ -1,7 +1,11 @@
+- content_for :title do
+  Articles for the '#{tagname}' Tag
+
 .banner
   .layout-wrapper
     .layout-inner
-      %h1 THE TAG
+      %h1
+        Articles for the '#{tagname}' Tag
 
 .container
 
@@ -9,6 +13,6 @@
     .articles
       %section.articles-recent
         %h1.small-h1 Recent Articles
-        = partial "shared/article_list", :locals => { :articles => blog.articles }
+        = partial "shared/article_list", :locals => { :articles => page_articles }
 
     = partial "shared/sidebar"

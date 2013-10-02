@@ -2,7 +2,7 @@
 title: Creating File Shares with PowerShell
 date: 2013-07-23 20:53:44 +0100
 tags: Active Directory
-author: alan
+author: alanmcburney
 ---
 
 I’m gradually moving more and more to PowerShell only for server administration.

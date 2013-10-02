@@ -4,7 +4,7 @@ require 'reverse_markdown'
 
 FEEDS = [
   {:author => 'stejoh', :url => 'http://www.neogeek.net/?feed=rss2'},
-  {:author => 'alan', :url => 'http://everythingsysadmin.wordpress.com/feed/'}
+  {:author => 'alanmcburney', :url => 'http://everythingsysadmin.wordpress.com/feed/'}
 ]
 
 desc "Synchronise feeds"

@@ -2,7 +2,7 @@
 title: Beware Server 2012 Essentials NIC Teaming
 date: 2013-07-24 10:30:31 +0100
 tags: Server 2012 Essentials
-author: alan
+author: alanmcburney
 ---
 
 During a recent Windows Server 2012 Essentials install a NIC team was configured on the server.
