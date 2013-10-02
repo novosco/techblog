@@ -11,6 +11,7 @@ $black:                 #2B3033;
 $white:                 #fff;
 
 $grey:                  #8F99A5;
+$tag-grey:              #B8C0C9;
 $light-grey:            #F5F5F5;
 $border-grey:           #D8D8D8;
 
@@ -30,4 +31,28 @@ $link-active:       darken($link-color, 10%);
   background-image: -webkit-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
   background-image: -ms-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
   background-image: linear-gradient(4deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
+}
+
+@mixin link-states {
+  a:hover, a.hover {
+    color: $link-hover;
+    -webkit-transition: top .04s ease-out;
+  }
+  a:active {
+    color: $link-active;
+    position: relative;
+    top: 1px;
+  }
+}
+
+@mixin grey-border {
+  border: 1px solid $border-grey;
+}
+
+@mixin grey-border-top {
+  border-top: 1px solid $border-grey;
+}
+
+@mixin grey-border-dashed {
+  border-bottom: 1px dashed $border-grey;
 }
