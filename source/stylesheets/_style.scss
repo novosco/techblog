@@ -407,6 +407,9 @@ header {
     padding: 40px 0 0 0 ;
   }
   li {
+    display: inline-block;
+  }
+  a {
     padding: 0 10px;
     background-color: $tag-grey;
     font-size: 15px;
@@ -418,6 +421,7 @@ header {
     color: $white;
     position: relative;
     border-radius: 0;
+    font-weight: 600;
     &:before {
       content: "";
       float: left;
@@ -430,15 +434,11 @@ header {
       border-style: solid;
       border-width: 16px 8px 16px 0;
     }
-    a {
-      color: $white;
-      font-weight: 600;
-    }
-    :hover, .hover {
+    &:hover, .hover {
       color: $light-grey;
       -webkit-transition: top .04s ease-out;
     }
-    :active {
+    &:active {
       color: $black;
       position: relative;
       top: 1px;

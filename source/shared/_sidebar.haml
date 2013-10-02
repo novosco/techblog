@@ -28,5 +28,5 @@
       %ol
         - blog.tags.each do |tag, articles|
           %li
-            = link_to tag, tag_path(tag)
-            (#{articles.size})
+            = link_to "#{tag} (#{articles.size})", tag_path(tag)
+              
