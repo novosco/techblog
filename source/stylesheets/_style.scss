@@ -129,12 +129,12 @@ header {
   //z-index: 999;
 }
 
-.header-wrapper {
+.layout-wrapper {
   width: 92%;
   margin: 0 4%;
 }
 
-.header-inner {
+.layout-inner {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -389,28 +389,69 @@ header {
   }
 }
 
-
-
 footer {
+  float: left;
+  width: 100%;
+}
+
+
+.newsletter {
+  width: 100%;
+  height: 220px;
+  @include grey-border-top;
+}
+
+.newsletter-title {
+  font-weight: 600;
+  font-size: 30px;
+  width: 100%;
+  margin: 50px 0 20px 0;
+}
+
+#mc-email {
+  width: 78.75%;
+  float: left;
+  height: 58px;
+  background-color: $light-grey;
+  line-height: 58px;
+  margin: 0;
+  padding: 0 0 0 1.75%;
+  font-size: 21px;
+  @include grey-border;
+  @include light-text-shadow;
+}
+
+.button {
+  width: 17.5%;
+  font-weight: 600;
+  float: right;
+  background-color: $blue;
+  color: $white;
+  height: 60px;
+  line-height: 56px;
+  border: none;
+  font-size: 21px;
+  &:hover, &.hover {
+    background-color: $link-hover;
+    -webkit-transition: top .04s ease-out;
+  }
+  &:active {
+    background-color: $link-active;
+    position: relative;
+    top: 1px;
+  }
+}
+
+
+.footer-info {
   width: 100%;
   background-color: $black;
   height: 60px;
   padding: 0;
   color: $white;
   line-height: 60px;
-  //z-index: 999;
 }
 
-.footer-wrapper {
-  width: 92%;
-  margin: 0 4%;
-}
-
-.footer-inner {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-}
 
 .about-novosco {
   float: left;

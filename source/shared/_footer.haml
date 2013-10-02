@@ -1,16 +1,27 @@
-#mc-signup
-  %form#mc-subscribe-form.validate{action: "http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&id=b15b8e54dd", method: "post", name: "mc-embedded-subscribe-form", novalidate: "", target: "_blank"}
-    .form-inputs
-      %label{for: "mc-email"}
-        Subscribe to our mailing list
-        %input#mc-email{name: "EMAIL", placeholder: "email address", required: "", type: "email", value: ""}
-    .form-action
-      %input.button{name: "subscribe", type: "submit", value: "Subscribe"}
-
 
 
 %footer
-  %span.about-novosco
-    Novosco is a leading provider of Cloud Technologies, Managed Service and Consulting.
-  %span.copyright
-    = "© 200??-#{Time.now.strftime('%Y')} Novosco"
+
+
+  %section.newsletter
+    #mc-signup.layout-wrapper
+      .layout-inner
+        %form#mc-subscribe-form.validate{action: "http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&id=b15b8e54dd", method: "post", name: "mc-embedded-subscribe-form", novalidate: "", target: "_blank"}
+          .form-inputs
+            %label{for: "mc-email"}
+              .newsletter-title
+                Subscribe to our mailing list
+              %input#mc-email{name: "EMAIL", placeholder: "Enter your email address…", required: "", type: "email", value: ""}
+          .form-action.newsletter-button
+            %input.button{name: "subscribe", type: "submit", value: "Subscribe"}
+
+
+
+  %section.footer-info
+    .layout-wrapper
+      .layout-inner
+        %span.about-novosco
+          %strong Novosco
+          is a leading provider of Cloud Technologies, Managed Service and Consulting.
+        %span.copyright
+          = "© 200??-#{Time.now.strftime('%Y')} Novosco"
