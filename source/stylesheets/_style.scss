@@ -280,7 +280,7 @@ header {
     @include grey-border-top;
   }
   li {
-    padding: 60px 0;
+    padding: 60px 8%;
     @include grey-border-dashed;
   }
 }
@@ -295,6 +295,71 @@ header {
   float: right;
   width: 33.333%;
 }
+
+.our-authors, .tag-cloud {
+  margin-top: 15%;
+}
+
+.authors-list {
+  ol {
+    list-style-type: none;
+    padding: 0;
+    @include grey-border-top;
+  }
+  li {
+    padding: 40px 0;
+    @include grey-border-dashed;
+  }
+}
+
+
+
+.tag-list {
+  ol {
+    list-style-type: none;
+    @include grey-border-top;
+    padding: 40px 0 0 0 ;
+  }
+  li {
+    padding: 0 10px;
+    background-color: $tag-grey;
+    font-size: 15px;
+    line-height: 32px;
+    height: 32px;
+    margin: 0 0 5px 7px;
+    display: inline-block;
+    width: auto;
+    color: $white;
+    position: relative;
+    border-radius: 0;
+    &:before {
+      content: "";
+      float: left;
+      position: absolute;
+      top: 0;
+      left: -8px;
+      width: 0;
+      height: 0;
+      border-color: transparent $tag-grey transparent transparent;
+      border-style: solid;
+      border-width: 16px 8px 16px 0;
+    }
+    a {
+      color: $white;
+      font-weight: 600;
+    }
+    :hover, .hover {
+      background-color: $link-hover;
+      -webkit-transition: top .04s ease-out;
+    }
+    :active {
+      background-color: $link-active;
+      position: relative;
+      top: 1px;
+    }
+  }
+}
+
 
 .latest-tweet {
   background: $blue;
@@ -321,9 +386,7 @@ header {
   }
 }
 
-.tag-cloud {
-  margin: 60px 0 0 0;
-}
+
 
 /* ==========================================================================
    Helper classes

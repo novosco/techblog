@@ -19,9 +19,13 @@
           %ol
             - blog.articles.each do |article|
               %li
-                = link_to article.title, article
-                %span= article.date.strftime('%e %b %Y')
-                %span= author_link(article.data.author)
+                .article-header
+                  = link_to article.title, article
+                .post-meta
+                  .post-avatar
+                  .post-meta-text
+                    %span= article.date.strftime('%e %b %Y')
+                    %span= author_link(article.data.author)
     %aside.sidebar
       %section.latest-tweet
         .tweet
@@ -31,17 +35,19 @@
           %span.follow-text Follow us on Twitter
           %span.twitter-account
             = link_to  "@novoscotechblog", "http://twitter.com/novoscotechblog"
-      %section.authors-list
-        %h1 Our Engineers
-        %ol
-          - data.authors.each do |author_array|
-            - author = author_array[1]
-            %li
-              = link_to author['name'], "/#{author['slug']}"
+      %section.our-authors
+        .authors-list
+          %h1.small-h1 Our Engineers
+          %ol
+            - data.authors.each do |author_array|
+              - author = author_array[1]
+              %li
+                = link_to author['name'], "/#{author['slug']}"
       %section.tag-cloud
-        %h1 Tags
-        %ol
-          - blog.tags.each do |tag, articles|
-            %li
-              = link_to tag, tag_path(tag)
-              (#{articles.size})
+        .tag-list
+          %h1.small-h1 Tags
+          %ol
+            - blog.tags.each do |tag, articles|
+              %li
+                = link_to tag, tag_path(tag)
+                (#{articles.size})
