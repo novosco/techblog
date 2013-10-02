@@ -1,4 +1,14 @@
+.banner
+  .layout-wrapper
+    .layout-inner
+      %h1
+        Some kind of intro strapline for Engineering
+      %h2
+        Etiam at risus et justo dignissim. Proin quis tortor orci mondo.
+
+
 .container
+
   #main
     .articles
       %article.article-featured
@@ -42,7 +52,11 @@
             - data.authors.each do |author_array|
               - author = author_array[1]
               %li
-                = link_to author['name'], "/#{author['slug']}"
+                .author-avatar
+                .author-details
+                  %h3 Authors Name
+                  %span Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.
+                  = link_to author['name'], "/#{author['slug']}"
       %section.tag-cloud
         .tag-list
           %h1.small-h1 Tags
