@@ -1,12 +1,6 @@
 %aside.sidebar
-  %section.latest-tweet
-    .tweet
-      %h1.small-box-title Latest Tweet
-      %p Looking forward to our sold out event tomorrow at @FitzwilliamDUB with @IDC and Apres Match's Barry Murphy #COTTP  about 8 hours ago
-    .follow
-      %span.follow-text Follow us on Twitter
-      %span.twitter-account
-        = link_to  "@novoscotechblog", "http://twitter.com/novoscotechblog"
+  %section.twitter
+    = partial "shared/twitter_widget", :locals => {:twitter_id => "novoscotechblog", :twitter_widget_id => "385489744718618624"}
   %section.our-authors
     .authors-list
       %h1.small-h1 Our Engineers

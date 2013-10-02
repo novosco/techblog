@@ -15,12 +15,7 @@
         = partial "shared/article_list", :locals => { :articles => blog.articles.select { |a| a.data.author == author.twitter } }
 
     %aside.sidebar
-      %section.latest-tweet
-        .tweet
-          %h1.small-box-title Latest Tweet
-          %p Looking forward to our sold out event tomorrow at @FitzwilliamDUB with @IDC and Apres Match's Barry Murphy         #COTTP  about 8 hours ago
-        .follow
-          %span.follow-text Follow me on Twitter
-          %span.twitter-account
-            = link_to  "@#{author.twitter}", "http://twitter.com/#{author.twitter}"
+      %section.twitter
+        - if author.twitter_widget_id
+          = partial "shared/twitter_widget", :locals => {:twitter_id => author.twitter, :twitter_widget_id => author.twitter_widget_id}
 
