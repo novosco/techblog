@@ -1,4 +1,3 @@
-###
 # Blog settings
 ###
 
@@ -83,6 +82,10 @@ helpers do
 
   def author_link(author_id)
     link_to data.authors[author_id].name, "/#{data.authors[author_id].slug}"
+  end
+
+  def avatar_for(author_id)
+    image_tag(data.authors[author_id].avatar)
   end
 
   def articles_by(author)

@@ -10,7 +10,7 @@
           %li
             %article.author
               .author-avatar
-                %img{alt: "", src: image_path('default-avatar.png')}/
+                = avatar_for(author.twitter)
               .author-details
                 %h1= author['name']
                 %span= author['bio']
