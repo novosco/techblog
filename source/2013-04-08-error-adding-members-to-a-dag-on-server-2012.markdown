@@ -2,7 +2,7 @@
 title: Error Adding Members to a DAG on Server 2012
 date: 2013-04-08 13:24:04 +0100
 tags: Database Availability Group
-author: alan
+author: alanmcburney
 ---
 
 Ran into an error this morning trying to add members to a DAG running on Server 2012

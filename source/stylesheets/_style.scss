@@ -239,6 +239,10 @@ header {
   padding: 0 8% 8% 8%;
   @include box-grey-gradient;
   margin-bottom: 8%;
+
+  .small-box-title {
+    margin: -1px 0 6% 0;
+  }
 }
 
 .article-header {
@@ -264,11 +268,6 @@ header {
   background-color: $dark-blue;
 }
 
-
-
-.featured-article-title {
-  margin: -1px 0 6% 0;
-}
 
 .post-meta {
   color: $grey;
@@ -363,7 +362,7 @@ header {
     display: inline-block;
     @include grey-border-dashed;
   }
-  h3 {
+  h1 {
     margin: 0;
   }
 }
@@ -383,14 +382,7 @@ header {
   }
 }
 
-
-
 .author-details {
-  h3 {
-    font-size: 21px;
-    font-weight: 400;
-    margin-bottom: 5px;
-  }
   float: left;
   width: 70%;
   margin-left: 5%;
@@ -400,9 +392,11 @@ header {
 
 .author-posts-link {
   display: block;
-  text-decoration: underline;
   font-size: 18px;
   margin-top: 7px;
+  a {
+    text-decoration: underline;
+  }
 }
 
 
@@ -413,6 +407,11 @@ header {
     padding: 40px 0 0 0 ;
   }
   li {
+    display: inline-block;
+  }
+}
+
+a.tag {
     padding: 0 10px;
     background-color: $tag-grey;
     font-size: 15px;
@@ -424,6 +423,7 @@ header {
     color: $white;
     position: relative;
     border-radius: 0;
+    font-weight: 600;
     &:before {
       content: "";
       float: left;
@@ -436,21 +436,22 @@ header {
       border-style: solid;
       border-width: 16px 8px 16px 0;
     }
-    a {
-      color: $white;
-      font-weight: 600;
+    &:hover:before {
+      border-color: transparent $grey transparent transparent;
     }
-    :hover, .hover {
-      color: $light-grey;
+    &:active:before {
+      border-color: transparent $grey transparent transparent;
+    }
+    &:hover, .hover {
+      background: $grey;
       -webkit-transition: top .04s ease-out;
     }
-    :active {
-      color: $black;
+    &:active {
+      background: $black;
       position: relative;
       top: 1px;
     }
   }
-}
 
 
 .latest-tweet {

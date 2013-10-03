@@ -1,0 +1,6 @@
+.articles-list
+  %ol
+    - articles.each do |article|
+      %li
+        %article
+          = partial "shared/article_header", :locals => { :article => article }

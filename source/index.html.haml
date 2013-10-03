@@ -1,70 +1,22 @@
 .banner
   .layout-wrapper
     .layout-inner
-      %h1
-        Some kind of intro strapline for Engineering
-      %h2
-        Etiam at risus et justo dignissim. Proin quis tortor orci mondo.
-
+      %h1 Some kind of intro strapline for Engineering
+      %h2 Etiam at risus et justo dignissim. Proin quis tortor orci mondo.
 
 .container
 
   #main
     .articles
-      %article.article-featured
-        %h3.small-box-title.featured-article-title Featured Article
-        %h1.article-header
-          = link_to featured_article.title, featured_article
-        .post-meta
-          .post-avatar
-          .post-meta-text
-            %span By #{author_link(featured_article.data.author)} on
-            %time #{featured_article.date.strftime('%e %B %Y')}
-        .body
-          = featured_article.summary
-          = link_to "Read more...", featured_article
+      %section.article-featured
+        %h1.small-box-title Featured Article
+        %article
+          = partial "shared/article_header", :locals => { :article => featured_article }
+          .body
+            = featured_article.summary
+            = link_to "Read more...", featured_article
       %section.articles-recent
         %h1.small-h1 Recent Articles
-        .articles-list
-          %ol
-            - blog.articles.each do |article|
-              %li
-                .article-header
-                  = link_to article.title, article
-                .post-meta
-                  .post-avatar
-                    %img{alt: "", src: image_path('default-avatar.png')}/
-                  .post-meta-text
-                    %span= article.date.strftime('%e %b %Y')
-                    %span= author_link(article.data.author)
-    %aside.sidebar
-      %section.latest-tweet
-        .tweet
-          %h3.small-box-title Latest Tweet
-          %p Looking forward to our sold out event tomorrow at @FitzwilliamDUB with @IDC and Apres Match's Barry Murphy #COTTP  about 8 hours ago
-        .follow
-          %span.follow-text Follow us on Twitter
-          %span.twitter-account
-            = link_to  "@novoscotechblog", "http://twitter.com/novoscotechblog"
-      %section.our-authors
-        .authors-list
-          %h1.small-h1 Our Engineers
-          %ol
-            - data.authors.each do |author_array|
-              - author = author_array[1]
-              %li
-                .author-avatar
-                  %img{alt: "", src: image_path('default-avatar.png')}/
-                .author-details
-                  %h3 Authors Name
-                  %span Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.
-                  %span.author-posts-link
-                    = link_to author['name'], "/#{author['slug']}"
-      %section.tag-cloud
-        .tag-list
-          %h1.small-h1 Tags
-          %ol
-            - blog.tags.each do |tag, articles|
-              %li
-                = link_to tag, tag_path(tag)
-                (#{articles.size})
+        = partial "shared/article_list", :locals => { :articles => blog.articles }
+
+    = partial "shared/sidebar"

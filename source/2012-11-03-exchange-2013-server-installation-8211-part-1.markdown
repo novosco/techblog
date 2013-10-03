@@ -2,7 +2,7 @@
 title: Exchange 2013 Server installation &#8211; Part 1
 date: 2012-11-03 16:25:50 +0000
 tags: Exchange 2013
-author: alan
+author: alanmcburney
 ---
 
 This is the first of a multi part blog post on the setup and configuration of Exchange Server 2013.

@@ -1,3 +1,5 @@
+- content_for :title do
+  #{current_page.title}
 !!!
 %html{dir: "ltr", lang: "en", "xmlns:fb" => "http://ogp.me/ns/fb#"}
   %head
@@ -6,9 +8,12 @@
   %body{:class => page_classes}
     = partial "shared/header"
     #main
-      %h1= current_page.data.title
-      %h2= current_page.data.date
-      %h2= current_page.data.tags
-      %h2= author_link(current_page.data.author)
-      = yield
+      %article
+        = partial "shared/article_header", :locals => { :article => current_page }
+        .body
+          = yield
+          .tags
+            %ol
+              - current_page.tags.each do |tag|
+                %li= blog_tag(tag)
     = partial "shared/footer"

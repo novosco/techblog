@@ -1,19 +1,21 @@
-!!!
-%html{dir: "ltr", lang: "en", "xmlns:fb" => "http://ogp.me/ns/fb#"}
-  %head
-    = partial "shared/meta"
-  %body{:class => page_classes}
-    = partial "shared/header"
-    %h1= author.name
-    %h2= author.bio
-    %h2= author.twitter
-    %h2= author.email
-    = partial "shared/footer"
+- content_for :title do
+  #{author.name}
 
-    %section#author-posts
-      %h1 Author's posts
-      %ol
-        - blog.articles.select { |a| a.data.author == author.twitter }.each do |article|
-          %li
-            = link_to article.title, article
-            %span= article.date.strftime('%b %e')
+.banner
+  .layout-wrapper
+    .layout-inner
+      %h1= author.name
+      %h2 bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio
+
+.container
+  #main
+    .articles
+      %section.articles-recent
+        %h1.small-h1 Authors Articles
+        = partial "shared/article_list", :locals => { :articles => blog.articles.select { |a| a.data.author == author.twitter } }
+
+    %aside.sidebar
+      %section.twitter
+        - if author.twitter_widget_id
+          = partial "shared/twitter_widget", :locals => {:twitter_id => author.twitter, :twitter_widget_id => author.twitter_widget_id}
+

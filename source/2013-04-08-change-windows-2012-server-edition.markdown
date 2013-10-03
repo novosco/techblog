@@ -2,7 +2,7 @@
 title: Change Windows 2012 Server Edition
 date: 2013-04-08 12:34:00 +0100
 tags: Windows Server 2012
-author: alan
+author: alanmcburney
 ---
 
 Just started a new project today for a customer where I will be building a 2 node DAG on Server 2012.

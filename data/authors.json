@@ -2,33 +2,37 @@
   "jimboefx": {
     "name": "James Montgomery",
     "slug":"james-montgomery",
-    "bio": "Once upon a time, a young lad turned up for an interview at 4sol...",
+    "bio": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.",
     "avatar": "",
     "twitter": "jimboefx",
+    "twitter_widget_id": "385491692918296576",
     "email": "james.montgomery@novosco.com"
   },
   "stejoh": {
     "name": "Steven Johnston",
     "slug":"steven-johnston",
-    "bio": "lorem ipsum so it is.",
+    "bio": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.",
     "avatar": "",
     "twitter": "stejoh",
+    "twitter_widget_id": "385487086326796288",
     "email": "steven.johnston@novosco.com"
   },
-  "alan": {
+  "alanmcburney": {
     "name": "Alan McBurney",
     "slug":"alan-mcburney",
-    "bio": "lorem ipsum so it is.",
+    "bio": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.",
     "avatar": "alan.jpg",
-    "twitter": "alan",
+    "twitter": "alanmcburney",
+    "twitter_widget_id": "385491515964813313",
     "email": "alan.mcburney@novosco.com"
   },
   "crod": {
     "name": "Claudio Rodrigues",
     "slug":"claudio-rodrigues",
-    "bio": "lorem ipsum so it is.",
+    "bio": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.",
     "avatar": "",
     "twitter": "crod",
+    "twitter_widget_id": "385491271055179776",
     "email": ""
   }
 }

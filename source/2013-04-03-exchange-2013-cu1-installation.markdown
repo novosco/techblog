@@ -2,7 +2,7 @@
 title: Exchange 2013 CU1 Installation
 date: 2013-04-03 21:40:58 +0100
 tags: Exchange 2013
-author: alan
+author: alanmcburney
 ---
 
 The long awaited CU1 update for Exchange 2013 has finally arrived.  
