@@ -28,11 +28,11 @@ $link-active:       darken($link-color, 10%);
 
 // Mixins
 @mixin box-grey-gradient {
-  background-image: -o-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
-  background-image: -moz-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
-  background-image: -webkit-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
-  background-image: -ms-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
-  background-image: linear-gradient(4deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 46%, rgba(0,0,0,0.04) 100%);
+  background-image: -o-linear-gradient(-45deg, #F5F5F5 0%, #FFFFFF 100%);
+  background-image: -moz-linear-gradient(-45deg, #F5F5F5 0%, #FFFFFF 100%);
+  background-image: -webkit-linear-gradient(-45deg, #F5F5F5 0%, #FFFFFF 100%);
+  background-image: -ms-linear-gradient(-45deg, #F5F5F5 0%, #FFFFFF 100%);
+  background-image: linear-gradient(-141deg, #F5F5F5 0%, #FFFFFF 100%);
 }
 
 @mixin link-states {

@@ -122,7 +122,12 @@ textarea {
 
 header {
   width: 100%;
-  background-color: $light-grey;
+  background-color: $white;
+  background-image: -o-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 0%, rgba(0,0,0,0.04) 69%);
+  background-image: -moz-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 0%, rgba(0,0,0,0.04) 69%);
+  background-image: -webkit-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 0%, rgba(0,0,0,0.04) 69%);
+  background-image: -ms-linear-gradient(94deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 0%, rgba(0,0,0,0.04) 69%);
+  background-image: linear-gradient(4deg, rgba(255,255,255,0.04) 0%, rgba(226,226,226,0.04) 0%, rgba(0,0,0,0.04) 69%);
   height: 60px;
   padding: 0;
   position: fixed;
@@ -148,7 +153,7 @@ header {
 .logo {
   display:block;
   text-indent: -9999px;
-  background: inline-image("logo.png") no-repeat;
+  background: inline-image("logo.svg") no-repeat;
   width:224px;
   height:29px;
   margin-top:16px;
@@ -200,6 +205,7 @@ header {
   margin: 60px 0 0 0;
   padding: 48px 0 60px 0;
   text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   background: #3D4247;
   background-image: -o-linear-gradient(-90deg, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.10) 100%);
   background-image: -moz-linear-gradient(-90deg, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.10) 100%);
@@ -232,7 +238,7 @@ header {
   max-height: 88px;
   padding: 5px;
   width: 22.2%;
-  margin-right: 40px;
+  margin-right: 3.75%;
 /* Rectangle 3: */
 
 
@@ -640,6 +646,7 @@ footer {
 .post-header {
   .article-header {
     text-align: center;
+    font-size: 40px;
   }
   .post-avatar {
     display: none;
