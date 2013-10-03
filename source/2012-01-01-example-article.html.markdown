@@ -10,5 +10,11 @@ This is an example article. You probably want to delete it and write your own ar
 ```ruby
 def my_cool_method(message)
   puts message
+  puts message
+  puts message
+  puts message
+
+  puts message
+  puts message
 end
 ```
