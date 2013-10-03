@@ -5,7 +5,7 @@
   .layout-wrapper
     .layout-inner
       .author-banner-avatar
-        %img{alt: "", src: image_path('default-avatar.png')}/
+        = avatar_for author.twitter
       %h1.author-banner-name= author.name
       %h2.author-banner-name= author.bio
 
