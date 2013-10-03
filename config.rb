@@ -80,12 +80,16 @@ helpers do
     "Novosco Tech Blog"
   end
 
+  def author_for(author_id)
+    data.authors[author_id]
+  end
+
   def author_link(author_id)
-    link_to data.authors[author_id].name, "/#{data.authors[author_id].slug}"
+    link_to author_for(author_id).name, "/#{data.authors[author_id].slug}"
   end
 
   def avatar_for(author_id)
-    image_tag(data.authors[author_id].avatar)
+    image_tag(author_for(author_id).avatar)
   end
 
   def articles_by(author)
