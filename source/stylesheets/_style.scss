@@ -359,7 +359,7 @@ header {
     @include grey-border-top;
   }
   li {
-    padding: 20px 0;
+    padding: 40px 20px;
     display: inline-block;
     @include grey-border-dashed;
   }
