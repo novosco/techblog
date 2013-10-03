@@ -511,6 +511,7 @@ a.tag {
 footer {
   float: left;
   width: 100%;
+  margin-top: 60px;
 }
 
 
@@ -578,6 +579,73 @@ footer {
 .copyright {
   float: right;
 }
+
+
+
+
+
+.post-container {
+  width: 92%;
+  padding: 0 4%;
+  //margin-top: 60px;
+}
+
+#post-main {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 110px 0;
+}
+
+.post-header {
+  .article-header {
+    text-align: center;
+  }
+  .post-avatar {
+    display: none;
+  }
+  .post-meta {
+    margin-bottom: 45px;
+  }
+  .post-meta-text {
+    margin: 0;
+    text-align: center;
+    float: none;
+  }
+  img {
+    width: 100%;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  h3 {
+    font-size: 21px;
+  }
+
+  blockquote {
+    color: $grey;
+    font-size: 21px;
+    font-weight: 600;
+    font-style: italic;
+  }
+}
+
+.tags {
+  ol {
+    padding: 0;
+    list-style-type: none;
+  }
+  li {
+    display: inline-block;
+  }
+}
+
+
+
+
 
 
 /* ==========================================================================

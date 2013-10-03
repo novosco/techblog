@@ -7,13 +7,14 @@
     = stylesheet_link_tag "syntax_highlighting"
   %body{:class => page_classes}
     = partial "shared/header"
-    #main
-      %article
-        = partial "shared/article_header", :locals => { :article => current_page }
-        .body
-          = yield
-          .tags
-            %ol
-              - current_page.tags.each do |tag|
-                %li= blog_tag(tag)
+    .container
+      #post-main
+        %article.post-header
+          = partial "shared/article_header", :locals => { :article => current_page }
+          .body
+            = yield
+            .tags
+              %ol
+                - current_page.tags.each do |tag|
+                  %li= blog_tag(tag)
     = partial "shared/footer"

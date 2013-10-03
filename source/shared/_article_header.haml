@@ -2,6 +2,7 @@
   = link_to article.title, article
 .post-meta
   .post-avatar
+    %img{alt: "", src: image_path('default-avatar.png')}/
   .post-meta-text
     %span By #{author_link(article.data.author)} on
     %time #{article.date.strftime('%e %B %Y')}
