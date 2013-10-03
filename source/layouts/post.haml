@@ -13,8 +13,6 @@
           = partial "shared/article_header", :locals => { :article => current_page }
           .body
             = yield
-            = link_to("<-- #{current_page.previous_article.title}", current_page.previous_article) if current_page.previous_article
-            = link_to("#{current_page.next_article.title} -->", current_page.next_article) if current_page.next_article
             .tags
               %ol
                 - current_page.tags.each do |tag|
@@ -24,12 +22,17 @@
                 .post-author.clearfix
                   .author-avatar
                     = avatar_for(current_page.data.author)
-                  .author-details
+                  .post-author-details
                     %h1= author_link(current_page.data.author)
                     %span.bio= author_for(current_page.data.author).bio
                     %span.author-posts-link
                       = link_to "View #{author_for(current_page.data.author).name.split(' ')[0]}'s other posts",
                         "/#{author_for(current_page.data.author).slug}"
+            .post-nav
+              .previous-post
+                = link_to("← Previous", current_page.previous_article) if current_page.previous_article
+              .next-post
+                = link_to("Next →", current_page.next_article) if current_page.next_article
     = partial "shared/footer"
 
 

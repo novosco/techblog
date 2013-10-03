@@ -1,7 +1,7 @@
 ---
 title: Example Draft Article
 date: 2013-04-01
-tags: example, another tag
+tags: example, another tag, example, another tag, example, another tag, example, another tag
 published: false
 author: stejoh
 ---
@@ -24,9 +24,11 @@ A Second Level Header
 >
 > ## This is an H2 in a blockquote
 
-*   Candy.
-*   Gum.
-*   Booze.
+* Candy.
+* Gum.
+* Booze.
+  * Candy.
+  * Gum.
 
 1.  Red
 2.  Green
