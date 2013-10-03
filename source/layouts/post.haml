@@ -13,6 +13,8 @@
           = partial "shared/article_header", :locals => { :article => current_page }
           .body
             = yield
+            = link_to("<-- #{current_page.previous_article.title}", current_page.previous_article) if current_page.previous_article
+            = link_to("#{current_page.next_article.title} -->", current_page.next_article) if current_page.next_article
             .tags
               %ol
                 - current_page.tags.each do |tag|
