@@ -2,8 +2,8 @@
   %section.twitter
     = partial "shared/twitter_widget", :locals => {:twitter_id => "novoscotechblog", :twitter_widget_id => "385489744718618624"}
   %section.our-authors
+    %h1.small-h1 Our Engineers
     .authors-list
-      %h1.small-h1 Our Engineers
       %ol
         - data.authors.each do |author_array|
           - author = author_array[1]
@@ -12,7 +12,7 @@
               .author-avatar
                 %img{alt: "", src: image_path('default-avatar.png')}/
               .author-details
-                %h1.small-h1= author['name']
+                %h1= author['name']
                 %span= author['bio']
                 %span.author-posts-link
                   = link_to "View #{author['name']}'s posts", "/#{author['slug']}"
@@ -22,4 +22,3 @@
       %ol
         - blog.tags.each do |tag, articles|
           %li= blog_tag(tag, articles.size)
-              

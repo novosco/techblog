@@ -126,8 +126,10 @@ header {
   height: 60px;
   padding: 0;
   position: fixed;
+  z-index: 1000;
   top: 0;
-  //z-index: 999;
+  -webkit-box-shadow: 2px 1px 0px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 2px 1px 0px 0px rgba(0, 0, 0, 0.15);
 }
 
 .layout-wrapper {
@@ -192,6 +194,8 @@ header {
 
 .banner {
   background-color: $black;
+  -webkit-box-shadow: inset 2px 0 8px 1px rgba(0, 0, 0, 1);
+  box-shadow: inset 2px 0 8px 1px rgba(0, 0, 0, 1);
   height: auto;
   margin: 60px 0 0 0;
   padding: 48px 0 60px 0;
@@ -253,7 +257,12 @@ header {
   }
 }
 
-
+.read-more {
+  a {
+    text-decoration: underline;
+    font-size: 21px;
+  }
+}
 
 .small-box-title {
   font-size: 15px;
@@ -328,7 +337,7 @@ header {
     @include grey-border-top;
   }
   li {
-    padding: 60px 8%;
+    padding: 50px 8%;
     @include grey-border-dashed;
     &:last-child {
       border: 0;
@@ -339,6 +348,7 @@ header {
 .small-h1 {
   font-size: 21px;
   line-height: 25px;
+  font-weight: 600;
 }
 
 
@@ -363,7 +373,10 @@ header {
     @include grey-border-dashed;
   }
   h1 {
-    margin: 0;
+    font-weight: 400;
+    line-height: 15px;
+    margin: 0 0 8px 0;;
+    font-size: 21px;
   }
 }
 
@@ -451,6 +464,13 @@ a.tag {
       position: relative;
       top: 1px;
     }
+    &:active:before {
+      border-color: transparent $black transparent transparent;
+    }
+    &:active, .active {
+      background: $black;
+      -webkit-transition: top .04s ease-out;
+    }
   }
 
 
@@ -478,6 +498,15 @@ a.tag {
     }
   }
 }
+
+.twitter {
+  color: $white;
+  background-color: $grey;
+  height: 318px;
+  padding: 2px 10px 10px 10px;
+  //border: 1px solid $dark-border-grey;
+}
+
 
 footer {
   float: left;
