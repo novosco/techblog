@@ -85,6 +85,10 @@ helpers do
     link_to data.authors[author_id].name, "/#{data.authors[author_id].slug}"
   end
 
+  def articles_by(author)
+    blog.articles.select { |a| a.data.author == author.twitter }
+  end
+
   def featured_article
     blog.articles.first
   end

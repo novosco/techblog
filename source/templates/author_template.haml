@@ -5,14 +5,14 @@
   .layout-wrapper
     .layout-inner
       %h1= author.name
-      %h2 bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio bio
+      %h2= author.bio
 
 .container
   #main
     .articles
       %section.articles-recent
-        %h1.small-h1 Authors Articles
-        = partial "shared/article_list", :locals => { :articles => blog.articles.select { |a| a.data.author == author.twitter } }
+        %h1.small-h1 #{articles_by(author).size} Articles
+        = partial "shared/article_list", :locals => { :articles => articles_by(author) }
 
     %aside.sidebar
       %section.twitter
