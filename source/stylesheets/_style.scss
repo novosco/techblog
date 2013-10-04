@@ -195,6 +195,10 @@ header {
   text-align: center;
   text-decoration: none;
   color: grey;
+  &:active {
+    font-weight: 400;
+    color: $link-active;
+  }
 }
 
 .banner {
@@ -383,7 +387,7 @@ header {
     @include grey-border-top;
   }
   li {
-    padding: 50px 8%;
+    padding: 7.5% 8%;
     @include grey-border-dashed;
     &:last-child {
       border: 0;
@@ -755,6 +759,12 @@ footer {
   font-size: 90%;
   line-height: 120%;
 }
+
+
+
+
+
+
 
 
 
