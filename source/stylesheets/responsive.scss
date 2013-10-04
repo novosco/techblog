@@ -14,7 +14,7 @@
   }
   .twitter {
     height: 318px;
-    padding: 3% 12% 5% 12%;
+    padding: 3% 23% 5% 23%;
   }
   #mc-email {
     width: 62.5%;
@@ -58,6 +58,81 @@
   .copyright {
     margin-top: 15px;
     width: 100%;
+  }
+}
+
+
+@media only screen and (max-width: 440px) {
+  body {
+    font-size: 15px;
+    line-height: 23px;
+  }
+  .article-header {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  .post-meta {
+    font-size: 15px;
+  }
+  .newsletter {
+    height: 220px;
+  }
+
+  .newsletter-title {
+    text-align: center;
+    font-size: 21px;
+    width: 100%;
+    margin: 30px 0 30px 0;
+  }
+
+  #mc-email {
+    width: 90%;
+    height: 44px;
+    background-color: $light-grey;
+    line-height: 44px;
+    margin: 0;
+    padding: 0  5%;
+    font-size: 18px;
+  }
+  .button {
+    margin-top: 10px;
+    width: 100%;
+    float: left;
+    height: 44px;
+    line-height: 42px;
+    border: none;
+    font-size: 18px;
+  }
+  .post-nav {
+    width: 100%;
+    padding: 5% 0 0 0;
+  }
+  footer {
+    margin-top: 40px;
+  }
+  .post-header {
+    .article-header {
+      font-size: 30px;
+    }
+    .post-meta {
+      margin-bottom: 25px;
+      line-height: 26px;
+    }
+  }
+  #post-main {
+    padding-top: 95px;
+  }
+  .tags ol {
+    margin: 20px 0 0 0;
+  }
+  .banner {
+    .author-banner-name {
+      font-size: 25px;
+    }
+  }
+  .twitter {
+    height: 318px;
+    padding: 3% 4% 5% 4%;
   }
 }
 
