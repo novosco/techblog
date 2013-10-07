@@ -7,6 +7,7 @@
   %title= app_name
 %meta{content: "index,follow", name: "robots"}
 %meta{content: "initial-scale=1.0 maximum-scale=1.0 user-scalable=no", name: "viewport"}
+%meta{:name => "viewport", :content => "width=380, maximum-scale=1.0"}
 
 %link{href: image_path('favicon.ico'), rel: "shortcut icon", type: "image/x-icon"}
 %link{href: image_path('touch-icon-iphone.png'), rel: "apple-touch-icon"}
@@ -37,11 +38,11 @@
 = javascript_include_tag "//use.typekit.net/tjm4emr.js"
 :javascript
   try{Typekit.load();}catch(e){};
- 
+
   window.onload = function() {
     var menu = document.getElementById('menu-button');
     var menu_items = document.getElementById('menu-items');
-  
+
     function toggleMenu(){
       if (menu_items.style.display == "block") {
         menu_items.style.display = 'none';
@@ -49,7 +50,7 @@
         menu_items.style.display = 'block';
       }
     };
-  
+
     menu.addEventListener('click', function() {
       toggleMenu()
     }, false);
