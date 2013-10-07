@@ -35,5 +35,22 @@
 
 / Typekit
 = javascript_include_tag "//use.typekit.net/tjm4emr.js"
-%script{:type => "text/javascript"}
+:javascript
   try{Typekit.load();}catch(e){};
+ 
+  window.onload = function() {
+    var menu = document.getElementById('menu-button');
+    var menu_items = document.getElementById('menu-items');
+  
+    function toggleMenu(){
+      if (menu_items.style.display == "block") {
+        menu_items.style.display = 'none';
+      } else {
+        menu_items.style.display = 'block';
+      }
+    };
+  
+    menu.addEventListener('click', function() {
+      toggleMenu()
+    }, false);
+  };
