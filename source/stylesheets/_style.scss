@@ -122,9 +122,6 @@ textarea {
    ========================================================================== */
 
 
-#menu-button, #menu-items {
-  display: none;
-}
 
 header {
   width: 100%;
@@ -760,7 +757,9 @@ footer {
 
 
 
-
+#menu-button {
+  display: none;
+}
 
 
 

@@ -65,7 +65,7 @@
   body {
     header {
       position: relative;
-      height: 210px;
+      height: auto;
       float: left;
     }
     .banner {
@@ -76,6 +76,10 @@
     #post-main {
       float: left;
       padding-top: 8.5%;
+    }
+
+    #menu-button, #menu-items {
+      display: none;
     }
     #menu-button {
       float: right;
@@ -92,7 +96,6 @@
       img {
         margin: -3px 0 0 3px;
       }
-
     }
     .header-nav nav ul{
       margin: 0;
