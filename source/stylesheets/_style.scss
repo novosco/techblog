@@ -122,6 +122,10 @@ textarea {
    ========================================================================== */
 
 
+#menu-button {
+  display: none;
+}
+
 header {
   width: 100%;
   background-color: $white;
@@ -158,7 +162,7 @@ header {
   background: inline-image("logo.svg") no-repeat;
   width:224px;
   height:29px;
-  margin-top:16px;
+  margin:16px 0 15px 0;
   position: relative;
   float:left;
   background-size: cover;
@@ -166,7 +170,6 @@ header {
 
 
 .header-nav {
-  color: red;
   height: 60px;
 }
 
@@ -196,7 +199,7 @@ header {
   font-weight: 300;
   text-align: center;
   text-decoration: none;
-  color: grey;
+  color: $grey;
   &:active {
     font-weight: 400;
     color: $link-active;

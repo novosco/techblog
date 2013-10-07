@@ -54,6 +54,9 @@ $link-active:       darken($link-color, 10%);
 @mixin grey-border-top {
   border-top: 1px solid $border-grey;
 }
+@mixin grey-border-bottom {
+  border-bottom: 1px solid $border-grey;
+}
 
 @mixin grey-border-dashed {
   border-bottom: 1px dashed $border-grey;

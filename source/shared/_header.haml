@@ -4,6 +4,9 @@
       = link_to "<span class='logo'>Novosco Tech Blog</span>".html_safe, "/"
       .header-nav
         %nav
+          %a#menu-button{:href => "#"}
+            MENU
+            %img{src: "/images/menu-triangle.png", :width => "11px"}/
           %ul
             %li
               = link_to  "Home", "http://novosco.com/"
