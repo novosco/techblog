@@ -2,7 +2,7 @@
   "jimboefx": {
     "name": "James Montgomery",
     "slug":"james-montgomery",
-    "bio": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.",
+    "bio": "James has a broad background in IT infrastructure ranging from Microsoft solution stack consultancy to the build and migration of complete data centre virtualisation infrastructures across the UK and Ireland.",
     "avatar": "https://si0.twimg.com/profile_images/362234896/twitterProfilePhoto.jpg",
     "twitter": "jimboefx",
     "twitter_widget_id": "385491692918296576",
@@ -35,13 +35,13 @@
     "twitter_widget_id": "385491271055179776",
     "email": ""
   },
-  "johnlennon": {
+  "novoscotechblog": {
     "name": "John Lennon",
     "slug":"john-lennon",
     "bio": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.",
-    "avatar": "https://si0.twimg.com/profile_images/378800000534882371/f744cb048e62a66faf62dbb61a7e0b7f.png",
+    "avatar": "https://si0.twimg.com/profile_images/378800000534882371/f744cb048e62a66faf62dbb61a7e0b7f_bigger.png",
     "twitter": "novoscotechblog",
     "twitter_widget_id": "385489744718618624",
-    "email": "john.lennon@novosco.com",
+    "email": "john.lennon@novosco.com"
   }
 }
