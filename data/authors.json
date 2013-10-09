@@ -34,5 +34,14 @@
     "twitter": "crod",
     "twitter_widget_id": "385491271055179776",
     "email": ""
+  },
+  "johnlennon": {
+    "name": "John Lennon",
+    "slug":"john-lennon",
+    "bio": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.",
+    "avatar": "https://si0.twimg.com/profile_images/378800000534882371/f744cb048e62a66faf62dbb61a7e0b7f.png",
+    "twitter": "novoscotechblog",
+    "twitter_widget_id": "385489744718618624",
+    "email": "john.lennon@novosco.com",
   }
 }
