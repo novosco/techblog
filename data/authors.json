@@ -2,7 +2,7 @@
   "jimboefx": {
     "name": "James Montgomery",
     "slug":"james-montgomery",
-    "bio": "James has a broad background in IT infrastructure ranging from Microsoft solution stack consultancy to the build and migration of complete data centre virtualisation infrastructures across the UK and Ireland.",
+    "bio": "A passionate and sometimes obsessive problem solver who rants about predictable failures. Hates exceptions. Often found near coffee.",
     "avatar": "https://si0.twimg.com/profile_images/362234896/twitterProfilePhoto.jpg",
     "twitter": "jimboefx",
     "twitter_widget_id": "385491692918296576",
@@ -11,7 +11,7 @@
   "stejoh": {
     "name": "Steven Johnston",
     "slug":"steven-johnston",
-    "bio": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.",
+    "bio": "Tech lover and scripting addict.  Focused on virtualisation, storage and data centre networking solutions. VMware / Cisco / EMC.",
     "avatar": "https://si0.twimg.com/profile_images/3020766739/1a645de0ae1c85df766c2f3871f948cf.jpeg",
     "twitter": "stejoh",
     "twitter_widget_id": "385487086326796288",
@@ -29,7 +29,7 @@
   "crod": {
     "name": "Claudio Rodrigues",
     "slug":"claudio-rodrigues",
-    "bio": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.",
+    "bio": "TS, Citrix and VDI über geek. MVP and CTP who likes eating chocolate and driving his Porsche.",
     "avatar": "https://si0.twimg.com/profile_images/81411572/Fanta.jpg",
     "twitter": "crod",
     "twitter_widget_id": "385491271055179776",
@@ -38,7 +38,7 @@
   "novoscotechblog": {
     "name": "John Lennon",
     "slug":"john-lennon",
-    "bio": "Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut into, phasellus.",
+    "bio": "Sales Director and sometime frustrated engineer, focused on virtualisation, storage and datacentre technologies.",
     "avatar": "https://si0.twimg.com/profile_images/378800000534882371/f744cb048e62a66faf62dbb61a7e0b7f_bigger.png",
     "twitter": "novoscotechblog",
     "twitter_widget_id": "385489744718618624",

@@ -76,6 +76,11 @@
       float: left;
       margin: 0 0 5% 0;
       width: 100%;
+      h2 {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+      }
     }
     #post-main {
       float: left;
@@ -197,6 +202,10 @@
       font-size: 25px;
       line-height: 25px;
       margin-bottom: 10px;
+    }
+    .author-banner-name {
+      font-size: 25px;
+      line-height: 25px;
     }
   }
   .twitter {
