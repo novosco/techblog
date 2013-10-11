@@ -1,7 +1,7 @@
 ---
 title: Brian Madden talks about VDI
 date: 2013-10-11
-tags: ciofutures, VDI
+tags: CIOfutures, VDI
 author: novoscotechblog
 ---
 
