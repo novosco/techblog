@@ -7,6 +7,10 @@ FEEDS = [
   {:author => 'alanmcburney', :url => 'http://everythingsysadmin.wordpress.com/feed/'}
 ]
 
+DONT_SYNC = [
+  "2012-03-01-started-this-blog-with-good-intentions8230"
+]
+
 desc "Synchronise feeds"
 task :sync_feeds do
   puts "## Synching dem feeds"
@@ -24,6 +28,7 @@ def create_post entry, author
   slug_date = "#{entry.pubDate.year}-#{entry.pubDate.month.to_s.rjust(2, '0')}-#{entry.pubDate.day.to_s.rjust(2, '0')}"
   slug_title = entry.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   slug = "#{slug_date}-#{slug_title}"
+  return if DONT_SYNC.include? slug
 
   content = <<tpl
 ---
