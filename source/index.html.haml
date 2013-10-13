@@ -18,6 +18,6 @@
               = link_to "Read more...", featured_article, :class=>'read-more'
       %section.articles-recent
         %h1.small-h1 Recent Articles
-        = partial "shared/article_list", :locals => { :articles => blog.articles }
+        = partial "shared/article_list", :locals => { :articles => blog.articles.drop(1) }
 
     = partial "shared/sidebar"
