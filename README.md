@@ -49,8 +49,10 @@ Edit your post and make sure the article front matter is complete, e.g.
     author: stejoh # twitter id.
     ---
 
-And then deploy
+And then commit, push to github and deploy
 
+    git commit -am "New blog posts synced"
+    git push origin master
     middleman deploy # Deploy over git to the gh-pages branch
 
 ### Drafts
@@ -68,3 +70,21 @@ In order to create a draft post for publishing later, you can add a flag to the 
 ### Syntax Highlighting
 
 We're using the Rouge Gem (). Demos of supported syntax can be seen here (http://rouge.jayferd.us/demo)
+
+## Syncing Feeds
+
+We are currently taking feeds from two blogs:
+
+http://www.neogeek.net/?feed=rss2
+http://everythingsysadmin.wordpress.com/feed/
+
+The process to import these is currently manual, in a sense that you need to run a rake task to import new posts from the feeds, into this blog. The comamnd is
+
+    rake sync_feeds
+
+Once the new feeds have been imported, it's worth checking the posts to make sure it looks ok, and adding a READMORE tag. Anything above READMORE will be shown in the blog summary, specifically as Featured Posts.  And as with any new post in the blog, commit it, push and deploy:
+    
+    git commit -am "New blog posts synced"
+    git push origin master
+    middleman deploy
+
