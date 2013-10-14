@@ -11,7 +11,7 @@
   "stejoh": {
     "name": "Steven Johnston",
     "slug":"steven-johnston",
-    "bio": "Tech lover and scripting addict.  Focused on virtualisation, storage and data centre networking solutions. VMware / Cisco / EMC.",
+    "bio": "Tech lover and scripting addict. Focused on virtualisation, storage and data centre networking solutions. VMware / Cisco / EMC.",
     "avatar": "https://si0.twimg.com/profile_images/3020766739/1a645de0ae1c85df766c2f3871f948cf.jpeg",
     "twitter": "stejoh",
     "twitter_widget_id": "385487086326796288",
@@ -27,7 +27,7 @@
     "email": "alan.mcburney@novosco.com"
   },
   "crod": {
-    "name": "Claudio Rodrigues",
+    "name": "Cláudio Rodrigues",
     "slug":"claudio-rodrigues",
     "bio": "TS, Citrix and VDI über geek. MVP and CTP, known in the industry for calling BS on the spot. Loves going for long drives on his amazing cars.",
     "avatar": "https://si0.twimg.com/profile_images/81411572/Fanta.jpg",
@@ -38,7 +38,7 @@
   "novoscotechblog": {
     "name": "John Lennon",
     "slug":"john-lennon",
-    "bio": "Sales Director and sometime frustrated engineer, focused on virtualisation, storage and datacentre technologies.",
+    "bio": "Sales Director and sometimes frustrated engineer, focused on virtualisation, storage and datacentre technologies.",
     "avatar": "https://si0.twimg.com/profile_images/378800000534882371/f744cb048e62a66faf62dbb61a7e0b7f_bigger.png",
     "twitter": "novoscotechblog",
     "twitter_widget_id": "385489744718618624",
