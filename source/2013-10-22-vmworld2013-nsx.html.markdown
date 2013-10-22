@@ -2,7 +2,7 @@
 title: VMworld 2013 Session Review (Advanced VMware NSX Architecture)
 date: 2013-10-22 10:35 UTC
 tags: VMware,NSX
-published: false
+published: true
 author: jimboefx
 ---
 Bruce Davie was a very confident speaker. This confidence comes from a very clear ability to present - and it helps that he is a lead architect on the platform itself. Attendees put phones away, laughed at his jokes - but more importantly give him their undivided attention.
