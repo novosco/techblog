@@ -1,0 +1,79 @@
+---
+title: VMworld 2013 Session Review (Advanced VMware NSX Architecture)
+date: 2013-10-22 10:35 UTC
+tags: VMware,NSX
+published: false
+author: jimboefx
+---
+Bruce Davie was a very confident speaker. This confidence comes from a very clear ability to present - and it helps that he is a lead architect on the platform itself. Attendees put phones away, laughed at his jokes - but more importantly give him their undivided attention.
+
+Why? They had finally found a session where NSX - the real NSX was going to be discussed and shown. Not the unicorn rainbow material found in the fist pumping keynotes.
+
+READMORE  
+
+Bruce talks about NSX like a proud parent discusses their child. 
+
+He lamented the lack of time - not understanding why he could not have 90 minutes for such a key and popular topic. Even on the last morning of VMworld this session was packed at 9AM.
+
+There was an audience hungry for answers and willing to listen beyond 60 minutes.
+
+In this post I aim to describe what I took away. Any inaccuracies here are probably my own - you are welcome to point out flaws or misunderstandings through constructive communication. 
+
+#Why network virtualisation?
+
+NSX addresses an agility mismatch in virtualisation powered infrastructures. We can provision servers in seconds or minutes - attaching them to networks and making them productive is often not in the same timescale. 
+
+Let me be clear that there is no dig at network administrators here. There are often many components making up the network infrastructure. Provisioning time is often related to the complexity of the change request, the accuracy of the change request and the availability of sufficiently skilled resources to fulfil it. Network guys are not normally sitting idle.
+
+There appear to be a number of use-cases for NSX:
+
+* High churn environments.
+* Reduce the risk of change to the physical network.
+* Simplify the physical network  
+
+This is not an exhaustive list.
+
+#What is NSX?  
+NSX is a network virtualisation platform (NVP). Bruce clearly isn't happy to adopt the term appearing in marketing material of "network hypervisor" - but the value in people drawing a comparison with a X86 "server hypervisor" is probably more useful than it is damaging.
+
+NSX is a platform based on an existing network infrastructure. It uses IP to glue its various components together. 
+
+It features a policy driven architecture with component separation for high availability and scalability. There is an API for automated configuration or status queries via your in house automation tool/cloud management portal. NSX does feature its own UI but it is expected that to achieve the speed and agility promised - you will have automation tools interacting with the platform.
+
+It supports a number of hypervisors with the goal of abstracting the connected network infrastructure and providing a faithful reproduction of L2-L7 services.
+
+#How does NSX operate?
+
+NSX features a scale out controller cluster. This appears to operate in the majority node format with a minimum of 3 nodes. The controller cluster effectively holds the virtual network topology state and programs the appropriate components to achieve this state. Each cluster members adds capacity to the cluster so scale out of this component is linear. The cluster members should operate with low latency between them.
+
+Virtual Machines (VMs) using a NSX provided virtual network operate on a NSX enhanced virtual switch. NSX provided services (L3-L7) operated in a distributed fashion. 
+
+For example two VMs on two different L2 networks normally would have to go via their respective gateways to reach each other. If these L2 networks were NSX provided and if their gateways were a NSX provided L3 service then NSX would perform the routing function on the hypervisor. If the VMs were on the same host then the traffic does not leave the host. If the VMs are on different hypervisors the traffic is passed over a hypervisor to hypervisor tunnel. 
+
+In order to achieve scale and manage resource consumption a given hypervisor virtual switch is programmed with network topology relevant to the virtual machines running on it. Whenever a VM is undergoing a migration - the NSX platform programs the destination of any configuration relevant to supporting the VM to ensure continued service operation.
+
+VM to VM communication across hypervisors on NSX virtual networks occurs across a hypervisor to hypervisor tunnel. VM to non-NSX networks occurs via a NSX gateway device. Time did not allow to elaborate on the precise details of this device though it appeared that this could be NSX provided (VM or physical) or an integration with a NSX partner device such as [Arista](http://www.vmware.com/files/pdf/products/nsx/vmw-nsx-arista-networks.pdf).
+
+NSX supports multiple encapsulation protocols with or without encryption. For hypervisor to hypervisor tunnels the preferred method is STT to leverage NIC offload capabilities. For hypervisor to NSX gateway the preferred method is VXLAN.
+
+#Summary
+
+NSX promises to deliver the agility demanded for the network component of the Software Defined Data Centre. I look forward to evaluating the technology.
+
+#Further reading and material
+
+Product resources:  
+[http://www.vmware.com/uk/products/nsx/resources.html](http://www.vmware.com/uk/products/nsx/resources.html
+)
+
+VMware Labs:  
+HOL-SDC-1303 - VMware NSX Network Virtualization Platform  
+HOL-SDC-1319 - VMware NSX for Multi-Hypervisor Environments
+
+Blogs:  
+[http://cto.vmware.com/vxlan-stt-and-looking-beyond-the-wire-format/](http://cto.vmware.com/vxlan-stt-and-looking-beyond-the-wire-format/
+)  
+[http://blogs.vmware.com/networkvirtualization/2013/09/vmware_nsx_cisco.html](http://blogs.vmware.com/networkvirtualization/2013/09/vmware_nsx_cisco.html
+)  
+
+
