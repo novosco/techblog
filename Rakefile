@@ -4,7 +4,8 @@ require 'reverse_markdown'
 
 FEEDS = [
   {:author => 'stejoh', :url => 'http://www.neogeek.net/?feed=rss2'},
-  {:author => 'alanmcburney', :url => 'http://everythingsysadmin.wordpress.com/feed/'}
+  {:author => 'alanmcburney', :url => 'http://everythingsysadmin.wordpress.com/feed/'},
+  {:author => 'rainco', :url => 'http://cjrainey.wordpress.com/feed/'}
 ]
 
 DONT_SYNC = [
@@ -40,7 +41,7 @@ author: #{author}
 
 #{ReverseMarkdown.parse(entry.content_encoded)}
 tpl
-  
+
   filename = "./source/#{slug}.markdown"
   File.open(filename, 'w') do |file|
     file.write(content)
