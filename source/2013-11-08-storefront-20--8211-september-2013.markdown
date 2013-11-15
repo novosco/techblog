@@ -45,5 +45,3 @@ You can then load balance in your Netscaler with Load Balancing. For migration, 
 
 [http://www.citrix.com/tv/#videos/5968](http://www.citrix.com/tv/#videos/5968)
 
-
-[ ![](http://feeds.wordpress.com/1.0/comments/cjrainey.wordpress.com/8/) ](http://feeds.wordpress.com/1.0/gocomments/cjrainey.wordpress.com/8/) ![](http://stats.wordpress.com/b.gif?host=cjrainey.wordpress.com&blog=60326277&post=8&subd=cjrainey&ref=&feed=1)

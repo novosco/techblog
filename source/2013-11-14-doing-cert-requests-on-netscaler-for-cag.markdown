@@ -82,6 +82,3 @@ openssl x509 -outform der -in certificate.pem -out certificate.der
 Convert a PKCS#12 file (.pfx .p12) containing a private key and certificates to PEM
 
 openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes
-
-    
-[ ![](http://feeds.wordpress.com/1.0/comments/cjrainey.wordpress.com/33/) ](http://feeds.wordpress.com/1.0/gocomments/cjrainey.wordpress.com/33/) ![](http://stats.wordpress.com/b.gif?host=cjrainey.wordpress.com&blog=60326277&post=33&subd=cjrainey&ref=&feed=1)

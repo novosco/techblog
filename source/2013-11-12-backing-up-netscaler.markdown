@@ -62,6 +62,3 @@ and of course my local PC.
 Browse to a suitable location on the left pane, and then browse on the right to find the /nsconfig folder – drag the ns.conf over to the right.
 
 \*\*Other files called ns.conf.0 are the previous versions, which you may rename to ns.conf if required to get back to previous settings.
-
-    
-[ ![](http://feeds.wordpress.com/1.0/comments/cjrainey.wordpress.com/27/) ](http://feeds.wordpress.com/1.0/gocomments/cjrainey.wordpress.com/27/) ![](http://stats.wordpress.com/b.gif?host=cjrainey.wordpress.com&blog=60326277&post=27&subd=cjrainey&ref=&feed=1)
