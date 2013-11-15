@@ -1,7 +1,7 @@
 ---
 title: Doing cert requests on NetScaler for CAG
 date: 2013-11-14 15:57:34 +0000
-tags: Uncategorized
+tags: Netscaler
 author: rainco
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Backing up NetScaler
 date: 2013-11-12 12:52:00 +0000
-tags: Uncategorized
+tags: Netscaler
 author: rainco
 ---
 
