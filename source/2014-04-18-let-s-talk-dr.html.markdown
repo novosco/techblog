@@ -22,7 +22,7 @@ In order to discuss "what is DR?" let's consider alternate acronyms for DR.
 #Desirable Recoverability
 When people talk about DR there is often a suspense of disbelief - the kind when you go visit the cinema. An exhibition of a recovery (even in a test condition) is the ultimate example of desirable recoverability. Unfortunately the trap here is one of self-deception. It is possible to equivocate the DR test you just performed to the real deal (the test was difficult, and it took **hours** to perform).
 
-A test failover in DR is analogous to training matches in football. They are useful - granted. But they are ultimately a way of increasing your preparedness for the big match day.
+A test failover in DR is analogous to training matches in football. They are useful exercises to perform but they are ultimately just one way of increasing your preparedness for the big match day.
 
 Test failover scenarios are typically written with easy to understand scopes. An example of which is "entire site failure (with no opportunity to repair)". This is easy to understand and easy to test. It also appears to be quite a valuable use of time - after all "entire site failure" would be extremely detrimental to any organisation.
 
@@ -48,7 +48,7 @@ In this example we suffer a complete site failure. All server workloads get rest
 ![](http://tech.novosco.com/images/jamesmontgomery/lets_talk_DR/Generic_Site_Recovery1a.png)
 
 ##Example: Application server failure
-In this example we suffer the failure of one server group. However as there is a interdependency with another server group we require to fail-over that as well in order to keep the interaction between the servers at a tolerable latency.
+In this example we suffer the failure of one server group. However as there is a interdependency with another server group we require to failover that as well in order to keep the interaction between the servers at a tolerable latency.
 
 While this is a fictional scenario - unless your designed recovery scenarios consider application server dependencies then you cannot consider anything except an entire site recovery.
 ![](http://tech.novosco.com/images/jamesmontgomery/lets_talk_DR/Generic_AppServer_Recovery1a.png)
@@ -71,7 +71,7 @@ Examples of business continuity:
 
 Example of DR:
 
-- Full or partial fail-over of IT systems to a secondary location.
+- Full or partial failover of IT systems to a secondary location.
 
 Typically businesses go through a process of detailing a business continuity plan (BCP). This plan covers a set of prescribed failure scenarios including roles and responsibilities of the organisations staff. The delegation of responsibility should be clear an understood as to who is executing what task within the BCP - and understanding the reporting of progress of completing these tasks.
 
@@ -112,7 +112,7 @@ It's very common for business people to take a view that DR is as simple as pres
 ![](http://tech.novosco.com/images/jamesmontgomery/lets_talk_DR/Facets_of_DR.png)
 
 <!---
-Version 1g
+Version 1i
 -->
 
 
