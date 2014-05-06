@@ -31,27 +31,27 @@ Testing only this scenario however addresses only a fraction of failure domains.
 If you have only tested full failover scenarios - then you are only capable of executing full site failover, and ultimately your DR solution will treat every significant failure as a site failure.
 
 ##Example: Entire site
-![](/images/jamesmontgomery/lets_talk_DR/Generic_Site_Recovery1.png)
+![](../images/jamesmontgomery/lets_talk_DR/Generic_Site_Recovery1.png)
 
 ##Example: Application server failure
-![](/images/jamesmontgomery/lets_talk_DR/Generic_AppServer_Recovery1.png)
+![](../images/jamesmontgomery/lets_talk_DR/Generic_AppServer_Recovery1.png)
 
 #Designed Recovery
 Designed recovery in the context of DR extends the scope beyond simple workload recovery ("Get it started on the DR site").
 
-![](/images/jamesmontgomery/lets_talk_DR/win_just_starting.png)
+![](../images/jamesmontgomery/lets_talk_DR/win_just_starting.png)
 
 A designed recovery considers the possible units of protection. For each unit of protection the dependencies are extrapolated in order to determine the method of protection and mechanism of recovery:
 
 ##Example: Entire site
 In this example we suffer a complete site failure. All server workloads get restarted on the DR platform with equivalent network connectivity (bandwidth and latency) to the end users of the IT system.
-![](/images/jamesmontgomery/lets_talk_DR/Generic_Site_Recovery1a.png)
+![](../images/jamesmontgomery/lets_talk_DR/Generic_Site_Recovery1a.png)
 
 ##Example: Application server failure
 In this example we suffer the failure of one server group. However as there is a interdependency with another server group we require to fail-over that as well in order to keep the interaction between the servers at a tolerable latency.
 
 While this is a fictional scenario - unless your designed recovery scenarios consider application server dependencies then you cannot consider anything except an entire site recovery.
-![](/images/jamesmontgomery/lets_talk_DR/Generic_AppServer_Recovery1a.png)
+![](../images/jamesmontgomery/lets_talk_DR/Generic_AppServer_Recovery1a.png)
 
 Designed recovery also considers the ability to perform (relative to the production infrastructure). If your recovery environment is not as capable as the source production environment then this implies a reduced user experience (if it is expected to run a full production workload, is it?).
 
@@ -109,5 +109,5 @@ DR certainly is disaster recovery. It's also everything I've discussed here. It 
 
 It's very common for business people to take a view that DR is as simple as pressing a button. The bottom line is that the conversation you have about DR is as deep as you make it.
 
-![](/images/jamesmontgomery/lets_talk_DR/Facets_of_DR.png)
+![](../images/jamesmontgomery/lets_talk_DR/Facets_of_DR.png)
 
