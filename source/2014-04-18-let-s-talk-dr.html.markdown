@@ -111,3 +111,9 @@ It's very common for business people to take a view that DR is as simple as pres
 
 ![](/images/jamesmontgomery/lets_talk_DR/Facets_of_DR.png)
 
+<!---
+Version 1e
+-->
+
+
+
