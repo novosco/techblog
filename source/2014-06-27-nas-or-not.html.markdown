@@ -1,0 +1,56 @@
+---
+title: NAS or Not
+date: 2014-06-27 16:06 UTC
+tags: Storage
+author: MALCONFIGURED
+---
+
+In today’s storage world we are used to vendors trotting out their unified storage solutions and providing as close to native feature set as possible. 
+ 
+But recently, I’ve been asking myself if NAS is necessary.  
+
+READMORE
+
+Back in the day when we had issues with SCSI reservations and issues with the cost of fibre channel HBA’s and worries about ISCSI performance the presentation of NFS datastores to early ESX installations seemed to answer a problem. 
+ 
+But all that has changed and when we consider the SMB/CIFs market place, do we really need NAS?
+
+On my next statement I will stand to be corrected but form my research I cannot find a single NAS solution that in the SMB/CIFS market place offers the same features and facilities as Native Windows.  
+
+So why not use native windows.  In making this argument lets consider some of the sales point that are used by the vendors for their SMB NAS solutions:-
+
+- Reduce your Windows server Count
+
+	Well now days more and more organisations are licensing on the processor with DataCentre edition to fulfil their ability to vMotion and DR when required.
+
+- De-duplication of SMB share
+
+	Well most vendor de-dup at block level so weather this is native SMB or a LUN presented to a VM then de-dupe will function the same
+
+- Active Directory integration
+
+	Well on this point I have to admit all of the vendors I have experience of administrating or installing have made a very good job to look and feel like an Windows Server but when it comes down to it they are just pretenders and once you scratch below the surface you soon see the difference and lack or in some case loss of features. 
+
+Presenting block storage to a Windows Server the benefits are easy to see:-
+
+
+- AD managed Limits and quotas
+- Full support for standard AV deployment
+- Full support for DFS and more importantly these days DFS-R
+
+So, is NAS dead? well in one respect; yes - that is to say in the end user file share market I can see more benefits from presentation of storage to native windows server, and letting it do the file share, than running my SMB/CIFS on the storage controller.
+  
+But at the back end there is always going to be solutions that want to use NFS or SMB3 as a presentation protocol to the Hypervisor.  Numerous VMware environment have used the file level storage offered by NFS and the management benefits administrators have enjoyed from having direct access to the files that make up the VM’s within each datastore.  But with the advent of VVols all this is going to change so the true administrational benefit of NFS datastore is possibly a moot point.  
+ 
+Also NAS is changing.  Recently I’ve been involved in a number of HPC (High Performance Compute) discussion where clients have been talking about the newer NAS protocols.  By this I mean solutions like Hadoop (HDFS) and parallel NFS (pNFS). So if it’s large volumes of unstructured data and object storage then NAS still has a very strong story to tell especially if you solution runs protocols like HDFS. 
+
+So to conclude my recommendation are don’t rule out unified solutions just yet but do consider what NAS features it offers.  
+
+In my opinion NAS is for the backend not the users and therefore is not necessarily a must when choosing your storage array.  SMB3 and NFS will still be used to present storage to the Hypervisor but so can ISCSI and FC/FCoE.
+ 
+New protocols will be adopted in the unified stack to support pNFS (already there in VNX) and Hadoop HDFS (Isilon) as the expansion of HPC and big data moves down the food chain to the smaller enterprise.  
+
+But will this all become irrelevant as more and more of us move to the Cloud?  
+
+We wait to see!!!
+
