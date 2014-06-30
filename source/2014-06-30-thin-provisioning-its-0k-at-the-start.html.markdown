@@ -20,9 +20,9 @@ In monetary terms thin provisioning is no more than an IOU.
 
 ## Why is thin provisioning all about money? ##
 
-Generally speaking thin provisioning is about getting more out of less - its normally a value orientated proposition to maximise the usage of scare resource. Traditionally this is a function operated within the storage infrastructure - however it can be found as a native function of hypervisors and guest OSes alike.
+Generally speaking thin provisioning is about getting more out of less - its normally a value orientated proposition to maximise the usage of scarce resource. Traditionally this is a function operated within the storage infrastructure - however it can be found as a native function of hypervisors and guest OSes alike.
 
-Storage is interesting as it is often treated as a scare resource to provision and at the same time a zero-cost resource to consume. Why is this?
+Storage is interesting as it is often treated as a scarce resource to provision and at the same time a zero-cost resource to consume. Why is this?
 
 This problem exists because the resource is often seen as paid for and wasted unless provisioned. If I'm only consuming half of my storage the effective cost is 2X.
 
@@ -94,7 +94,7 @@ No. Thin provisioning is a tool that can be used to enable IT to provision infra
 The challenge is deciding on the appropriate use of the technology and matching your operations with any risk or complexity you introduce.
 
 <!---
-Version 1a
+Version 1b
 -->
 
 
