@@ -1,5 +1,5 @@
 ---
-title: Thin provisioning - its 0K at the start
+title: Thin provisioning - it's 0K at the start
 date: 2014-06-30 14:28 UTC
 tags: Storage
 author: jimboefx
