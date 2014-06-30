@@ -44,6 +44,15 @@
     "twitter_widget_id": "395548794361626624",
     "email": "colin.rainey@novosco.com"
   },
+  "MALCONFIGURED": {
+    "name": "Mal Toner",
+    "slug":"mal-toner",
+    "bio": "Experienced (yes - that means grey haired) Solution Architect with a focus on Cloud Infrastructure",
+    "avatar": "avatars/mal-toner.jpg",
+    "twitter": "MALCONFIGURED",
+    "twitter_widget_id": "479303666889789440",
+    "email": "mal.toner@novosco.com"
+  },
   "novoscotechblog": {
     "name": "John Lennon",
     "slug":"john-lennon",
