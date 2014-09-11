@@ -35,6 +35,15 @@
     "twitter_widget_id": "385491271055179776",
     "email": ""
   },
+  "shane_bre": {
+    "name": "Shane Brennan",
+    "slug":"shane_bre",
+    "bio": "A tangible trouble-shooter in a virtual space. Computers come first, but food is always a temptation. If not behind the keyboard, check the kitchen. Main IT focus is VDI / application virtualisation / server virtualisation.",
+    "avatar": "avatars/shane-brennan.jpg",
+    "twitter": "shane_bre",
+    "twitter_widget_id": "509985736922116097",
+    "email": "shane.brennan@novosco.com"
+  },
   "rainco": {
     "name": "Colin Rainey",
     "slug":"colin-rainey",
