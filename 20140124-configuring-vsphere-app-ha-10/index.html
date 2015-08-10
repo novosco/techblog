@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en' xmlns:fb='http://ogp.me/ns/fb#'>
+<head>
+<link href="../stylesheets/syntax_highlighting.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='text/html;' http-equiv='content-type'>
+<title>Configuring vSphere App HA 1.0
+ | Novosco Tech Blog</title>
+<meta content='index,follow' name='robots'>
+<meta content='initial-scale=1.0 maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='width=380, maximum-scale=1.0' name='viewport'>
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='../images/touch-icon-iphone.png' rel='apple-touch-icon'>
+<link href='../images/touch-icon-ipad.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='../images/touch-icon-iphone-retina.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='../images/touch-icon-ipad-retina.png' rel='apple-touch-icon' sizes='144x144'>
+<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+<link href="../stylesheets/all.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<!-- OG -->
+<meta content='Novosco Tech Blog' property='og:title'>
+<meta content='website' property='og:type'>
+<meta content='../images/novosco-og-icon.png' property='og:image'>
+<meta content='http://engineering.novosco.com' property='og:url'>
+<meta content='Novosco Tech Blog ' property='og:description'>
+<!-- Twitter -->
+<meta content='summary' name='twitter:card'>
+<meta content='http://engineering.novosco.com' name='twitter:url'>
+<meta content='Novosco Tech Blog' name='twitter:title'>
+<meta content='Novosco Tech Blog ' name='twitter:description'>
+<meta content='../images/novosco-og-icon.png' name='twitter:image'>
+<meta content='@novoscoeng' name='twitter:site'>
+<meta content='@novosco' name='twitter:creator'>
+<meta content='' name='author'>
+<!-- Typekit -->
+<script src="//use.typekit.net/tjm4emr.js" type="text/javascript"></script>
+<script>
+  try{Typekit.load();}catch(e){};
+  
+  window.onload = function() {
+    var menu = document.getElementById('menu-button');
+    var menu_items = document.getElementById('menu-items');
+  
+    function toggleMenu(){
+      if (menu_items.style.display == "block") {
+        menu_items.style.display = 'none';
+      } else {
+        menu_items.style.display = 'block';
+      }
+    };
+  
+    menu.addEventListener('click', function() {
+      toggleMenu()
+    }, false);
+  };
+</script>
+
+</head>
+<body class='20140124-configuring-vsphere-app-ha-10 20140124-configuring-vsphere-app-ha-10_index'>
+<header>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<a href="/"><span class='logo'>Novosco Tech Blog</span></a>
+<div class='header-nav'>
+<nav>
+<a href='#' id='menu-button'>
+MENU
+<img src='/images/menu-triangle.png' width='11px'>
+</a>
+<ul id='menu-items'>
+<li>
+<a href="http://www.novosco.com/">Home</a>
+</li>
+<li>
+<a class="active" href="http://cio.novosco.com/">CIO Blog</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+
+<div class='container'>
+<div id='post-main'>
+<article class='post-header'>
+<h1 class='article-header'>
+<a href="/20140124-configuring-vsphere-app-ha-10/">Configuring vSphere App HA 1.0</a>
+</h1>
+<div class='post-meta'>
+<div class='post-avatar'>
+<img src="../images/avatars/steven-johnston.jpg?1439193430" />
+</div>
+<div class='post-meta-text'>
+<span>By <a href="/steven-johnston">Steven Johnston</a> on</span>
+<time>24 January 2014</time>
+</div>
+</div>
+
+<div class='body'>
+<p>When vSphere 5.5 was released, there were a number of features listed that I wanted to check out, App HA 1.0 being one of them. Recently I have been working with App HA in my homelab and realised there were a number of components which are probably new to many VMware Administrators.</p>
+
+<p>This blog post is to explain what App HA does and to cover an overview of the install guided by what I carried out on my homelab.<br>
+I focus on parts of configuration which would be new to most people such as in the Hyperic interface and the configuration required within vSphere to enable the functionality. I gloss over common things like deploying vApp’s as I expect most people will have done so at some point but if they haven’t there is a ton of material out there covering that.<br>
+I hope others will find my post useful to quickly gain an understanding on the requirements to deploy it and to comprehend it’s functionality.</p>
+
+<p><strong>What does App HA do?</strong><br>
+App HA will assist the VMware Admin in controlling application availability by displaying the status of applications, triggering notifications when services are unavailable and performing remedial actions such as restarting the services and resetting the virtual machine.</p>
+
+<p>At the time of writing in App HA 1.0, the following Services are supported:<br>
+**_
+- Apache Tomcat 6.0 and 7.0 on Windows and Linux
+- IIS 6, 7 and 8 on Windows
+- Microsoft SQL 2005, 2008, 2008R2 and 2012 on Windows
+- Apache HTTP Server 2.2 on Windows and Linux
+- SharePoint 2007 and 2010 on Windows with Hyperic 5.7.1 SharePoint plug-in
+- SpringSource tc Runtime 6.0 and 7.0 on Windows and Linux</p>
+
+<p>_**<br>
+This list of Services are provided by VMware <a title="Reference" href="http://pubs.vmware.com/appha-1/topic/com.vmware.app.ha.install_guide.doc/GUID-B8ED9F77-78F4-4B38-BCCC-19034B8ABD89.html">here</a>.</p>
+
+<p><strong>The Installation and Configuration Steps</strong><br>
+For the installation of App HA the first thing of note is that vSphere App HA 1.0 has a number of components that’ll need installed prior to enabling it, this includes vCenter Hyperic, the App HA vApp and Hyperic Agents. App HA functionality is not present in the vSphere Client only within the vSphere Web Client.</p>
+
+<p>The Installation and Configuration Steps for App HA are:<br>
+*<em>_
+- Deploy vCenter Hyperic 5.7x
+- Deploy App HA virtual Appliance
+- Hyperic Agent Installation (First of all on vCenter to allow the next step) (\</em>)
+- Setup vFabric Hyperic vCenter Server Plug-in (enables alarms to be sent from vCenter Server)
+- Use Web Client to Configure App HA to see Hyperic
+- Set Cluster Configuration for “VM &amp; Application Monitoring” (**)
+- (Optional) Configure Hyperic agent.properties Files to Enable Automation and Mass Deployment
+- Configure and Assign App HA Policies (*)
+- Test Your Policies (*)</p>
+
+<p><em>**<br>
+_<strong>N.B. Steps with (*) need repeated for each VM.<br>
+Steps with (**) need repeated for each Cluster.</strong></em></p>
+
+<p><em>*<em>Deploy vCenter Hyperic 5.7x – *</em></em></p>
+
+<p>A pre-requisite for App HA is Hyperic, which is a product in it’s own right and came from one of VMware’s acquisitions. Hyperic is provided as either a vApp or an installer for selected Linux and Windows OS. One important point to note, if you intend on using Hyperic outside of the App HA use case, the vApp is recommended for large environments greater than 1000 managed platforms, other configurations are for “medium scale environments”.<br>
+The Hyperic deployment type isn’t so much an issue when used with App HA as it has a scale limitation of 400 agents as mentioned in the <a title="Reference" href="https://www.vmware.com/support/appha/doc/releasenotes-appha10.html">App HA 1.0 release notes</a> but the vApp is easier to deploy.<br>
+The vApp is deployed via OVF and actually contains 2 VMs, one for the application and the other for the database (Remember to configure an IP Pool prior to deployment). The full deployment instructions can be found <a title="Reference" href="http://pubs.vmware.com/hyperic-58/topic/com.vmware.hyperic.install.config.doc/GUID-996029EB-D20C-486F-A0F8-7F4893A44E9B.html">here</a>.</p>
+
+<p><img alt="vFabric_Hyperic_vApp" src="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_Hyperic_vApp.png" /></p>
+
+<p>The Hyperic Dashboard looks like this:<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/Hyperic.png"> <img alt="Hyperic" src="http://www.neogeek.net/wp-content/uploads/2014/01/Hyperic.png" /> </a></p>
+
+<p><em>*<em>Deploy App HA virtual Appliance – *</em></em></p>
+
+<p>This is the other vApp required for enabling App HA, this one being the actual AppHA vApp. It is deployed the same as Hyperic using an OVF template. This one consists of a single VM. Full vApp deployment details are <a title="Reference" href="http://pubs.vmware.com/appha-1/topic/com.vmware.app.ha.install_guide.doc/GUID-A98FA19A-EE71-40F1-B5C8-67E8C0B21D55.html">here</a><br>
+<img alt="AppHA_vApp" src="http://www.neogeek.net/wp-content/uploads/2014/01/AppHA_vApp.png" /></p>
+
+<p><em>*<em>Hyperic Agent Installation – *</em></em></p>
+
+<p>Each Server which you intend to leverage App HA with, will require the Hyperic Agents to be deployed and the Hyperic Agent will need to be installed on the vCenter Server to allow the creation of the VFabric Hyperic vCenter Server Plug-in (the next step).</p>
+
+<p>On the vCenter server follow the below instructions (they are the same for the deployment of the Hyperic Agent for all Windows Servers):</p>
+
+<ul>
+<li>Download the zip archive</li>
+<li>Extract it to a directory (e.g. <code>&quot;c:\hyperic-hqee-agent-5.7.1&quot;</code> )</li>
+<li>Navigate to the <em><strong>“bin”</strong></em> sub-directory (e.g. <code>&quot;c:\hyperic-hqee-agent-5.7.1\bin&quot;</code> )</li>
+<li>Execute <em><strong>“hq-agent.bat install”</strong></em> and wait until it finishes.</li>
+<li>Execute <em><strong>“hq-agent.bat start”</strong></em>. Respond to the series of questions it will ask, they will be specific to your environment. Defaults will be correct in most cases except the final question for which the response must be changed to <em><strong>“yes”</strong></em></li>
+</ul>
+
+<p>These steps are shown in the command prompt window below:<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/Hyp_Agent_Install.png"> <img alt="Hyp_Agent_Install" src="http://www.neogeek.net/wp-content/uploads/2014/01/Hyp_Agent_Install.png" /> </a></p>
+
+<p>The Platform (Server) will appear in the Hyperic Dashboard under the Auto-Discovery section. From there you can add it to the inventory by clicking the <em><strong>Add to Inventory</strong></em> button.<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/Add_to_Inv.png"> <img alt="Add_to_Inv" src="http://www.neogeek.net/wp-content/uploads/2014/01/Add_to_Inv.png" /> </a></p>
+
+<p>Perform the above Hyperic Agent install steps again for any other servers you wish to configure with App HA.<br>
+Look to the <em><strong>“(Optional) Configure Hyperic agent.properties Files to Enable Automation and Mass Deployment”</strong></em> section for details on making this easier.</p>
+
+<p><em>*<em>Setup vFabric Hyperic vCenter Server Plug-in – *</em></em></p>
+
+<p>To enable alarms from vCenter Server if remediation actions are triggered, the vFabric Hyperic vCenter Server Plug-in needs created.<br>
+The Hyperic Agent needs to be installed on vCenter Server for this. After the agent is deployed follow the steps below.</p>
+
+<ul>
+<li>Go to <em><strong>Resource &gt; Browse</strong></em> as shown below</li>
+</ul>
+
+<p><a href="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_1.png"> <img alt="vFabric_1" src="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_1.png" /> </a></p>
+
+<ul>
+<li>Click the vCenter server from the Platforms list. In my case this is NEO-VC01<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_2.png"> <img alt="vFabric_2" src="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_2.png" /> </a></li>
+<li>Select <em><strong>Tools Menu &gt; New Server</strong></em><br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_3.png"> <img alt="vFabric_3" src="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_3.png" /> </a></li>
+<li>Enter Name as <em><strong>“VC”</strong></em>, select <em><strong>“VMware vCenter”</strong></em> from the list and Install Path <em><strong>“*”</strong></em><br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_4.png"> <img alt="vFabric_4" src="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_4.png" /> </a></li>
+<li>Click on <em><strong>Configuration Properties</strong></em><br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_5.png"> <img alt="vFabric_5" src="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_5.png" /> </a></li>
+<li>Fill in the <em><strong>URL</strong></em> replacing “localhost” with your vCenter name or IP. Complete <em><strong>user</strong></em> and <em><strong>pass</strong></em> and leave <em><strong>process query</strong></em> as it is. Finally ensure <em><strong>Auto-Discover Services?</strong></em> is unticked.<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_6.png"> <img alt="vFabric_6" src="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_6.png" /> </a></li>
+<li>On the vCenter Server ensure the <em><strong>VC</strong></em> Resource has a green tick beside it (note this might take a short while) and thats the VC Plug-in sorted.<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_7.png"> <img alt="vFabric_7" src="http://www.neogeek.net/wp-content/uploads/2014/01/vFabric_7.png" /> </a></li>
+</ul>
+
+<p>VMware documentation for this is <a title="Reference" href="http://pubs.vmware.com/appha-1/topic/com.vmware.app.ha.install_guide.doc/GUID-A1D00BE9-F105-48FE-B754-08CABFA57A5A.html">here</a>.</p>
+
+<p><em>*<em>Use Web Client to Configure App HA to see Hyperic – *</em></em></p>
+
+<p>The next step is to configure App HA from within the Web Client to see the Hyperic Server. This is done from the Inventory under <em><strong>Administraton &gt; vSphere App HA</strong></em> on the <em><strong>Settings</strong></em> tab.</p>
+
+<p>Complete the details giving IP or Hostname of <em><strong>vFabric Hyperic Server</strong></em>, <em><strong>Port</strong></em> and <em><strong>Username</strong></em>/<em><strong>Password</strong></em> as shown below.<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/Hyperic_WebC_Config.png"> <img alt="Hyperic_WebC_Config" src="http://www.neogeek.net/wp-content/uploads/2014/01/Hyperic_WebC_Config-1024x508.png" /> </a><br>
+Full documentation on this is <a title="Reference" href="http://pubs.vmware.com/appha-1/topic/com.vmware.app.ha.install_guide.doc/GUID-A768AB6C-19D8-4A5E-ABB0-932887599B66.html">here</a>.</p>
+
+<p><em>*<em>Set Cluster Configuration for “VM &amp; Application Monitoring” – *</em></em></p>
+
+<p>Each Cluster in which you wish to use App HA needs to have that functionality enabled.<br>
+To do this, select the cluster then go to <em><strong>Manage &gt; Settings &gt; vSphere HA</strong></em>. From there click <em><strong>Edit</strong></em>.</p>
+
+<p>In this menu ensure <em><strong>Turn ON vSphere HA</strong></em> has the check box ticked if it isn’t already and under <em><strong>VM Monitoring</strong></em> select <em><strong>VM &amp; Application Monitoring</strong></em> then click <em><strong>OK</strong></em>. The final step of this is shown in the image below.<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/Cluster_Options.png"> <img alt="Cluster_Options" src="http://www.neogeek.net/wp-content/uploads/2014/01/Cluster_Options-1024x569.png" /> </a><br>
+Ensure you repeat these steps for each Cluster you wish to use App HA with.<br>
+VMware documentation covering this section is <a title="Reference" href="http://pubs.vmware.com/appha-1/topic/com.vmware.app.ha.install_guide.doc/GUID-AA95681D-E39D-4E7B-974F-DB911BB1FAE3.html">here</a>.</p>
+
+<p><em>*<em>(Optional) Configure Hyperic agent.properties Files to Enable Automation and Mass Deployment – *</em></em></p>
+
+<p>When I came across this topic within the App HA documentation, the title was not the same as I have used for this section. I was a little confused and unsure why it was required. The reason for my confusion was the title and description in the first line of the docs mentioned nothing of automation or enabling mass deployment. The description on the first line was:<br>
+<em>“To trigger vSphere App HA alarms on vCenter, you must configure certain properties in the relevant vFabric Hyperic agent.properties file.”</em>.</p>
+
+<p>What it doesn’t explain here is that these steps are covered when you first run <em><strong>“hq-agent start”</strong></em> and are asked a series of questions regarding Hyperic IP Address, Username and Password etc (this is described in the deploying Hyperic Agents section above).</p>
+
+<p>We already know in order to use App HA the Hyperic Agent needs to be installed so if you have deployed and started the service for the Hyperic Agent then you have already ran through the series of questions covering these options and this isn’t required.</p>
+
+<p>So what this section within the VMware documentation is actually describing is how to automate the answers to the Hyperic Agent deploy process. This became obvious when I looked at what it was trying to achieve and was confirmed by the description within the commented section in the <code>agent.properties</code> file. It states<br>
+<em>“Use the following if you’d like to have the agent setup automatically from these properties.”</em><br>
+I highly recommend using these steps as it makes deploying the agent quicker, easier and most importantly enables mass deployment.</p>
+
+<p>If you have already deployed the Hyperic Agent to a server and the service is running but wish to remove the configuration to try again, such as for testing then follow the clean-up steps below.<br>
+<em><strong>If the Hyperic Agent has never been deployed then you will not need to perform these clean-up steps. Skip to the section “Configure the agent.properties File:”</strong></em></p>
+
+<p><em><strong>Clean-up Steps (Only required if Agent already deployed):</strong></em></p>
+
+<ul>
+<li>Stop the vFabric Hyperic agent which is achieved by running the <em><strong>“hq-agent.bat stop”</strong></em> from a command prompt open at the agent bin directory. In my example from the <code>&quot;c:\hyperic-hqee-agent-5.7.1\bin\&quot;</code> directory.</li>
+<li>Delete the <em><strong>“data”</strong></em> sub-folder from within the agent folder, in my example this is the <code>&quot;c:\hyperic-hqee-agent-5.7.1\data\&quot;</code> directory.</li>
+<li>Next delete the agent Platform from the Hyperic server inventory (i.e. Delete the Server entry within the Hyperic Inventory)<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/Remove_Agent_from_Inv.png"> <img alt="Remove_Agent_from_Inv" src="http://www.neogeek.net/wp-content/uploads/2014/01/Remove_Agent_from_Inv.png" /> </a></li>
+</ul>
+
+<p>The following section describes steps to edit the <code>agent.properties</code> file and includes the properties the VMware documentation mentions as well as two other properties I found necessary to have the deployment fully automated. I found if I did not include these properties that it would ask me for a response when the Hyperic Agent was started for the first time. The extra properties are “agent.setup.camIP=” and “agent.setup.unidirectional=”. The first is the Hyperic Server IP address and the second is the option on whether the agent should communicate in a unidirectional manner.</p>
+
+<p><em><strong>Configure the agent.properties File:</strong></em></p>
+
+<ul>
+<li>If the Hyperic Agent is not already on the Server, extract it to a local directory. Open the <code>agent.properties</code> file found within the <em><strong>“conf”</strong></em> sub-directory. In my example from the <code>&quot;c:\hyperic-hqee-agent-5.7.1\conf\&quot;</code> directory and edit the following values replacing the entries between the asterisks (N.B. The Username is normally hqadmin) ensuring the “#” at the beginning of the line is deleted so the option is not commented out:
+*<em>agent.setup.camLogin=\</em>Replace_With_Hyperic_Username*<br>
+agent.setup.camPword=*Replace_With_Hyperic_password*<br>
+agent.setup.acceptUnverifiedCertificate=yes<br>
+accept.unverified.certificates=true<br>
+agent.setup.camIP=*Replace_With_Hyperic_Server_IP*<br>
+agent.setup.unidirectional=no<br>
+**</li>
+</ul>
+
+<p>Then save the file.</p>
+
+<ul>
+<li>Start the Hyperic agent by running <em><strong>“hq-agent.bat start”</strong></em> from the command prompt opened at the agent <em><strong>“bin”</strong></em> directory.<br>
+If it is configured correctly it should not ask any questions as it did prior to using the agent.properties file.</li>
+</ul>
+
+<p>To use this for other Servers you intend to use with App HA:<br>
+Extract the Hyperic Agent, copy the <code>agent.properties</code> file with the modified properties above to the <em><strong>“Conf”</strong></em> sub-directory, install with <em><strong>“hq-agent.bat install”</strong></em> and start the service with <em><strong>“hq-agent.bat start”</strong></em>.</p>
+
+<p>The VMware documentation covering this section can be found <a title="Reference" href="http://pubs.vmware.com/appha-1/topic/com.vmware.app.ha.install_guide.doc/GUID-851BF1D0-3558-4ABD-9113-67EA31BBAA99.html">here</a>.</p>
+
+<p><em>*<em>Configure and Assign App HA Policies – *</em></em></p>
+
+<p>The next step for configuring App HA is to look at Policies.<br>
+Remember any servers you wish to monitor need the Hyperic Agent installed so ensure the agent is deployed before proceeding (Steps above).</p>
+
+<p>Policies are created from within the vSphere Web Client at <em><strong>Administration &gt; vSphere App HA</strong></em> on the <em><strong>Policies</strong></em> tab.</p>
+
+<p>For my testing I created a SQL Server policy which can be seen in this list.<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/AppHA_Policies.png"> <img alt="AppHA_Policies" src="http://www.neogeek.net/wp-content/uploads/2014/01/AppHA_Policies.png" /> </a></p>
+
+<p>To create a Policy click the green plus seen in the above image. In the wizard assign a <em><strong>Policy Name</strong></em>, choose an <em><strong>Application Service</strong></em> with any further service specific options, choose <em><strong>Remediation</strong></em> for that service (Service restart and VM reset configuration) and whether you want to create an <em><strong>Alarms Definition</strong></em>. Policies configured can be used across multiple VM’s, there is no need to create duplicate policies unless the configuration options are different.</p>
+
+<p>Now you have created a policy it just needs assigned to whatever machines you wish to provide App HA for. This is done at the cluster level.</p>
+
+<p>On the cluster which contains the VM you wish to enable the policy with, navigate to <em><strong>Monitor</strong></em> then the <em><strong>Application Availability</strong></em> tab. This will list all machines with services Hyperic is aware of. This is shown in the image below.<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/App_Avail.png"> <img alt="App_Avail" src="http://www.neogeek.net/wp-content/uploads/2014/01/App_Avail-1024x324.png" /> </a></p>
+
+<p>From the <em><strong>Application Availability</strong></em> screen right click or use the <em><strong>Actions</strong></em> menu to <em><strong>Assign</strong></em> or <em><strong>Unassign</strong></em> a Policy.</p>
+
+<p>Full details on Assigning a Policy to Application Services can be found <a title="Reference" href="http://pubs.vmware.com/appha-1/topic/com.vmware.app.ha.users_guide.doc/GUID-2C55E2A8-3DCA-46F9-BB95-376D6AD9D8B5.html">here</a>.</p>
+
+<p><em>*<em>Test Your Policies – *</em></em><br>
+As with anything you configure, it is prudent to test it to see if it reacts as you would expect. In my homelab I have configured a policy for SQL Server so used that as my test.<br>
+I stopped the SQL Service on my NEO-TOOLS01 server and within about 60 seconds the following was visible from the vSphere Web Client:<br>
+<a href="http://www.neogeek.net/wp-content/uploads/2014/01/Service_Unavail.png"> <img alt="Service_Unavail" src="http://www.neogeek.net/wp-content/uploads/2014/01/Service_Unavail-1024x375.png" /> </a></p>
+
+<p>And nearly immediately after this alert came through, the service was restarted and the Availability Status returned to Available.</p>
+
+<p><strong>Wrap Up</strong><br>
+This concludes the steps which I performed in order to get App HA 1.0 up and running in my homelab environment. If you’ve got through this far and look back at the start, at the list of tasks involved in configuration you’ll notice the steps marked with (*) which will need to be performed to add new VM’s/Applications to be monitored by App HA and steps with (**) that you’ll need to complete for each new Cluster configuration.<br>
+Once it is up and running you’ll find it’s extremely easy to add more and also once you are familiar with the process I recommending looking at methods of deploying the Hyperic Agent with the modified agent.properties file in bulk.</p>
+
+<p>Thanks for reading.</p>
+
+<div class='tags'>
+<ol>
+<li><a class="tag" href="/app-ha/">App HA</a></li>
+</ol>
+</div>
+<section class='post-footer'>
+<h1 class='small-h1 post-author-header'>
+<div class='post-author clearfix'>
+<div class='author-avatar'>
+<img src="../images/avatars/steven-johnston.jpg?1439193430" />
+</div>
+<div class='post-author-details'>
+<h1><a href="/steven-johnston">Steven Johnston</a></h1>
+<span class='bio'>Tech lover and scripting addict. Focused on virtualisation, storage and data centre networking solutions. VMware / Cisco / EMC.</span>
+<span class='author-posts-link'>
+<a href="/steven-johnston">View Steven's other posts</a>
+</span>
+</div>
+</div>
+</h1>
+</section>
+<div class='post-nav'>
+<div class='previous-post'>
+<a href="/20131209-belfast-nhs-trust-talks-about-their-vdi-experiences/">← Previous</a>
+</div>
+<div class='next-post'>
+<a href="/20140129-ireland-vmug-january-2014-trench-talk/">Next →</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<footer>
+<section class='newsletter'>
+<div class='layout-wrapper' id='mc-signup'>
+<div class='layout-inner'>
+<form action='http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&amp;id=b15b8e54dd' class='validate' id='mc-subscribe-form' method='post' name='mc-embedded-subscribe-form' novalidate='' target='_blank'>
+<div class='form-inputs'>
+<label for='mc-email'>
+<div class='newsletter-title'>
+Subscribe to our mailing list
+</div>
+<input id='mc-email' name='EMAIL' placeholder='Enter your email address…' required='' type='email' value=''>
+</label>
+</div>
+<div class='form-action newsletter-button'>
+<input class='button' name='subscribe' type='submit' value='Subscribe'>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class='footer-info clearfix'>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<span class='about-novosco'>
+<strong>Novosco</strong>
+is a leading provider of Cloud Technologies, Managed Service and Consulting.
+</span>
+<span class='copyright'>
+© 2007-2015 Novosco Ltd
+</span>
+</div>
+</div>
+</section>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-44792610-1', 'novosco.com');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

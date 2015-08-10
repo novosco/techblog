@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en' xmlns:fb='http://ogp.me/ns/fb#'>
+<head>
+<link href="../stylesheets/syntax_highlighting.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='text/html;' http-equiv='content-type'>
+<title>Planning your XenMobile MDM Pilot
+ | Novosco Tech Blog</title>
+<meta content='index,follow' name='robots'>
+<meta content='initial-scale=1.0 maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='width=380, maximum-scale=1.0' name='viewport'>
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='../images/touch-icon-iphone.png' rel='apple-touch-icon'>
+<link href='../images/touch-icon-ipad.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='../images/touch-icon-iphone-retina.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='../images/touch-icon-ipad-retina.png' rel='apple-touch-icon' sizes='144x144'>
+<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+<link href="../stylesheets/all.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<!-- OG -->
+<meta content='Novosco Tech Blog' property='og:title'>
+<meta content='website' property='og:type'>
+<meta content='../images/novosco-og-icon.png' property='og:image'>
+<meta content='http://engineering.novosco.com' property='og:url'>
+<meta content='Novosco Tech Blog ' property='og:description'>
+<!-- Twitter -->
+<meta content='summary' name='twitter:card'>
+<meta content='http://engineering.novosco.com' name='twitter:url'>
+<meta content='Novosco Tech Blog' name='twitter:title'>
+<meta content='Novosco Tech Blog ' name='twitter:description'>
+<meta content='../images/novosco-og-icon.png' name='twitter:image'>
+<meta content='@novoscoeng' name='twitter:site'>
+<meta content='@novosco' name='twitter:creator'>
+<meta content='' name='author'>
+<!-- Typekit -->
+<script src="//use.typekit.net/tjm4emr.js" type="text/javascript"></script>
+<script>
+  try{Typekit.load();}catch(e){};
+  
+  window.onload = function() {
+    var menu = document.getElementById('menu-button');
+    var menu_items = document.getElementById('menu-items');
+  
+    function toggleMenu(){
+      if (menu_items.style.display == "block") {
+        menu_items.style.display = 'none';
+      } else {
+        menu_items.style.display = 'block';
+      }
+    };
+  
+    menu.addEventListener('click', function() {
+      toggleMenu()
+    }, false);
+  };
+</script>
+
+</head>
+<body class='20131121-planning-your-xenmobile-mdm-pilot 20131121-planning-your-xenmobile-mdm-pilot_index'>
+<header>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<a href="/"><span class='logo'>Novosco Tech Blog</span></a>
+<div class='header-nav'>
+<nav>
+<a href='#' id='menu-button'>
+MENU
+<img src='/images/menu-triangle.png' width='11px'>
+</a>
+<ul id='menu-items'>
+<li>
+<a href="http://www.novosco.com/">Home</a>
+</li>
+<li>
+<a class="active" href="http://cio.novosco.com/">CIO Blog</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+
+<div class='container'>
+<div id='post-main'>
+<article class='post-header'>
+<h1 class='article-header'>
+<a href="/20131121-planning-your-xenmobile-mdm-pilot/">Planning your XenMobile MDM Pilot</a>
+</h1>
+<div class='post-meta'>
+<div class='post-avatar'>
+<img src="../images/avatars/colin-rainey.jpg?1439193430" />
+</div>
+<div class='post-meta-text'>
+<span>By <a href="/colin-rainey">Colin Rainey</a> on</span>
+<time>21 November 2013</time>
+</div>
+</div>
+
+<div class='body'>
+<p>Mobile Device Management has been around for a few years now for iPads and Androids devices, and of course BlackBerry has been doing BES for much longer. I have been doing a few MDM installs recently with Citrix XenMobile MDM. This is now in version 8.6 and was already in version 7 when Citrix purchased Zenprise, one of the market leaders in December 2012.</p>
+
+<p>If you’re looking at deploying Citrix XenMobile MDM in a pilot make sure you check through the installation guide, the References Architecture and the MDM Deployment kit if you can get your hands on one. These will help you plan for the infrastructure you need to put in place.</p>
+
+<p>You also need to decide the limits of your POC. Do you just want to look at the device management, security and inventory? Or do you want the whole Enterprise solution with your own corporate app store, micro-vpn into the LAN and secure apps that you can sandbox and have full control over?</p>
+
+<p>For Enterprise MDM, Citrix have bundled ShareFile Enterprise which make the whole solution even more appealing if you want to enable secure file access into your corporate shares and encrypted ShareFile repository. Indeed, the combined features of XenMobile MDM, Worx corporate app store and ShareFile make the enterprise solution very appealing as it would take 2-3 other vendors’ products to do all of these.</p>
+
+<p>Some questions to start you off..</p>
+
+<ul>
+<li>What infrastructure servers will I need?</li>
+<li>Have I got external IPs?</li>
+<li>What type of devices will I need to control? (Apple, Android, Windows Mobile etc)</li>
+<li>What users will I target for the pilot?</li>
+<li>Will I let them use their own device?</li>
+<li>Have you updated any use policies and got users to sign?</li>
+<li>What are the implications for controlling personnel devices?</li>
+<li>Will the project include ShareFile?</li>
+<li>What SSL certs will I need?</li>
+<li>Is there a budget for installation and licensing?</li>
+<li>Have I got a project plan and success criteria sorted?</li>
+</ul>
+
+<p> </p>
+
+<p><strong>Pre-Requisites</strong></p>
+
+<p>Once you have worked out the answer to the questions above..you’ll need to get the following sorted out well in advance of installation.</p>
+
+<ul>
+<li>External IP/ports – get your change control submitted to Firewall manager in good time.</li>
+<li>DNS – make sure you have external DNS records for CAG,MDM and ShareFile.</li>
+<li>SSL – You will need at least two external SSL certs or wildcard. You will also need another 2-3 internal certs for App Controller and StoreFront internally.</li>
+<li>DUNS Number – Dun and Bradstreet ID from <a href="http://www.dnb.co.uk/">www.dnb.co.uk/</a> – for Apple Dev Kit</li>
+<li>Apple Enterprise Developer Kit from Apple at $299 + APNS Certificate</li>
+<li>NetScaler – you will need a NetScaler with virtual CAG</li>
+</ul>
+
+<p>The last two go together, and you need to get that DUNS number 4-5 weeks before you apply for the Apple Ent. Dev kit.</p>
+
+<p>When Applying for that Apple Dev Kit, make sure you are the project manager or someone who can say they have authority to purchase the kit from Apple – otherwise they won’t talk to you if you need to call support.</p>
+
+<p>The Apple kit is required for pushing secure apps to iOS devices and for packaging the Worx app son iOS and Android. The Apple Push Notification Service (APNS) is required for installation. This is a certificate for your MDM server that you need to email to Citrix, then post into your Apple account to generate an APNS certificate. This is required just to install the MDM software.</p>
+
+<p>If you don’t already have one –you’ll need NetScaler to provide secure access into the Worx Store which resides on the App Controller component, and the StoreFront server for XenApp/XenDesktop access. It also provides the micro-vpn for access to internal web and mail.</p>
+
+<p><strong>Devices</strong></p>
+
+<p>Beware of any documentation or sales blurb that promises that any MDM solution will work on every device with every OS. The dream of BYOD for everyone may be possible, just –  but probably with some limitations to certain functionality.</p>
+
+<p>For example, HTC Desire X and 500 models with android 4.1.2 simply won’t load the Citrix Worx Mail client, while a Samsung model with 4.1.2 works perfectly. All the MDM policies work fine. Documentation for the various components in the Enterprise MDM has different supported levels of Android OS and Android SDK API for Worx apps and the micro-vpn so worth checking.</p>
+
+<p>If possible, make sure your Android device has latest build and is at least in support and not End Of Life in terms of downloads and updates to core OS components.</p>
+
+<p>Apple devices are easier to support as there is only one hardware platform, albeit with 2-3 iOS version out there. MDM 8.6 has support for latest iOS 7.</p>
+
+<p><strong>References:</strong></p>
+
+<p>Citrix, (2013) MDM Editions Data Sheet [Online] Available from: <a href="http://www.citrix.com/content/dam/citrix/en_us/documents/products-solutions/citrix-xenmobile-the-revolutionary-way-to-mobilize-your-business.pdf">http://www.citrix.com/content/dam/citrix/en_us/documents/products-solutions/citrix-xenmobile-the-revolutionary-way-to-mobilize-your-business.pdf</a></p>
+
+<p>Citrix (2013) Reference Architecture for Mobile Device and App Management [Online] Available from: <a href="http://www.citrix.com/content/dam/citrix/en_us/documents/products/citrix-reference-architecture-for-mobile-device-and-app-management.pdf">http://www.citrix.com/content/dam/citrix/en_us/documents/products/citrix-reference-architecture-for-mobile-device-and-app-management.pdf</a></p>
+
+<p>Citrix (2013) Compare XenMobile to the competition [Online] Available from: <a href="http://www.citrix.com/products/xenmobile/how-it-helps/compare.html">http://www.citrix.com/products/xenmobile/how-it-helps/compare.html</a></p>
+
+<p>Dun and Bradstreet (2013) DUNS Number [Online] Available from: <a href="http://www.dnb.co.uk/dandb-duns-number">http://www.dnb.co.uk/dandb-duns-number</a></p>
+
+<p>Apple (2013) iOS Developer Enterprise Program [Online] Available from: <a href="https://developer.apple.com/programs/ios/enterprise/">https://developer.apple.com/programs/ios/enterprise/</a></p>
+
+<p><a href="http://feeds.wordpress.com/1.0/gocomments/cjrainey.wordpress.com/37/"> <img src="http://feeds.wordpress.com/1.0/comments/cjrainey.wordpress.com/37/" /> </a> <img src="http://stats.wordpress.com/b.gif?host=cjrainey.wordpress.com&blog=60326277&post=37&subd=cjrainey&ref=&feed=1" /></p>
+
+<div class='tags'>
+<ol>
+<li><a class="tag" href="/uncategorized/">Uncategorized</a></li>
+</ol>
+</div>
+<section class='post-footer'>
+<h1 class='small-h1 post-author-header'>
+<div class='post-author clearfix'>
+<div class='author-avatar'>
+<img src="../images/avatars/colin-rainey.jpg?1439193430" />
+</div>
+<div class='post-author-details'>
+<h1><a href="/colin-rainey">Colin Rainey</a></h1>
+<span class='bio'>Citrix Techie and IT enthusiast, delving into MDM and has been known to listen to the odd 80’s tune.</span>
+<span class='author-posts-link'>
+<a href="/colin-rainey">View Colin's other posts</a>
+</span>
+</div>
+</div>
+</h1>
+</section>
+<div class='post-nav'>
+<div class='previous-post'>
+<a href="/20131115-the-stateless-desktop-part-2/">← Previous</a>
+</div>
+<div class='next-post'>
+<a href="/20131122-novosco-participates-in-emc-xtremio-global-launch/">Next →</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<footer>
+<section class='newsletter'>
+<div class='layout-wrapper' id='mc-signup'>
+<div class='layout-inner'>
+<form action='http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&amp;id=b15b8e54dd' class='validate' id='mc-subscribe-form' method='post' name='mc-embedded-subscribe-form' novalidate='' target='_blank'>
+<div class='form-inputs'>
+<label for='mc-email'>
+<div class='newsletter-title'>
+Subscribe to our mailing list
+</div>
+<input id='mc-email' name='EMAIL' placeholder='Enter your email address…' required='' type='email' value=''>
+</label>
+</div>
+<div class='form-action newsletter-button'>
+<input class='button' name='subscribe' type='submit' value='Subscribe'>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class='footer-info clearfix'>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<span class='about-novosco'>
+<strong>Novosco</strong>
+is a leading provider of Cloud Technologies, Managed Service and Consulting.
+</span>
+<span class='copyright'>
+© 2007-2015 Novosco Ltd
+</span>
+</div>
+</div>
+</section>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-44792610-1', 'novosco.com');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

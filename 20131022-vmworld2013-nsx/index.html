@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en' xmlns:fb='http://ogp.me/ns/fb#'>
+<head>
+<link href="../stylesheets/syntax_highlighting.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='text/html;' http-equiv='content-type'>
+<title>VMworld 2013 Session Review (Advanced VMware NSX Architecture)
+ | Novosco Tech Blog</title>
+<meta content='index,follow' name='robots'>
+<meta content='initial-scale=1.0 maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='width=380, maximum-scale=1.0' name='viewport'>
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='../images/touch-icon-iphone.png' rel='apple-touch-icon'>
+<link href='../images/touch-icon-ipad.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='../images/touch-icon-iphone-retina.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='../images/touch-icon-ipad-retina.png' rel='apple-touch-icon' sizes='144x144'>
+<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+<link href="../stylesheets/all.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<!-- OG -->
+<meta content='Novosco Tech Blog' property='og:title'>
+<meta content='website' property='og:type'>
+<meta content='../images/novosco-og-icon.png' property='og:image'>
+<meta content='http://engineering.novosco.com' property='og:url'>
+<meta content='Novosco Tech Blog ' property='og:description'>
+<!-- Twitter -->
+<meta content='summary' name='twitter:card'>
+<meta content='http://engineering.novosco.com' name='twitter:url'>
+<meta content='Novosco Tech Blog' name='twitter:title'>
+<meta content='Novosco Tech Blog ' name='twitter:description'>
+<meta content='../images/novosco-og-icon.png' name='twitter:image'>
+<meta content='@novoscoeng' name='twitter:site'>
+<meta content='@novosco' name='twitter:creator'>
+<meta content='' name='author'>
+<!-- Typekit -->
+<script src="//use.typekit.net/tjm4emr.js" type="text/javascript"></script>
+<script>
+  try{Typekit.load();}catch(e){};
+  
+  window.onload = function() {
+    var menu = document.getElementById('menu-button');
+    var menu_items = document.getElementById('menu-items');
+  
+    function toggleMenu(){
+      if (menu_items.style.display == "block") {
+        menu_items.style.display = 'none';
+      } else {
+        menu_items.style.display = 'block';
+      }
+    };
+  
+    menu.addEventListener('click', function() {
+      toggleMenu()
+    }, false);
+  };
+</script>
+
+</head>
+<body class='20131022-vmworld2013-nsx 20131022-vmworld2013-nsx_index'>
+<header>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<a href="/"><span class='logo'>Novosco Tech Blog</span></a>
+<div class='header-nav'>
+<nav>
+<a href='#' id='menu-button'>
+MENU
+<img src='/images/menu-triangle.png' width='11px'>
+</a>
+<ul id='menu-items'>
+<li>
+<a href="http://www.novosco.com/">Home</a>
+</li>
+<li>
+<a class="active" href="http://cio.novosco.com/">CIO Blog</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+
+<div class='container'>
+<div id='post-main'>
+<article class='post-header'>
+<h1 class='article-header'>
+<a href="/20131022-vmworld2013-nsx/">VMworld 2013 Session Review (Advanced VMware NSX Architecture)</a>
+</h1>
+<div class='post-meta'>
+<div class='post-avatar'>
+<img src="../images/avatars/james-montgomery.jpg?1439193430" />
+</div>
+<div class='post-meta-text'>
+<span>By <a href="/james-montgomery">James Montgomery</a> on</span>
+<time>22 October 2013</time>
+</div>
+</div>
+
+<div class='body'>
+<p>Bruce Davie was a very confident speaker. This confidence comes from a very clear ability to present - and it helps that he is a lead architect on the platform itself. Attendees put phones away, laughed at his jokes - but more importantly give him their undivided attention.</p>
+
+<p>Why? They had finally found a session where NSX - the real NSX was going to be discussed and shown. Not the unicorn rainbow material found in the fist pumping keynotes.</p>
+
+<p>  </p>
+
+<p>Bruce talks about NSX like a proud parent discusses their child. </p>
+
+<p>He lamented the lack of time - not understanding why he could not have 90 minutes for such a key and popular topic. Even on the last morning of VMworld this session was packed at 9AM.</p>
+
+<p>There was an audience hungry for answers and willing to listen beyond 60 minutes.</p>
+
+<p>In this post I aim to describe what I took away. Any inaccuracies here are probably my own - you are welcome to point out flaws or misunderstandings through constructive communication. </p>
+
+<h1>Why network virtualisation?</h1>
+
+<p>NSX addresses an agility mismatch in virtualisation powered infrastructures. We can provision servers in seconds or minutes - attaching them to networks and making them productive is often not in the same timescale. </p>
+
+<p>Let me be clear that there is no dig at network administrators here. There are often many components making up the network infrastructure. Provisioning time is often related to the complexity of the change request, the accuracy of the change request and the availability of sufficiently skilled resources to fulfil it. Network guys are not normally sitting idle.</p>
+
+<p>There appear to be a number of use-cases for NSX:</p>
+
+<ul>
+<li>High churn environments.</li>
+<li>Reduce the risk of change to the physical network.</li>
+<li>Simplify the physical network<br></li>
+</ul>
+
+<p>This is not an exhaustive list.</p>
+
+<h1>What is NSX?</h1>
+
+<p>NSX is a network virtualisation platform (NVP). Bruce clearly isn&rsquo;t happy to adopt the term appearing in marketing material of &ldquo;network hypervisor&rdquo; - but the value in people drawing a comparison with a X86 &ldquo;server hypervisor&rdquo; is probably more useful than it is damaging.</p>
+
+<p>NSX is a platform based on an existing network infrastructure. It uses IP to glue its various components together. </p>
+
+<p>It features a policy driven architecture with component separation for high availability and scalability. There is an API for automated configuration or status queries via your in house automation tool/cloud management portal. NSX does feature its own UI but it is expected that to achieve the speed and agility promised - you will have automation tools interacting with the platform.</p>
+
+<p>It supports a number of hypervisors with the goal of abstracting the connected network infrastructure and providing a faithful reproduction of L2-L7 services.</p>
+
+<h1>How does NSX operate?</h1>
+
+<p>NSX features a scale out controller cluster. This appears to operate in the majority node format with a minimum of 3 nodes. The controller cluster effectively holds the virtual network topology state and programs the appropriate components to achieve this state. Each cluster members adds capacity to the cluster so scale out of this component is linear. The cluster members should operate with low latency between them.</p>
+
+<p>Virtual Machines (VMs) using a NSX provided virtual network operate on a NSX enhanced virtual switch. NSX provided services (L3-L7) operated in a distributed fashion. </p>
+
+<p>For example two VMs on two different L2 networks normally would have to go via their respective gateways to reach each other. If these L2 networks were NSX provided and if their gateways were a NSX provided L3 service then NSX would perform the routing function on the hypervisor. If the VMs were on the same host then the traffic does not leave the host. If the VMs are on different hypervisors the traffic is passed over a hypervisor to hypervisor tunnel. </p>
+
+<p>In order to achieve scale and manage resource consumption a given hypervisor virtual switch is programmed with network topology relevant to the virtual machines running on it. Whenever a VM is undergoing a migration - the NSX platform programs the destination of any configuration relevant to supporting the VM to ensure continued service operation.</p>
+
+<p>VM to VM communication across hypervisors on NSX virtual networks occurs across a hypervisor to hypervisor tunnel. VM to non-NSX networks occurs via a NSX gateway device. Time did not allow to elaborate on the precise details of this device though it appeared that this could be NSX provided (VM or physical) or an integration with a NSX partner device such as <a href="http://www.vmware.com/files/pdf/products/nsx/vmw-nsx-arista-networks.pdf">Arista</a>.</p>
+
+<p>NSX supports multiple encapsulation protocols with or without encryption. For hypervisor to hypervisor tunnels the preferred method is STT to leverage NIC offload capabilities. For hypervisor to NSX gateway the preferred method is VXLAN.</p>
+
+<h1>Summary</h1>
+
+<p>NSX promises to deliver the agility demanded for the network component of the Software Defined Data Centre. I look forward to evaluating the technology.</p>
+
+<h1>Further reading and material</h1>
+
+<p>Product resources:<br>
+<a href="http://www.vmware.com/uk/products/nsx/resources.html">http://www.vmware.com/uk/products/nsx/resources.html</a></p>
+
+<p>VMware Labs:<br>
+HOL-SDC-1303 - VMware NSX Network Virtualization Platform<br>
+HOL-SDC-1319 - VMware NSX for Multi-Hypervisor Environments</p>
+
+<p>Blogs:<br>
+<a href="http://cto.vmware.com/vxlan-stt-and-looking-beyond-the-wire-format/">http://cto.vmware.com/vxlan-stt-and-looking-beyond-the-wire-format/</a><br>
+<a href="http://blogs.vmware.com/networkvirtualization/2013/09/vmware_nsx_cisco.html">http://blogs.vmware.com/networkvirtualization/2013/09/vmware<em>nsx</em>cisco.html</a>  </p>
+
+<div class='tags'>
+<ol>
+<li><a class="tag" href="/vmware/">VMware</a></li>
+<li><a class="tag" href="/nsx/">NSX</a></li>
+</ol>
+</div>
+<section class='post-footer'>
+<h1 class='small-h1 post-author-header'>
+<div class='post-author clearfix'>
+<div class='author-avatar'>
+<img src="../images/avatars/james-montgomery.jpg?1439193430" />
+</div>
+<div class='post-author-details'>
+<h1><a href="/james-montgomery">James Montgomery</a></h1>
+<span class='bio'>A passionate and sometimes obsessive problem solver who rants about predictable failures. Hates exceptions. Often found near coffee.</span>
+<span class='author-posts-link'>
+<a href="/james-montgomery">View James's other posts</a>
+</span>
+</div>
+</div>
+</h1>
+</section>
+<div class='post-nav'>
+<div class='previous-post'>
+<a href="/20131017-zerto-talks-about-dr/">← Previous</a>
+</div>
+<div class='next-post'>
+<a href="/20131024-the-stateless-desktop/">Next →</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<footer>
+<section class='newsletter'>
+<div class='layout-wrapper' id='mc-signup'>
+<div class='layout-inner'>
+<form action='http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&amp;id=b15b8e54dd' class='validate' id='mc-subscribe-form' method='post' name='mc-embedded-subscribe-form' novalidate='' target='_blank'>
+<div class='form-inputs'>
+<label for='mc-email'>
+<div class='newsletter-title'>
+Subscribe to our mailing list
+</div>
+<input id='mc-email' name='EMAIL' placeholder='Enter your email address…' required='' type='email' value=''>
+</label>
+</div>
+<div class='form-action newsletter-button'>
+<input class='button' name='subscribe' type='submit' value='Subscribe'>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class='footer-info clearfix'>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<span class='about-novosco'>
+<strong>Novosco</strong>
+is a leading provider of Cloud Technologies, Managed Service and Consulting.
+</span>
+<span class='copyright'>
+© 2007-2015 Novosco Ltd
+</span>
+</div>
+</div>
+</section>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-44792610-1', 'novosco.com');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

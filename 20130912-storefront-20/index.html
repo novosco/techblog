@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en' xmlns:fb='http://ogp.me/ns/fb#'>
+<head>
+<link href="../stylesheets/syntax_highlighting.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='text/html;' http-equiv='content-type'>
+<title>StoreFront 2.0
+ | Novosco Tech Blog</title>
+<meta content='index,follow' name='robots'>
+<meta content='initial-scale=1.0 maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='width=380, maximum-scale=1.0' name='viewport'>
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='../images/touch-icon-iphone.png' rel='apple-touch-icon'>
+<link href='../images/touch-icon-ipad.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='../images/touch-icon-iphone-retina.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='../images/touch-icon-ipad-retina.png' rel='apple-touch-icon' sizes='144x144'>
+<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+<link href="../stylesheets/all.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<!-- OG -->
+<meta content='Novosco Tech Blog' property='og:title'>
+<meta content='website' property='og:type'>
+<meta content='../images/novosco-og-icon.png' property='og:image'>
+<meta content='http://engineering.novosco.com' property='og:url'>
+<meta content='Novosco Tech Blog ' property='og:description'>
+<!-- Twitter -->
+<meta content='summary' name='twitter:card'>
+<meta content='http://engineering.novosco.com' name='twitter:url'>
+<meta content='Novosco Tech Blog' name='twitter:title'>
+<meta content='Novosco Tech Blog ' name='twitter:description'>
+<meta content='../images/novosco-og-icon.png' name='twitter:image'>
+<meta content='@novoscoeng' name='twitter:site'>
+<meta content='@novosco' name='twitter:creator'>
+<meta content='' name='author'>
+<!-- Typekit -->
+<script src="//use.typekit.net/tjm4emr.js" type="text/javascript"></script>
+<script>
+  try{Typekit.load();}catch(e){};
+  
+  window.onload = function() {
+    var menu = document.getElementById('menu-button');
+    var menu_items = document.getElementById('menu-items');
+  
+    function toggleMenu(){
+      if (menu_items.style.display == "block") {
+        menu_items.style.display = 'none';
+      } else {
+        menu_items.style.display = 'block';
+      }
+    };
+  
+    menu.addEventListener('click', function() {
+      toggleMenu()
+    }, false);
+  };
+</script>
+
+</head>
+<body class='20130912-storefront-20 20130912-storefront-20_index'>
+<header>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<a href="/"><span class='logo'>Novosco Tech Blog</span></a>
+<div class='header-nav'>
+<nav>
+<a href='#' id='menu-button'>
+MENU
+<img src='/images/menu-triangle.png' width='11px'>
+</a>
+<ul id='menu-items'>
+<li>
+<a href="http://www.novosco.com/">Home</a>
+</li>
+<li>
+<a class="active" href="http://cio.novosco.com/">CIO Blog</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+
+<div class='container'>
+<div id='post-main'>
+<article class='post-header'>
+<h1 class='article-header'>
+<a href="/20130912-storefront-20/">StoreFront 2.0</a>
+</h1>
+<div class='post-meta'>
+<div class='post-avatar'>
+<img src="../images/avatars/colin-rainey.jpg?1439193430" />
+</div>
+<div class='post-meta-text'>
+<span>By <a href="/colin-rainey">Colin Rainey</a> on</span>
+<time>12 September 2013</time>
+</div>
+</div>
+
+<div class='body'>
+<p> </p>
+
+<p>Citrix StoreFront v 2.0 has been out for a few months now and it’s finally worth a look if you haven’t already. StoreFront is what Citrix call “enterprise app store” where users can subscribe to applications just as you do with smartphone devices on Android or iOS.</p>
+
+<p><a href="http://cjrainey.files.wordpress.com/2013/11/clip_image002.jpg"> <img title="clip_image002" alt="clip_image002" src="http://cjrainey.files.wordpress.com/2013/11/clip_image002_thumb.jpg?w=244&h=106" /> </a></p>
+
+<p>The previous versions required you to install SQL Express on the server which is obviously an unwelcome addition as you have to them provide backup maintenance plans, and give your server a few more virtual sticks of RAM in your hypervisor.</p>
+
+<p>Early Storefront also proved to be a bit unreliable. After one install, I had to remove it and revert to Web Interface 5.4 as the Storefront Wallet Service kept failing and even a re-install would not fix.</p>
+
+<p>With Web Interface 5.4 development at an end, and End Of Life coming in next year or two, its StoreFront you need to be installing and getting to know.</p>
+
+<p>Version 2 is much leaner due to no SQL Express, and while the management console is still limited in terms of customisation (compared to Web I) – the Green Bubble GUI is now the same across web and mobile devices. Integration to CAG and your XenDesktop and XenApp farms is similar to Web-I and easy to setup.</p>
+
+<p>I expect that the StoreFront management tool will get an upgrade soon to allow easy customisation and addition of your corporate logo and security notices.</p>
+
+<p><a href="http://cjrainey.files.wordpress.com/2013/11/clip_image004.jpg"> <img title="clip_image004" alt="clip_image004" src="http://cjrainey.files.wordpress.com/2013/11/clip_image004_thumb.jpg?w=212&h=159" /> </a></p>
+
+<p>With StoreFronts and App Controller – you can now push out other apps (Web/SaaS/Data) to users on web and mobile devices from your own company app store and integrate to XenMobile.</p>
+
+<p>HA is much easier to configure in StoreFront compared to Web Interface. When you configure a 2nd server, it’s a simple task to initiate a link from server1 to server2.</p>
+
+<p>You can then load balance in your NetScaler with Load Balancing. For migration, Web Interface and Storefront can co-exist on the same server, and Storefront can also act as the PNAgent site. Post testing -you can easily set the StoreFront web site as default in IIS and remove Web Interface.</p>
+
+<p><strong>References:</strong></p>
+
+<p>*<em>StoreFront eDocs : *</em></p>
+
+<p><a href="http://support.citrix.com/proddocs/topic/dws-storefront-20/dws-version-wrapper.html">http://support.citrix.com/proddocs/topic/dws-storefront-20/dws-version-wrapper.html</a></p>
+
+<p><strong>StoreFront @ CitrixTV:</strong></p>
+
+<p><a href="http://www.citrix.com/tv/#videos/9334">http://www.citrix.com/tv/#videos/9334</a></p>
+
+<p><strong>Unified App Store OverView:</strong></p>
+
+<p><a href="http://www.citrix.com/tv/#videos/5968">http://www.citrix.com/tv/#videos/5968</a></p>
+
+<p><a href="http://feeds.wordpress.com/1.0/gocomments/cjrainey.wordpress.com/8/"> <img src="http://feeds.wordpress.com/1.0/comments/cjrainey.wordpress.com/8/" /> </a> <img src="http://stats.wordpress.com/b.gif?host=cjrainey.wordpress.com&blog=60326277&post=8&subd=cjrainey&ref=&feed=1" /></p>
+
+<div class='tags'>
+<ol>
+<li><a class="tag" href="/storefront/">StoreFront</a></li>
+</ol>
+</div>
+<section class='post-footer'>
+<h1 class='small-h1 post-author-header'>
+<div class='post-author clearfix'>
+<div class='author-avatar'>
+<img src="../images/avatars/colin-rainey.jpg?1439193430" />
+</div>
+<div class='post-author-details'>
+<h1><a href="/colin-rainey">Colin Rainey</a></h1>
+<span class='bio'>Citrix Techie and IT enthusiast, delving into MDM and has been known to listen to the odd 80’s tune.</span>
+<span class='author-posts-link'>
+<a href="/colin-rainey">View Colin's other posts</a>
+</span>
+</div>
+</div>
+</h1>
+</section>
+<div class='post-nav'>
+<div class='previous-post'>
+<a href="/20130724-install-certificate-services-on-server-2012-core/">← Previous</a>
+</div>
+<div class='next-post'>
+<a href="/20131008-windows-server-core-2012-r2-remote-management/">Next →</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<footer>
+<section class='newsletter'>
+<div class='layout-wrapper' id='mc-signup'>
+<div class='layout-inner'>
+<form action='http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&amp;id=b15b8e54dd' class='validate' id='mc-subscribe-form' method='post' name='mc-embedded-subscribe-form' novalidate='' target='_blank'>
+<div class='form-inputs'>
+<label for='mc-email'>
+<div class='newsletter-title'>
+Subscribe to our mailing list
+</div>
+<input id='mc-email' name='EMAIL' placeholder='Enter your email address…' required='' type='email' value=''>
+</label>
+</div>
+<div class='form-action newsletter-button'>
+<input class='button' name='subscribe' type='submit' value='Subscribe'>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class='footer-info clearfix'>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<span class='about-novosco'>
+<strong>Novosco</strong>
+is a leading provider of Cloud Technologies, Managed Service and Consulting.
+</span>
+<span class='copyright'>
+© 2007-2015 Novosco Ltd
+</span>
+</div>
+</div>
+</section>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-44792610-1', 'novosco.com');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

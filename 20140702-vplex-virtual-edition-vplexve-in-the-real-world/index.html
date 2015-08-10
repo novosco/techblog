@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en' xmlns:fb='http://ogp.me/ns/fb#'>
+<head>
+<link href="../stylesheets/syntax_highlighting.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='text/html;' http-equiv='content-type'>
+<title>VPLEX Virtual Edition (VPLEX/VE) In The Real World
+ | Novosco Tech Blog</title>
+<meta content='index,follow' name='robots'>
+<meta content='initial-scale=1.0 maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='width=380, maximum-scale=1.0' name='viewport'>
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='../images/touch-icon-iphone.png' rel='apple-touch-icon'>
+<link href='../images/touch-icon-ipad.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='../images/touch-icon-iphone-retina.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='../images/touch-icon-ipad-retina.png' rel='apple-touch-icon' sizes='144x144'>
+<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+<link href="../stylesheets/all.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<!-- OG -->
+<meta content='Novosco Tech Blog' property='og:title'>
+<meta content='website' property='og:type'>
+<meta content='../images/novosco-og-icon.png' property='og:image'>
+<meta content='http://engineering.novosco.com' property='og:url'>
+<meta content='Novosco Tech Blog ' property='og:description'>
+<!-- Twitter -->
+<meta content='summary' name='twitter:card'>
+<meta content='http://engineering.novosco.com' name='twitter:url'>
+<meta content='Novosco Tech Blog' name='twitter:title'>
+<meta content='Novosco Tech Blog ' name='twitter:description'>
+<meta content='../images/novosco-og-icon.png' name='twitter:image'>
+<meta content='@novoscoeng' name='twitter:site'>
+<meta content='@novosco' name='twitter:creator'>
+<meta content='' name='author'>
+<!-- Typekit -->
+<script src="//use.typekit.net/tjm4emr.js" type="text/javascript"></script>
+<script>
+  try{Typekit.load();}catch(e){};
+  
+  window.onload = function() {
+    var menu = document.getElementById('menu-button');
+    var menu_items = document.getElementById('menu-items');
+  
+    function toggleMenu(){
+      if (menu_items.style.display == "block") {
+        menu_items.style.display = 'none';
+      } else {
+        menu_items.style.display = 'block';
+      }
+    };
+  
+    menu.addEventListener('click', function() {
+      toggleMenu()
+    }, false);
+  };
+</script>
+
+</head>
+<body class='20140702-vplex-virtual-edition-vplexve-in-the-real-world 20140702-vplex-virtual-edition-vplexve-in-the-real-world_index'>
+<header>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<a href="/"><span class='logo'>Novosco Tech Blog</span></a>
+<div class='header-nav'>
+<nav>
+<a href='#' id='menu-button'>
+MENU
+<img src='/images/menu-triangle.png' width='11px'>
+</a>
+<ul id='menu-items'>
+<li>
+<a href="http://www.novosco.com/">Home</a>
+</li>
+<li>
+<a class="active" href="http://cio.novosco.com/">CIO Blog</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+
+<div class='container'>
+<div id='post-main'>
+<article class='post-header'>
+<h1 class='article-header'>
+<a href="/20140702-vplex-virtual-edition-vplexve-in-the-real-world/">VPLEX Virtual Edition (VPLEX/VE) In The Real World</a>
+</h1>
+<div class='post-meta'>
+<div class='post-avatar'>
+<img src="../images/avatars/steven-johnston.jpg?1439193430" />
+</div>
+<div class='post-meta-text'>
+<span>By <a href="/steven-johnston">Steven Johnston</a> on</span>
+<time> 2 July 2014</time>
+</div>
+</div>
+
+<div class='body'>
+<p>It seems so long ago now when I reviewed EMC World 2014. One of the things I wanted to learn more about while I was there was VPLEX/VE.<br>
+So far, everything I have found out makes me wonder, “Which type of customer it is designed to fit?”. To explain what I am talking about here you need to know the architecture.</p>
+
+<p><strong>VPLEX/VE Architectural Features:</strong></p>
+
+<ul>
+<li>Uses vApps and runs on ESXi.</li>
+<li>Requires 4 vDirectors per site and each is statically bound to an ESXi Host.</li>
+<li>Has a virtual management server per site that can reside on any of the ESXi hosts.</li>
+</ul>
+
+<p><a href="http://www.neogeek.net/wp-content/uploads/2014/07/VPLEX-VE_Architecture.jpg"> <img alt="VPLEX-VE_Architecture" src="http://www.neogeek.net/wp-content/uploads/2014/07/VPLEX-VE_Architecture.jpg" /> </a></p>
+
+<ul>
+<li>Has optional cluster witness feature and for ideal circumstances this needs a third site.</li>
+<li>VPLEX/VE will only operate between 2 sites synchronously (VPLEX Metro).</li>
+<li>2x WAN links are preferred with latency up to 10ms roundtrip between replicated sites and up to 1000ms between replicated sites and witness site</li>
+</ul>
+
+<p><a href="http://www.neogeek.net/wp-content/uploads/2014/07/VPLEX-VE_Architecture2.jpg"> <img alt="VPLEX-VE_Architecture2" src="http://www.neogeek.net/wp-content/uploads/2014/07/VPLEX-VE_Architecture2.jpg" /> </a></p>
+
+<ul>
+<li>Is iSCSI only (FC is only in the bigger brother full VPLEX).</li>
+<li>Supports VNXe arrays only.</li>
+<li>Is limited to 80K IOPS</li>
+<li>Is managed via the vSphere Web Client</li>
+<li>Needs distributed Switches for operation</li>
+</ul>
+
+<p><strong>The Argument:</strong></p>
+
+<p>Having covered the above points lets extract what this really means. VPLEX/VE is an amazing feat of engineering. I welcome the software only version of the brilliant VPLEX hardware but I find its use may be somewhat limited currently. Perhaps I am not thinking openly enough?</p>
+
+<p>My argument is based on the fact that VPLEX/VE supports VNXe and iSCSI only, so can only appeal to companies who would use this combination of storage array and protocol for production storage. i.e. small businesses.</p>
+
+<p>I find the following areas conflict with the typical profile of small businesses:</p>
+
+<ul>
+<li>4 ESXi Hosts per site are required as a minimum. Due to needing distributing switches these Hosts will require Enterprise Plus licensing. Many small businesses aren’t likely to have as many as 8 hosts and usually license vSphere at lower versions due to costs.</li>
+<li>The witness should reside on a third site. Many small businesses are lucky to have somewhere suitable to run their Server hardware at 1 site, let alone 3.</li>
+<li>Having 2 WAN links between Site 1 and Site 2 with less than 10ms round trip time is a big ask for a small business. Even 2 WAN links between Site 1 &amp; 3 and Site 2&amp; 3 with 1000ms round trip time could be challenging in some small businesses. I appreciate however that it will work with 1 WAN link between each Site.</li>
+<li>Implementing a stretched vSphere cluster doesn’t stop once compute resource and active/active multi-site storage has been provided. It requires networking configuration providing a stretched layer 2 subnet and this is again something a small business is less likely to have.</li>
+</ul>
+
+<p>Many of these requirements are easily met in larger companies. Multiple sites with facilities to run hardware, 4 hosts per site on 2 sites with a third to run the witness, low latency WAN links.<br>
+These are all pretty trivial for larger customers but VNXe as a main production storage array running a workload important enough to give it a multi-site stretched vSphere cluster is something I think is unlikely to be present in those customers.</p>
+
+<p>I appreciate that VNXe is frequently used in larger companies (e.g. branch, departmental use or backup targets) but those same companies are much more likely to run the full blown VPLEX with a high-end VNX or VMAX, especially for very important workloads.</p>
+
+<p>VNXe as a production storage array in my experiences are primarily found in small businesses whereas the environment required to support VPLEX/VE is rarely found in companies of that size. There are always exceptions but to put it bluntly, if a company can afford the environment required to run VPLEX/VE, they are likely to use a higher caliber storage array (Not putting VNXe down, it is a great product).</p>
+
+<p>Disagree? Let me know in the comments.</p>
+
+<div class='tags'>
+<ol>
+<li><a class="tag" href="/emc/">EMC</a></li>
+</ol>
+</div>
+<section class='post-footer'>
+<h1 class='small-h1 post-author-header'>
+<div class='post-author clearfix'>
+<div class='author-avatar'>
+<img src="../images/avatars/steven-johnston.jpg?1439193430" />
+</div>
+<div class='post-author-details'>
+<h1><a href="/steven-johnston">Steven Johnston</a></h1>
+<span class='bio'>Tech lover and scripting addict. Focused on virtualisation, storage and data centre networking solutions. VMware / Cisco / EMC.</span>
+<span class='author-posts-link'>
+<a href="/steven-johnston">View Steven's other posts</a>
+</span>
+</div>
+</div>
+</h1>
+</section>
+<div class='post-nav'>
+<div class='previous-post'>
+<a href="/20140630-thin-provisioning-its-0k-at-the-start/">← Previous</a>
+</div>
+<div class='next-post'>
+<a href="/20140708-citrix-appdna-8211-analyzing-your-apps-for-those-new-os-deployments/">Next →</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<footer>
+<section class='newsletter'>
+<div class='layout-wrapper' id='mc-signup'>
+<div class='layout-inner'>
+<form action='http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&amp;id=b15b8e54dd' class='validate' id='mc-subscribe-form' method='post' name='mc-embedded-subscribe-form' novalidate='' target='_blank'>
+<div class='form-inputs'>
+<label for='mc-email'>
+<div class='newsletter-title'>
+Subscribe to our mailing list
+</div>
+<input id='mc-email' name='EMAIL' placeholder='Enter your email address…' required='' type='email' value=''>
+</label>
+</div>
+<div class='form-action newsletter-button'>
+<input class='button' name='subscribe' type='submit' value='Subscribe'>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class='footer-info clearfix'>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<span class='about-novosco'>
+<strong>Novosco</strong>
+is a leading provider of Cloud Technologies, Managed Service and Consulting.
+</span>
+<span class='copyright'>
+© 2007-2015 Novosco Ltd
+</span>
+</div>
+</div>
+</section>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-44792610-1', 'novosco.com');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

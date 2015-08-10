@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en' xmlns:fb='http://ogp.me/ns/fb#'>
+<head>
+<link href="../stylesheets/syntax_highlighting.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='text/html;' http-equiv='content-type'>
+<title>PS Script&#58; Auto Generating New Extensions in Lync
+ | Novosco Tech Blog</title>
+<meta content='index,follow' name='robots'>
+<meta content='initial-scale=1.0 maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='width=380, maximum-scale=1.0' name='viewport'>
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='../images/touch-icon-iphone.png' rel='apple-touch-icon'>
+<link href='../images/touch-icon-ipad.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='../images/touch-icon-iphone-retina.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='../images/touch-icon-ipad-retina.png' rel='apple-touch-icon' sizes='144x144'>
+<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+<link href="../stylesheets/all.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<!-- OG -->
+<meta content='Novosco Tech Blog' property='og:title'>
+<meta content='website' property='og:type'>
+<meta content='../images/novosco-og-icon.png' property='og:image'>
+<meta content='http://engineering.novosco.com' property='og:url'>
+<meta content='Novosco Tech Blog ' property='og:description'>
+<!-- Twitter -->
+<meta content='summary' name='twitter:card'>
+<meta content='http://engineering.novosco.com' name='twitter:url'>
+<meta content='Novosco Tech Blog' name='twitter:title'>
+<meta content='Novosco Tech Blog ' name='twitter:description'>
+<meta content='../images/novosco-og-icon.png' name='twitter:image'>
+<meta content='@novoscoeng' name='twitter:site'>
+<meta content='@novosco' name='twitter:creator'>
+<meta content='' name='author'>
+<!-- Typekit -->
+<script src="//use.typekit.net/tjm4emr.js" type="text/javascript"></script>
+<script>
+  try{Typekit.load();}catch(e){};
+  
+  window.onload = function() {
+    var menu = document.getElementById('menu-button');
+    var menu_items = document.getElementById('menu-items');
+  
+    function toggleMenu(){
+      if (menu_items.style.display == "block") {
+        menu_items.style.display = 'none';
+      } else {
+        menu_items.style.display = 'block';
+      }
+    };
+  
+    menu.addEventListener('click', function() {
+      toggleMenu()
+    }, false);
+  };
+</script>
+
+</head>
+<body class='20140829-ps-script-auto-generating-new-extensions-in-lync 20140829-ps-script-auto-generating-new-extensions-in-lync_index'>
+<header>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<a href="/"><span class='logo'>Novosco Tech Blog</span></a>
+<div class='header-nav'>
+<nav>
+<a href='#' id='menu-button'>
+MENU
+<img src='/images/menu-triangle.png' width='11px'>
+</a>
+<ul id='menu-items'>
+<li>
+<a href="http://www.novosco.com/">Home</a>
+</li>
+<li>
+<a class="active" href="http://cio.novosco.com/">CIO Blog</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+
+<div class='container'>
+<div id='post-main'>
+<article class='post-header'>
+<h1 class='article-header'>
+<a href="/20140829-ps-script-auto-generating-new-extensions-in-lync/">PS Script&#58; Auto Generating New Extensions in Lync</a>
+</h1>
+<div class='post-meta'>
+<div class='post-avatar'>
+<img src="../images/avatars/alan-mcburney.jpg?1439193430" />
+</div>
+<div class='post-meta-text'>
+<span>By <a href="/alan-mcburney">Alan McBurney</a> on</span>
+<time>29 August 2014</time>
+</div>
+</div>
+
+<div class='body'>
+<p>This a script I’ve been meaning to put together for a while in order to find free extensions within a given extension range in Lync.</p>
+
+<p>Within Lync I assign all enterprise voice users with a phone number and extension.<br>
+Some users have a DDI assigned whilst others use the base office number with an extension.</p>
+
+<p>Each office has its own extensions range</p>
+
+<p>100 – 109 HQ response Groups<br>
+110 – 299 HQ Users<br>
+300 – 399 Branch Office 1<br>
+400 – 499 Branch Office 2</p>
+
+<p>Over time and depending on who activates new staff members the extensions tend to get out of sequence, so finding the next available extension within a range can be tedious.</p>
+
+<p>The Get-FreeExtensions.ps1 script makes finding available extensions a lot easier.</p>
+
+<p>The script has 3 parameters:<br>
+ExtensionsReuired<br>
+ExtRangeStart<br>
+ExtRangeEnd</p>
+
+<p>ExtensionsReuired is the number of extensions that are needed within a given range, where ExtRangeStart and ExtRangeEnd define the range.</p>
+
+<p>The script is run as the example below in order to generate 5 free extensions within the range 110 to 299</p>
+
+<p>Get-FreeExtensions.ps1 -ExtensionsRequired 5 -ExtRangeStart 110 -ExtRangeEnd 299</p>
+
+<p>The script will always find the free extensions in ascending numerical order</p>
+
+<p>&lt;#
+ .SYNOPSIS
+ Finds free extensions within a given range</p>
+
+<p>.Author
+ Alan.McBurney</p>
+
+<p>THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE
+ RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.</p>
+
+<p>Version 1.0, August 28th, 2014</p>
+
+<p>.Description
+ This script will find the next available extension(s) within a given extension range.
+ The script searches for extensions across:
+ Users
+ RgsWorkflows
+ AnalogDevices
+ CommonAreaPhones
+ Unified Messaging
+ MeetingRooms
+ The script will also throw a warning if the number of required extensions are not
+ available within the given range.</p>
+
+<p>.Parameter -ExtensionsRequired
+ This is the number of free extensions that are required</p>
+
+<p>.Parameter -ExtRangeStart
+ This is the start of the range to query</p>
+
+<p>.Parameter -ExtRangeEnd
+ This is the end of the Range to query</p>
+
+<p>.Example
+ Get-FreeExtensions.ps1 -ExtensionsRequired 5 -ExtRangeStart 100 -ExtRangeEnd 199
+ #&gt;
+ param
+ (
+ [parameter(Position=1,Mandatory=$true,ValueFromPipeline=$false,HelpMessage=&lsquo;Number of Extensions Required&rsquo;)][int]$ExtensionsRequired,
+ [parameter(Position=2,Mandatory=$true,ValueFromPipeline=$false,HelpMessage=&lsquo;Extension Range&rsquo;)][int]$ExtRangeStart,
+ [parameter(Position=2,Mandatory=$true,ValueFromPipeline=$false,HelpMessage=&lsquo;Extension Range&rsquo;)][int]$ExtRangeEnd
+ )</p>
+
+<p>#Check to Ensure Lync Module is loaded or can be loaded
+ Function Get-MyModule
+ {
+ Param([String]$Name)
+ if (-not(Get-Module -name $Name))
+ {
+ if(Get-Module -ListAvailable | Where-Object {$_.Name -eq $Name})
+ {
+ Import-Module -Name $Name
+ }
+ else
+ {
+ Write-Host $Name PowerShell Module Not Available -ForegroundColor Red
+ }
+ }
+ }</p>
+
+<p>Get-MyModule -Name Lync</p>
+
+<p>Function Get-LyncExtensions
+ {
+ $Extensions = @()
+ $Extensions += (Get-CsUser).LineURI | Where-Object {$_ -match &ldquo;=&rdquo;}
+ $Extensions += (Get-CsUser).PrivateNumber | Where-Object {$_ -match &ldquo;=&rdquo;}
+ $Extensions += (Get-CsRgsWorkflow).LineURI | Where-Object {$_ -match &ldquo;=&rdquo;}
+ $Extensions += (Get-CsAnalogDevice).LineURI | Where-Object {$_ -match &ldquo;=&rdquo;}
+ $Extensions += (Get-CsCommonAreaPhone).LineURI | Where-Object {$_ -match &ldquo;=&rdquo;}
+ $Extensions += (Get-CsExUMContact).LineURI | Where-Object {$_ -match &ldquo;=&rdquo;}
+ $Extensions += (Get-CsMeetingRoom).LineURI | Where-Object {$_ -match &ldquo;=&rdquo;}
+ $Extensions -replace [regex] &ldquo;^tel:+\d*;ext=&rdquo; | Sort
+ }</p>
+
+<p>$UnUsedCount = 0
+ $ExtRange = ($ExtRangeStart..$ExtRangeEnd)
+ $FreeExt = @()
+ $UsedExt = Get-LyncExtensions
+ $CompareUsed = Compare-Object $UsedExt $ExtRange</p>
+
+<p>foreach ($ext in $CompareUsed)
+ {
+ if($ext.sideIndicator -eq &ldquo;=&gt;&rdquo;) {$FreeExt+=$ext.inputobject;$UnUsedCount++}
+ }</p>
+
+<p>if ($ExtRangeStart -gt $ExtRangeEnd)
+ {
+ Write-Host &ldquo;Extension End Range must be equal or greater to Extension Start Range&rdquo; -ForegroundColor Yellow
+ } elseif ($ExtensionsRequired -gt $ExtRange.Count) {
+ Write-Host &ldquo;Extensions Required is greater than Specifed Extensions Range. Please ammend the Extension Range End parameter&rdquo; -ForegroundColor Yellow
+ } elseif ($ExtensionsRequired -gt $UnUsedCount) {
+ Write-Host &ldquo;Not enough free extensions within the specified range $ExtRangeStart-$ExtRangeEnd Maximum is $UnUsedCount&rdquo; -ForegroundColor Yellow
+ } else {
+ $FreeExt | Select -First $ExtensionsRequired
+ }<br>
+<a href="http://feeds.wordpress.com/1.0/gocomments/everythingsysadmin.wordpress.com/718/"> <img src="http://feeds.wordpress.com/1.0/comments/everythingsysadmin.wordpress.com/718/" /> </a> <img src="http://pixel.wp.com/b.gif?host=everythingsysadmin.wordpress.com&blog=8998607&post=718&subd=everythingsysadmin&ref=&feed=1" /></p>
+
+<div class='tags'>
+<ol>
+<li><a class="tag" href="/lync/">Lync</a></li>
+</ol>
+</div>
+<section class='post-footer'>
+<h1 class='small-h1 post-author-header'>
+<div class='post-author clearfix'>
+<div class='author-avatar'>
+<img src="../images/avatars/alan-mcburney.jpg?1439193430" />
+</div>
+<div class='post-author-details'>
+<h1><a href="/alan-mcburney">Alan McBurney</a></h1>
+<span class='bio'>Solutions Architect @Novosco. Passionate about technology, delivering Microsoft centric solutions with emphasis on Lync, Exchange, PowerShell and Infrastructure.</span>
+<span class='author-posts-link'>
+<a href="/alan-mcburney">View Alan's other posts</a>
+</span>
+</div>
+</div>
+</h1>
+</section>
+<div class='post-nav'>
+<div class='previous-post'>
+<a href="/20140827-script-checking-for-expired-certificates-in-exchange/">← Previous</a>
+</div>
+<div class='next-post'>
+<a href="/20140911-to-nuc-or-not-to-nuc/">Next →</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<footer>
+<section class='newsletter'>
+<div class='layout-wrapper' id='mc-signup'>
+<div class='layout-inner'>
+<form action='http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&amp;id=b15b8e54dd' class='validate' id='mc-subscribe-form' method='post' name='mc-embedded-subscribe-form' novalidate='' target='_blank'>
+<div class='form-inputs'>
+<label for='mc-email'>
+<div class='newsletter-title'>
+Subscribe to our mailing list
+</div>
+<input id='mc-email' name='EMAIL' placeholder='Enter your email address…' required='' type='email' value=''>
+</label>
+</div>
+<div class='form-action newsletter-button'>
+<input class='button' name='subscribe' type='submit' value='Subscribe'>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class='footer-info clearfix'>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<span class='about-novosco'>
+<strong>Novosco</strong>
+is a leading provider of Cloud Technologies, Managed Service and Consulting.
+</span>
+<span class='copyright'>
+© 2007-2015 Novosco Ltd
+</span>
+</div>
+</div>
+</section>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-44792610-1', 'novosco.com');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

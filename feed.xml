@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog Name</title>
+  <subtitle>Blog subtitle</subtitle>
+  <id>http://blog.url.com/</id>
+  <link href="http://blog.url.com/"/>
+  <link href="http://blog.url.com/feed.xml" rel="self"/>
+  <updated>2015-07-04T20:13:37Z</updated>
+  <author>
+    <name>Blog Author</name>
+  </author>
+  <entry>
+    <title>Cloud file sharing with Citrix ShareFile  &amp;#8211; Business Model and Main Features</title>
+    <link rel="alternate" href="http://blog.url.com/20150704-cloud-file-sharing-with-citrix-sharefile--8211-business-model-and-main-features/"/>
+    <id>http://blog.url.com/20150704-cloud-file-sharing-with-citrix-sharefile--8211-business-model-and-main-features/</id>
+    <published>2015-07-04T20:13:37Z</published>
+    <updated>2015-08-10T08:43:05+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Business Model&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There are several different models of subscription for Citrix ShareFile, namely Basic, Professional, Corporate, Enterprise as well as Virtual Data Room (ShareFile,2015) –  all charged on a per users bases with options for monthly or annual charging.&lt;/p&gt;
+
+&lt;p&gt;A personal account with 100Gb storage will cost you about $15 per month, rising to $100 per month for 5 business users with unlimited storage. This give you access from almost any type of device. In addition to these options, customers who purchase Citrix XenMobile Enterprise Mobile Device Management, or WorkSpace Suite ( XenDesktop, XenServer, XenApp, MDM etc)  also get  ShareFile Enterprise as part of that bundle.&lt;/p&gt;
+
+&lt;p&gt;*&lt;em&gt;Main Features *&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;As the name suggests, ShareFile is a file and document sharing tool like DropBox or OneDrive. Using a web browser or other ShareFile tool, users can upload or download files and folders, easily share with other colleagues or provide a link to external contacts or project team members. Clients for Android, iOS,BlackBErry and Windows Phone cover most of the mobile devices while PC and Mac tools include local sync, Outlook Plugin and a drive map capability that behaves just like a mapped network drive. Recently a ‘Print to’ capability has been added to allow you to print a PDF straight into your personal space (Citrix, What’s New 2015).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://cjrainey.files.wordpress.com/2015/07/sf1.png"&gt; &lt;img alt="sf1" src="https://cjrainey.files.wordpress.com/2015/07/sf1.png?w=700" /&gt; &lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ShareFile Connector (Citrix,2015)&lt;/p&gt;
+
+&lt;p&gt;User features include web portal ‘Custom Branding, Unlimited Client Users, Mobile Apps, Desktop Widget,Multi-factor Authentication, Sync, FTP, Versioning’ (ShareFile,2015) as well as 24/7 telephone and email support.&lt;/p&gt;
+
+&lt;p&gt;The Enterprise product adds encrypted on-premise storage. By adding an internal Storage Zone controller, larger customer can attach a local disk resource and turn it into a ShareFile space. They can also add Connectors to access (and migrate) Dropbox, Google Drive, traditional file shares, and allow users to browse, edit and update SharePoint documents.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Application Platform and Architecture&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The ShareFile platform consists of three tiers:&lt;/p&gt;
+
+&lt;p&gt;*&lt;em&gt;1 – SaaS Application Control Plane *&lt;/em&gt; –  broker, database, API servers&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2 – Storage Zones&lt;/strong&gt; – AWS,Azure,customer manager, on-premise&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3 – Client device&lt;/strong&gt; – PC/Mac, Android,iOS,BlackBerry,Windows Metro etc.&lt;/p&gt;
+
+&lt;p&gt;The ShareFile Control Plane resides in the Citrix cloud with multiple SSL web application servers providing secure access to the web portal. Behind that, API servers provide the access for mobile clients and other ShareFile tools such as Outlook plugin and Desktop Widget. Clustered database servers look after the user rights, accounts and folder metadata – but hold no end user files.  Fail over datacentres allow for disaster recover and backup. Load balancing is managed by physical Netscaler appliances hosted in a DMZ alongside the client facing web servers, with the rest of the API and database servers located within fire-walled production network. All client traffic to the Control Plane is secured to 256-bit SSL encryption (Citrix, Technical Overview 2015)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://cjrainey.files.wordpress.com/2015/07/sf2.png"&gt; &lt;img alt="sf2" src="https://cjrainey.files.wordpress.com/2015/07/sf2.png?w=700" /&gt; &lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ShareFile Broker – connected user to files and shares.&lt;/p&gt;
+
+&lt;p&gt;Customer can select to store files on Citrix managed AWS or Azure cloud with client managed StorageZone servers hosted in Azure or in the on-premise data centre, and select a .com or  .eu region based on their data regulations and makes use of AWS storage.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SaaS Management Software&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The customer managed StorageZone controller provides the secure brokered connection from the Citrix SaaS cloud resources. This requires a one time setup, that enables users to access  the internal encrypted file store, and network shares. A number of administration options are available in the web portal, including custom branding, password policy control, reporting and device security options.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://cjrainey.files.wordpress.com/2015/07/sf3.png"&gt; &lt;img alt="sf3" src="https://cjrainey.files.wordpress.com/2015/07/sf3.png?w=700" /&gt; &lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ShareFile  – Portal Admin options (ShareFile,2015)&lt;/p&gt;
+
+&lt;p&gt;A User Management  tool can be setup to provide automated creation of users accounts. After checking Active Director for new additions to a ShareFile AD group – the User Management tool, running on the customer network –  provisions the user on the Citrix cloud resources with a matching password. Additional SAML authentication can be configured via a NetScaler URL to enable Single-Sign-On (SSO).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Integration&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There are a wide range of ShareFile integration options including WebDav, and ShareFile API tools for developers to customise web and intranet sites,  as well as  SaaS vendor plugins  including SalesForce,CodeGreen,DocAuto, Microsoft ADFS,Ping. Integrating with Point.io enables connections to other vendors pruducts such as EMC Documentum, IBM FileNet, OpenText, HP/Autonomy WorkSite iManage (Citrix,2015). GoToMeeting,Podio and XenMobile and RightSignature are also closely integrated with ShareFile, as you would expect coming from the same vendor. A new Office 365 connector is also available, and even a client for Apple Watch (Citrix 2015).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Citrix (2015) ShareFile Technical Overview [Online] Available from &lt;a href="https://www.citrix.com/content/dam/citrix/en_us/documents/products-solutions/citrix-sharefile-enterprise-a-technical-overview.pdf"&gt;https://www.citrix.com/content/dam/citrix/en_us/documents/products-solutions/citrix-ShareFile-enterprise-a-technical-overview.pdf&lt;/a&gt; (accessed 27/06/2015)&lt;/p&gt;
+
+&lt;p&gt;Citrix [2015) Licensing Models [Online] Available from &lt;a href="https://www.citrix.com/buy/licensing/product.html"&gt;https://www.citrix.com/buy/licensing/product.html&lt;/a&gt; (accessed 27/06/2015)&lt;/p&gt;
+
+&lt;p&gt;Citrix (2015) ShareFile Platform -Integration [Online] Available from&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://blogs.citrix.com/tag/sharefile-platform/"&gt;http://blogs.citrix.com/tag/ShareFile-platform/&lt;/a&gt; (accessed 27/06/2015)&lt;/p&gt;
+
+&lt;p&gt;Citrix (2015) ShareFile  – Whats New [Online] Available from &lt;a href="http://www.citrix.com/products/sharefile/whats-new.html"&gt;http://www.citrix.com/products/ShareFile/whats-new.html&lt;/a&gt; (accessed 27/06/2015)&lt;/p&gt;
+
+&lt;p&gt;Citrix (2015) ShareFile Security WhitePaper [Online] Available from &lt;a href="https://www.citrix.com/content/dam/citrix/en_us/documents/products-solutions/sharefile-enterprise-security-whitepaper.pdf"&gt;https://www.citrix.com/content/dam/citrix/en_us/documents/products-solutions/ShareFile-enterprise-security-whitepaper.pdf&lt;/a&gt; (accessed 27/06/2015)&lt;/p&gt;
+
+&lt;p&gt;Citrix (2015) ShareFile Enterprise Product Integrations [Online] Available from   &lt;a href="http://www.citrix.com/products/sharefile/tech-info/partners.html"&gt;http://www.citrix.com/products/ShareFile/tech-info/partners.html&lt;/a&gt; (accessed 27/06/2015)&lt;/p&gt;
+
+&lt;p&gt;Citrix (2015)  Working Easier From Screen-To-Screen: Citrix ShareFile Goes Wherever You Go [Online] Available from   &lt;a href="http://blogs.citrix.com/2015/05/12/working-easier-from-screen-to-screen-citrix-sharefile-goes-wherever-you-go/"&gt;http://blogs.citrix.com/2015/05/12/working-easier-from-screen-to-screen-citrix-ShareFile-goes-wherever-you-go/&lt;/a&gt;  (accessed 27/06/2015)&lt;/p&gt;
+
+&lt;p&gt;Sharefile (2015) Procing for Business [Online] Available from &lt;a href="http://www.sharefile.com/industries/Business/pricing.aspx?src=direct&amp;amp;v=e&amp;amp;cat=1"&gt;http://www.sharefile.com/industries/Business/pricing.aspx?src=direct&amp;amp;v=e&amp;amp;cat=1&lt;/a&gt; (accessed 27/06/2015)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.wordpress.com/1.0/gocomments/cjrainey.wordpress.com/199/"&gt; &lt;img src="http://feeds.wordpress.com/1.0/comments/cjrainey.wordpress.com/199/" /&gt; &lt;/a&gt; &lt;img src="https://pixel.wp.com/b.gif?host=cjrainey.wordpress.com&amp;blog=60326277&amp;post=199&amp;subd=cjrainey&amp;ref=&amp;feed=1" /&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Building NVidia GRID and XenDesktop POC – Part1</title>
+    <link rel="alternate" href="http://blog.url.com/20150204-building-nvidia-grid-and-xendesktop-poc--part1/"/>
+    <id>http://blog.url.com/20150204-building-nvidia-grid-and-xendesktop-poc--part1/</id>
+    <published>2015-02-04T12:32:23Z</published>
+    <updated>2015-08-10T08:43:05+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;It’s always exciting to get your hands on some new technology that breaks the mold when it comes to deploying VDI and applications on Citrix. For years, using CAD and high end graphics has been a no go area on shared desktops hosted on Presentation Server or XenApp. The best you could probably achieve would be  CAD viewer for some light review work – no chance of full blown Auto-Cad or video editing software. You really needed to keep your big workstation PC or MAC with expensive hardware to do any serious work. More recently though Citrix have been able to connect you into dedicated PCs or blade-PC hosted in you data center with much improved graphics and capabilities for rendering images and video. We have had some success with this in hospital environments where medical staffs can remote in to their desktop and review x-ray and other patient videos from their home PC of tablet.&lt;/p&gt;
+
+&lt;p&gt;NVidia GRID and XenDesktop really do change the game. With dedicated Graphics Processing Units that you can allocate to your Windows PCs – the days of using hardware PC or blade PCs are banished. The NVidia cards can be fitted into a server running XenServer 6.2.  A XenServer plugin then allows access to the GPU and the XenDesktop Agent talks to the hardware. The result is quite spectacular! The POC I have been working on recently involves users in India accessing a XenDesktop Windows 7 PC in a server room in Northern Ireland. That’s a looonnng way away to be using a CAD application over a 3G connection. Results?  “Better than a desktop PC” was one user’s feedback.&lt;/p&gt;
+
+&lt;p&gt;So here are some tips.&lt;/p&gt;
+
+&lt;p&gt;Make sure you have all the cards, cables and components to put in the server. Check you have enough network ports, and switch connections for storage. &lt;img alt="nvidia" src="https://cjrainey.files.wordpress.com/2015/02/nvidia1.jpg?w=300&amp;h=170" /&gt;&lt;/p&gt;
+
+&lt;p&gt;I was using HP DL380g8 servers with 2 NVidia GRID cards per server. To fit these, you need to order alternative PCI riser cards with cage from HP – and you need two different parts. One has an additional PCI slot, the other has not. The additional PCI slot is critical as you need this to facilitate another PCI card – in my case a HP dual port HBA for connecting to the fiber channel SAN. Without this, you’re pretty stuck with only local storage, unless you’re using iSCSI perhaps.&lt;/p&gt;
+
+&lt;p&gt;You’ll also need a set of torque screwdrivers as the cages (that house the NVidia cards) have tiny screws that would be easily damaged if you try to force them loose with something else.&lt;/p&gt;
+
+&lt;p&gt;It’s also worth ordering your server with on-board 10GB NICS instead of the standard 1Gb NICS. This will provide better connectivity that the standard 4 port 1Gb NIC card.&lt;/p&gt;
+
+&lt;p&gt;To fit these new risers and cage – you need to remove the CPU heat sinks and grab handle on the mother board and replace these with new ones that fit with the cages. If your happy enough to do that, make sure you have an anti-static wrist band and be very careful not to drop any screws into the server.&lt;/p&gt;
+
+&lt;p&gt;If you have all the cards, cages and cables – you can do it all in one go instead of having to rack and stack the servers and then come back and have more downtime.&lt;/p&gt;
+
+&lt;p&gt;*&lt;em&gt;BIOS *&lt;/em&gt;– After installing the cards – go into the BIOS and make sure the on-board graphics card is still the main display card. If your server is set to use the external or extended graphics card as the main one – you won’t be able to see anything on the console, or on the iLO card for remote management.&lt;/p&gt;
+
+&lt;p&gt;Then you’re ready to install XenServer 6.2 + Spk1 , and add in the NVidia graphics plugin. Check here –  &lt;a href="https://www.citrix.com/go/private/vgpu.html"&gt;https://www.citrix.com/go/private/vgpu.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This needs to be copied to the root folder of the server using WinSCP or similar tool. Once installed, the XenCentre tools should show a new tab for GPU.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;RAM&lt;/strong&gt; – Make sure your server is fully loaded with as much RAM as you can get. If you’re running a CAD application like Auto-Desk or Creo you’re going to need a minimum of 16 Gb per Windows 7/8 virtual PC. If you need more per PC, you won’t be long running low on resources.&lt;/p&gt;
+
+&lt;p&gt;In deploying an initial server for a proof-of-concept, I limited the number of users to six. After building the OS, and installing the NVidia drivers, you then install the XenTools as normal and you’re ready to install whatever software you need. I left this to the customer to do while I created the Machine Catalogs and Delivery groups in Desktop Studio.&lt;/p&gt;
+
+&lt;p&gt;More later..&lt;/p&gt;
+
+&lt;p&gt;Citrix Reference doc:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.citrix.com/content/dam/citrix/en_us/documents/go/configuring-xenserver-to-use-nvidia-grid.pdf"&gt;https://www.citrix.com/content/dam/citrix/en_us/documents/go/configuring-xenserver-to-use-nvidia-grid.pdf&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;NVidia:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.nvidia.com/object/virtual-gpus.html"&gt;http://www.nvidia.com/object/virtual-gpus.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.wordpress.com/1.0/gocomments/cjrainey.wordpress.com/189/"&gt; &lt;img src="http://feeds.wordpress.com/1.0/comments/cjrainey.wordpress.com/189/" /&gt; &lt;/a&gt; &lt;img src="https://pixel.wp.com/b.gif?host=cjrainey.wordpress.com&amp;blog=60326277&amp;post=189&amp;subd=cjrainey&amp;ref=&amp;feed=1" /&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>My VMworld Europe 2014 Experience</title>
+    <link rel="alternate" href="http://blog.url.com/20141027-my-vmworld-europe-2014-experience/"/>
+    <id>http://blog.url.com/20141027-my-vmworld-europe-2014-experience/</id>
+    <published>2014-10-27T09:55:00Z</published>
+    <updated>2015-08-10T08:37:55+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;h1&gt;Software defined everything - Hello (VM)World&lt;/h1&gt;
+
+&lt;p&gt;From the keynote through to the VMware lead sessions - I&amp;rsquo;ve heard software defined &lt;em&gt;X&lt;/em&gt; more times than I care. Still there&amp;rsquo;s nothing wrong with a little message reinforcement.&lt;/p&gt;
+
+&lt;p&gt;Repeat it until you vRealize it, eh?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;I was at VMworld Europe 2013 and the absence of a major vSphere release was a departure from last year&amp;rsquo;s VMworld. Without this there was still plenty to talk about - I found this interesting it its own right as it left a gap to be filled.&lt;/p&gt;
+
+&lt;p&gt;Up stepped the SDDC and the new vRealize suite, vCloud Air (and the vCloud Air network) and End User Computing among other huge topics.&lt;/p&gt;
+
+&lt;p&gt;The theme of the event was no limits showcasing how various scaling and workload mobility challenges are being tackled across the entire VMware stack.&lt;/p&gt;
+
+&lt;p&gt;The following were some takeaway items.&lt;/p&gt;
+
+&lt;h1&gt;NSX was the clear winner in hands on labs&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src="https://pbs.twimg.com/media/B0DU23jIAAE1MzP.jpg:large" /&gt;&lt;/p&gt;
+
+&lt;p&gt;What does this tell us? 12 months on from first giving IT professionals a taste of NSX - the hunger is still there to experience and understand this technology.&lt;/p&gt;
+
+&lt;p&gt;The timing is very interesting as VMware have taken the last 12 months to build up documentation and training material from a product acquired through the Nicera acquisition.&lt;/p&gt;
+
+&lt;p&gt;I attended two of the NSX hands on labs personally and found them to be very useful to introduce the platform and experience some of the advanced configurations possible.&lt;/p&gt;
+
+&lt;h1&gt;NSX has a clear marketing message at last&lt;/h1&gt;
+
+&lt;p&gt;Pat Gelsinger used the keynote to refer to some high profile infrastructure network security issues. It&amp;rsquo;s a well-known phenomena that organisations put their security dollars where they can be the most effective. Traditionally this budget is heavily invested in perimeter security or end point security.&lt;/p&gt;
+
+&lt;p&gt;The reality of many infrastructures is that if the perimeter security is breached then there is not much in the way of horizontal barriers within the data centre. The cost and complexity of implementing this level of security is beyond most organisations.&lt;/p&gt;
+
+&lt;p&gt;NSX - with its hypervisor embedded distributed router and firewall functionality offers something that feels relatively unique and useful in this space. The ability to construct rules based on various vCenter objects is pretty cool.&lt;/p&gt;
+
+&lt;p&gt;I went to a number of sessions that were designed to frame NSX in the real world - both in terms of deployment considerations and ongoing operations.&lt;/p&gt;
+
+&lt;p&gt;In particular the session &amp;ldquo;A Tale of Two Perspectives: IT Operations with VMware NSX&amp;rdquo; featuring Scott Lowe and Brad Hedlund took a humorous view of the &amp;ldquo;server guy&amp;rdquo; and &amp;ldquo;network guy&amp;rdquo; trying to figure out their relationship with NSX.&lt;/p&gt;
+
+&lt;h1&gt;Shouting loud about Virtual Volumes&lt;/h1&gt;
+
+&lt;p&gt;Virtual Volumes (or vVols) are not a new item of discussion. It&amp;rsquo;s been in the public domain for some time - but as with any platform changing technology you need time and co-operation from your supporting ecosystem to execute on your vision.&lt;/p&gt;
+
+&lt;p&gt;To this end I went to the &amp;ldquo;Virtual Volumes Technical Deep Dive&amp;rdquo; session which feature some technical background and what solutions might look like. It also featured a video demo of vVols in action.&lt;/p&gt;
+
+&lt;p&gt;What is clear is that VMware have in some way used VSAN as demonstration of what is possible with VM centric storage policies. Virtual Volumes will leverage the same storage based policies and workflows for provisioning - requiring on the face of it only support and setup on the storage side.&lt;/p&gt;
+
+&lt;h1&gt;EVO:RAIL&lt;/h1&gt;
+
+&lt;p&gt;EVO:RAIL and EVO:RACK featured prominently in the keynote. Billed as hyper-converged 100% VMware software stack with that hardware from a partner of choice. The solutions exchange also feature the EVO:RAIL challenge where people just race to stand up their first virtual machine - I don&amp;rsquo;t know what the final result was but one of the sessions referred to a 16 minute time at one stage.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s impressive in anyone&amp;rsquo;s books.&lt;/p&gt;
+
+&lt;p&gt;EVO:RAIL isn&amp;rsquo;t just about rapid provisioning - it&amp;rsquo;s targeting single SKU, single support audiences. So if you are a Dell EVO:RAIL customer then your support and updates come from Dell - VMware are 4th line support.&lt;/p&gt;
+
+&lt;p&gt;One press quote on a VMware slide had it billed as the &amp;ldquo;iPhone moment for VMware&amp;rdquo;. I was sitting there thinking it was more like an Android or Windows Phone moment as the different partners will have their own update and support policies.&lt;/p&gt;
+
+&lt;p&gt;It won&amp;rsquo;t be for everyone but Its one more choice for customers. &lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Get Certified</title>
+    <link rel="alternate" href="http://blog.url.com/20140915-get-certified/"/>
+    <id>http://blog.url.com/20140915-get-certified/</id>
+    <published>2014-09-15T09:59:35Z</published>
+    <updated>2015-08-10T08:37:55+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Along with experience and academic qualifications – product certification is essential for systems engineers AND software engineers in the modern IT world. I have worked a lot with Microsoft, Citrix and VMware in their partner programs over the last ten years for my company, for both individual staff requirements and partner status.&lt;/p&gt;
+
+&lt;p&gt;The latest Citrix certifications focus on XenDesktop/XenApp design, deployment and management. You can get certified on most of the Citrix product line but its best to start with products you work with every day, have just been trained on or are targeting a new career path. Starting at the bottom, Citrix Certified Associate – Virtualization covers XenApp/Desktop, some licensing and basic deployment. You can then add a few more separate exams for enterprise management, basic NetScaler and work towards the high end exam for Citrix Certified Professional (CCP-V) and Expert (CCE-V). Most recent additions are the Citrix Certified Professional – Mobility (CCP-M) which covers XenMobile design and deployment.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why bother?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Throughout my career I have had to do certifications for PC’s, server operating systems and especially Citrix products, as well as mentor younger staff and colleagues and point them down the right certification track for their career development. In the last ten years for example, I have completed forty certifications. Some have expired, and some are very recent such as CCP-M, CCP-V. I would not be in my current job, earning a good salary if I had not kept my certifications up to date.&lt;/p&gt;
+
+&lt;p&gt;The disadvantages of certification are few. You will need to spend time, usually your own, studying and installing products, following training guides and best practice papers in order to pass any exams. You may not always get on a training course. Passing the exams also requires a certain amount of determination and calmness, along with exam technique.&lt;/p&gt;
+
+&lt;p&gt;A training course, if you need one is usually not free – and exams cost between £100 and £250 in the UK. Another disadvantage is that certifications expire, hence  it is important to keep up to date. To do this, you should target 2-3 exams per year as a minimum. That way, you will be refreshing exams every year, gaining new knowledge and keeping ahead.&lt;/p&gt;
+
+&lt;p&gt;The advantages are plenty. For one, you will gain more in depth knowledge of the products and maybe one or two products you don’t use if you are following a “track” system like Citrix and Microsoft’s where you must complete 5-6 exams to become a Citrix CCP-V, or Microsoft Certified Professional Developer , MCPD.&lt;/p&gt;
+
+&lt;p&gt;A typical “track” may take you down the MCPD :“Design and Development of Web Applications in .NET Framework” for example. If you’re considering a Citrix path – start with a single product like XenApp server, then XenDesktop. You can then try the enterprise exams and work your way towards CCV-E and CCP-V for Virtualisation.&lt;/p&gt;
+
+&lt;p&gt;Most partner companies will also provide study guides, access on online training and videos and special partner programs with a specialist contact that can assist you and your team with certifications in their “tracks”. You may even get exam vouchers. There are many good exam preparation books availably, study guides and “brain dumps”. I often recommend &lt;a href="http://www.citrixxperience.com"&gt;http://www.citrixxperience.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Microsoft, Adobe and others are constantly updating products, and often require certification in order for your company to sell the new products or retain your status. This may mean that a team of developers may need to have 10-15 certifications as a minimum just for the company to be a Gold Partner. In a few years, this may change and a new product release will force an update to the certifications.&lt;/p&gt;
+
+&lt;p&gt;In Novosco, this applies to our engineers in Microsoft, VMware,Citrix,Cisco and EMC products – and impacts our partner status.&lt;/p&gt;
+
+&lt;p&gt;When applying for jobs, a person with certifications will almost certainly be in with a better chance of employment than a person without. Your current employer should also recognize your studying and reward you financially. Indeed, your whole career path should be based on experience, project success, work competence – and your certifications.&lt;/p&gt;
+
+&lt;p&gt;When I interview for staff – I also think the person with more certifications is more interested in their career, in IT and in developing themselves than someone who hasn’t bothered. If you are really “into” IT – you will be keen to get certified in products you are working with.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Product certification is essential for the employer.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Partner status with Microsoft come in different levels –Core,Silver,Gold etc. These are partly based on sales, but also on the number of certified engineers or developers you have. This in turn can impact your companies’ discount purchasing and reselling in the supply chain. You may also be given sales leads, and involvement in new product releases ahead of non-certified companies. Our Novosco partner status with EMC, and certification ensure we have the “skills required to plan, deploy, manage, and leverage your information infrastructure” (EMC,2014).&lt;/p&gt;
+
+&lt;p&gt;Partners often get free partner licenses. This not only saves your company money, but gives them access to nearly all the partners’ products for free, as well as getting beta releases and access to software “api”’ that non-partners won’t get access to.&lt;/p&gt;
+
+&lt;p&gt;Partner status is an important status symbol. Potential customers will compare company certifications and individual CV’s to award contracts. Certifications for staff could make the difference between your company winning the business – or closing down!&lt;/p&gt;
+
+&lt;p&gt;I don’t see too many areas where certification is not possible. You can be certified in developing, Prince II, Ethical Hacking, security, HP hardware, EMC storage, VMware, Citrix,ITIL, ISO Auditing – the list is almost endless.&lt;/p&gt;
+
+&lt;p&gt;The one area you can’t be certified in is your own communications skills, personal interaction, and ability to talk to customers and present your solutions. This really comes with experience and practice – so get some colleagues together and practice on them to hone your presentation skills.&lt;/p&gt;
+
+&lt;p&gt;Certification is not a replacement for great experience, but in my opinion is essential for IT staff, engineers and developers alike – if they want to progress their career, keep skills up to date and be regarded as subject matter experts in their field or specialist area. Having both, means you know the products in depth.&lt;/p&gt;
+
+&lt;p&gt;In terms of actually doing exams, these are typically done in exam centers with monitored rooms in industry approved organisations. Pearson-View and Sylvan Prometric are two such companies, and will have an office or training partner in most countries and big cities. Individual product exams typically have about 60 multiple choice questions. The Citrix Professional and Expert have a split of about 30 multiple choice and the rest are based on a scenario or analysis report and you then have to make choices, and backup your design. Good luck!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://training.citrix.com/cms/education/certification/"&gt;*&lt;em&gt;Citrix *&lt;/em&gt;http://training.citrix.com/cms/education/certification/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a title="http://citrixxperience.com/" href="http://citrixxperience.com/"&gt;&lt;strong&gt;Citrixxperience&lt;/strong&gt; http://citrixxperience.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/education.emc.com/guest/certification/default.aspx/"&gt;&lt;strong&gt;EMC&lt;/strong&gt; https://education.emc.com/guest/certification/default.aspx/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.itil-officialsite.com/Qualifications/ITILQualificationScheme.aspx"&gt;*&lt;em&gt;ITIL *&lt;/em&gt;http://www.itil-officialsite.com/Qualifications/ITILQualificationScheme.aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.microsoft.com/learning/en-us/certification-overview.aspx"&gt;&lt;strong&gt;Microsoft&lt;/strong&gt; http://www.microsoft.com/learning/en-us/certification-overview.aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.prometric.com/en-us/Pages/home.aspx"&gt;&lt;strong&gt;Sylvan-Prometric&lt;/strong&gt; https://www.prometric.com/en-us/Pages/home.aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feeds.wordpress.com/1.0/gocomments/cjrainey.wordpress.com/178/"&gt; &lt;img src="http://feeds.wordpress.com/1.0/comments/cjrainey.wordpress.com/178/" /&gt; &lt;/a&gt; &lt;img src="http://pixel.wp.com/b.gif?host=cjrainey.wordpress.com&amp;blog=60326277&amp;post=178&amp;subd=cjrainey&amp;ref=&amp;feed=1" /&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Troubleshooting Methodology 4 &amp;#58; Analysis and results</title>
+    <link rel="alternate" href="http://blog.url.com/20140911-troubleshooting-methodology-4-analysis-and-results/"/>
+    <id>http://blog.url.com/20140911-troubleshooting-methodology-4-analysis-and-results/</id>
+    <published>2014-09-11T13:26:00Z</published>
+    <updated>2015-08-10T08:37:55+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;At the risk of sounding like a debater, let me begin with a definition: The Oxford English Dictionary defines Analysis as:  &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Detailed examination of the elements or structure of something&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Another good word for this step would the Theorising. OED gives us:  &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Form a theory or theories about something&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Basically we look at the information we have gathered and try to come up with an explanation for the occurrence from it. The order is most important as if you theorise before getting some data the temptation is to make the data fit the theory rather than the theory fit the data. Holmes was very clear on the unacceptability of this in the previous post! Most of this phase changes from issue to issue and there are a lot of times where this phase is done in parallel with the data collection phase (sometimes the cause is obvious when you get some information on the problem). While there is much variation in how the analysis proceeds there are a few general questions that always need to be answered:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Patch levels: is the product on a supported version?&lt;/li&gt;
+&lt;li&gt;Does the issue description match a known bug?&lt;/li&gt;
+&lt;li&gt;Check event logs around the time of the known occurrences of the issue. Any items of note should be recorded even if they don’t appear relevant at the moment, may be useful later.&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Confirm it&amp;rsquo;s not a configuration issue.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Results:&lt;/p&gt;
+
+&lt;p&gt;The final phase -and if you&amp;rsquo;re working in a customer facing support role, the most important one -is giving results to the interested parties.  &lt;/p&gt;
+
+&lt;p&gt;The end result of the analysis will take one of four forms:  &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The cause is identified and the issue resolved.&lt;/li&gt;
+&lt;li&gt;The cause is not identified but an acceptable work around is found.&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;The cause is not identified and no workaround is possible. Needs to be escalated to vendor.&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;The cause is not identified and you have to refine the approach and find more information.&lt;br&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Of the above results I would honestly only consider #1 and #3 to be the end of the matter. With 1 you have resolved the problem and with 3 its escalated to the vendor and you have to work with them but with specialist help a solution should be found or at least a cause identified. I would consider #2 to be ok in the short to medium term but not a valid solution in the long term and obviously #4 means you have to start the whole process again.  &lt;/p&gt;
+
+&lt;p&gt;Hopefully the time spent reading these posts will help refine whatever method you use to troubleshoot issues.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Troubleshooting Methodology 3 &amp;#58; Data Collection</title>
+    <link rel="alternate" href="http://blog.url.com/20140911-troubleshooting-methodology-3-data-collection/"/>
+    <id>http://blog.url.com/20140911-troubleshooting-methodology-3-data-collection/</id>
+    <published>2014-09-11T13:10:00Z</published>
+    <updated>2015-08-10T08:37:55+01:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;For a completely fictional character, Sherlock Holmes does give some great quotes:  &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;It is a capital mistake to theorize before one has data. Insensibly, one begins to twist facts to suit theories, instead of theories to suit facts.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To solve any problem you need data on what is happening. Without data, you are effectively playing darts blindfolded.  &lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Data takes many forms and it&amp;rsquo;s not all about log collection. In all honesty, logs are usually one of the last things you look for. Unless you have some idea of what you are looking for, there is just too much information to parse. The only reasonably common exception to this would be the Windows event logs as (a) they really don’t record verbose logs and (b) if you have timings for when the problem occurred you can really focus your searches. Generally though the answers from the scoping questions (listed in previous post) are much more useful during the initial phase of the troubleshooting. Of the scoping questions the most important questions are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Has this ever worked?&lt;/li&gt;
+&lt;li&gt;Is it a supported configuration?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If the configuration is never going to work you are trying to perform a miracle rather than troubleshoot, and miracles in production environments are best avoided.  &lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s hard to give specific recommendations about what data to collect as this will vary massively from problem to problem. In fact in my experience the scoping questions usually end up being the data collection for all but the most intractable of problems. While I can&amp;rsquo;t give specific recommendations about information required there is some general information always required:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Environmental information ( Virtualisation, physical, Operating system, etc.)&lt;/li&gt;
+&lt;li&gt;Software versions and hotfix/patch level&lt;/li&gt;
+&lt;li&gt;For Windows servers, event logs are always a good place to start&lt;/li&gt;
+&lt;li&gt;Reproducibility or timings of when the issue occurs/occurred&lt;/li&gt;
+&lt;li&gt;Screenshots of error messages or videos of the event happening.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That last one may seem strange but that whole &amp;ldquo;picture being a thousand words &amp;rdquo; isn&amp;rsquo;t a total exaggeration. In a previous job with a software vendor I had a case once where a customer was having a graphical display problem with the software. After sometime troubleshooting it for some time and getting nowhere I eventually showed the video the customer had sent me to a colleague who knew exactly what bug it was and supplied me with a fix. This illustrates two things: 1) don’t be afraid to ask for help and 2) pictures/videos can be the bit you need to solve the problem
+This is the penultimate blog of the series. The final blog will cover Analysis and results.&lt;/p&gt;
+</content>
+  </entry>
+</feed>

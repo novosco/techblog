@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en' xmlns:fb='http://ogp.me/ns/fb#'>
+<head>
+<link href="../stylesheets/syntax_highlighting.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='text/html;' http-equiv='content-type'>
+<title>How VSANs Are Like Kit Cars (in light of recent VSAN HCL Update)
+ | Novosco Tech Blog</title>
+<meta content='index,follow' name='robots'>
+<meta content='initial-scale=1.0 maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='width=380, maximum-scale=1.0' name='viewport'>
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='../images/touch-icon-iphone.png' rel='apple-touch-icon'>
+<link href='../images/touch-icon-ipad.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='../images/touch-icon-iphone-retina.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='../images/touch-icon-ipad-retina.png' rel='apple-touch-icon' sizes='144x144'>
+<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+<link href="../stylesheets/all.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<!-- OG -->
+<meta content='Novosco Tech Blog' property='og:title'>
+<meta content='website' property='og:type'>
+<meta content='../images/novosco-og-icon.png' property='og:image'>
+<meta content='http://engineering.novosco.com' property='og:url'>
+<meta content='Novosco Tech Blog ' property='og:description'>
+<!-- Twitter -->
+<meta content='summary' name='twitter:card'>
+<meta content='http://engineering.novosco.com' name='twitter:url'>
+<meta content='Novosco Tech Blog' name='twitter:title'>
+<meta content='Novosco Tech Blog ' name='twitter:description'>
+<meta content='../images/novosco-og-icon.png' name='twitter:image'>
+<meta content='@novoscoeng' name='twitter:site'>
+<meta content='@novosco' name='twitter:creator'>
+<meta content='' name='author'>
+<!-- Typekit -->
+<script src="//use.typekit.net/tjm4emr.js" type="text/javascript"></script>
+<script>
+  try{Typekit.load();}catch(e){};
+  
+  window.onload = function() {
+    var menu = document.getElementById('menu-button');
+    var menu_items = document.getElementById('menu-items');
+  
+    function toggleMenu(){
+      if (menu_items.style.display == "block") {
+        menu_items.style.display = 'none';
+      } else {
+        menu_items.style.display = 'block';
+      }
+    };
+  
+    menu.addEventListener('click', function() {
+      toggleMenu()
+    }, false);
+  };
+</script>
+
+</head>
+<body class='20140818-how-vsans-are-like-kit-cars-in-light-of-recent-vsan-hcl-update 20140818-how-vsans-are-like-kit-cars-in-light-of-recent-vsan-hcl-update_index'>
+<header>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<a href="/"><span class='logo'>Novosco Tech Blog</span></a>
+<div class='header-nav'>
+<nav>
+<a href='#' id='menu-button'>
+MENU
+<img src='/images/menu-triangle.png' width='11px'>
+</a>
+<ul id='menu-items'>
+<li>
+<a href="http://www.novosco.com/">Home</a>
+</li>
+<li>
+<a class="active" href="http://cio.novosco.com/">CIO Blog</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+
+<div class='container'>
+<div id='post-main'>
+<article class='post-header'>
+<h1 class='article-header'>
+<a href="/20140818-how-vsans-are-like-kit-cars-in-light-of-recent-vsan-hcl-update/">How VSANs Are Like Kit Cars (in light of recent VSAN HCL Update)</a>
+</h1>
+<div class='post-meta'>
+<div class='post-avatar'>
+<img src="../images/avatars/steven-johnston.jpg?1439193430" />
+</div>
+<div class='post-meta-text'>
+<span>By <a href="/steven-johnston">Steven Johnston</a> on</span>
+<time>18 August 2014</time>
+</div>
+</div>
+
+<div class='body'>
+<p>Sometimes the two things I love most, technology and cars overlap, or maybe I am just wanting an excuse to talk about them both. Either way, people seem to understand analogies using cars related to technology so I am going to use one here to describe something that has happened recently affecting one of the emerging trends in technology ‘Software Defined Storage’ (SDS).</p>
+
+<p>Every now and again, car manufacturers who provide pre-built cars recall certain models due to issues. In the UK we even have a government website to check <a title="UK Gov Vehicle Recall Check" href="https://www.gov.uk/check-if-a-vehicle-has-been-recalled">https://www.gov.uk/check-if-a-vehicle-has-been-recalled</a>.</p>
+
+<p>So this brings me to what has happened recently. VMware announced they were removing support for a dozen Storage Controllers that were previously on the VSAN Supported Hardware Compatibility List (See the VMware blog post <a title="VSAN Storage Controllers No Longer Supported" href="http://blogs.vmware.com/kb/2014/08/alert-storage-controllers-virtual-san-longer-supported.html">Here</a>).</p>
+
+<p>I wasn’t that surprise to see this, especially as two Months ago a colleague drew my attention to this post on Reddit, under the VMware Sub-Reddit ( <a title="VSAN Outage" href="http://www.reddit.com/r/vmware/comments/2799p4/root_cause_analysis_of_my_vsan_outage/">VSAN Outage Root Cause</a>). This post describes a VSAN outage were the conclusion which came from VMware Support was that after experiencing the outage and then needing to rebuild, that their Storage Controller, a Dell H310 (with very low queue depth of 25) simply wasn’t able to support high enough IO throughput to perform the rebuild whilst still running production.</p>
+
+<p>The amendments to the VSAN HCL are no doubt related to support cases like this or perhaps related to Storage Controllers that share the same family or characteristics which prevent them from being able to deal with the worst-case scenarios such as the one which happened to this unfortunate person.</p>
+
+<p>It isn’t really surprising to see updates to Hardware Compatibility Lists (HCL) although perhaps less usual to see amendments removing items that were already on there. This brings me to the following conclusion. In the Software Defined World where VSAN in this case is the Software Defined Storage (SDS) product, it isn’t just about the software. The hardware is <strong>even</strong> more important.</p>
+
+<p>So back to my car analogy. This time I am contrasting the differences between a pre-built car and a kit car.</p>
+
+<p>When you buy Off-The-Shelf storage arrays from EMC/NetApp/HDS/3PAR etc these are designed specifically to meet a certain standard of performance, just like a pre-built car. When you buy one of the Porsche 911 models it comes with a distinctive look, feel and performance characteristic just like the Off-The-Shelf storage array.</p>
+
+<p>When you buy a kit car you will get a frame and other parts that define the look and feel of the car (like the software in SDS) but what you put underneath it, the engine and drivetrain (the part that delivers the engines power to the wheels) you choose determines the performance of that vehicle. This is the same with a Software Defined Storage approach and in this analogy, the engine is like the disks and the Storage Controller like the drivetrain.</p>
+
+<p>There is another point that this analogy can be used to explain. When you buy a pre-built car, you typically get a manufacturers warranty which covers everything for the first 3 years whereas if you buy a kit car then the individual components have their own warranty.<br>
+In a pre-built car, the sum of the parts are guaranteed to function as expected for the term of the warranty. Whereas in the case of the kit-car the individual components are covered or in the case of Software Defined Storage, the software and the hardware are covered independently, so the software is assured to function with the hardware designated as supported but the performance derived from the sum of the components is not covered. So remember the burden of ownership with regards to performance is on the customer not the supplier.</p>
+
+<p>Kit cars don’t get recalled in their entirety, perhaps a component like a seat belt holder will get recalled just as a Power Supply from a server may be recalled. If a seat belt in a pre-built car was found to be faulty then the whole car would be recalled so that could be addressed but the reason a kit car isn’t recalled in it’s entirety is because it is not the whole product.<br>
+Like a pre-built car manufacturer, Off-The-Shelf Storage Array manufacturers will normally distribute any known issues and have a fix available for them. They may even just contact you to arrange a time to apply the hotfix included under your maintenance. In the case of a kit car or a Software Defined Storage array, the ownership of maintaining the setup is on the customer.</p>
+
+<p>So if you are running VSAN, the burden is on you the customer to ensure you are not let down by either performance or any issues that have become known. Don’t cheap out on the components, not the disks or the Storage Controller. The Storage Controller other than the disks is probably the most important component to ensuring it performs as you expect it to.<br>
+For known issues I would suggest frequently checking for updates from VMware, to see if there are any Knowledge Base articles specific to your hardware configuration and then arrange to upgrade, patch or amend your setup to address the issues with it as soon as possible. To assist in keeping track of known issues use the <a title="KBDigest" href="http://blogs.vmware.com/kbdigest/">VMware KB Digest</a>, you can subscribe via RSS or follow their twitter account <a title="VMwareKB Twitter" href="https://twitter.com/vmwarekb">@vmwarekb</a>.</p>
+
+<p>I think Software Defined everything is great, it will help give us get many flexibility benefits just as virtualisation has already done. I think Vmware VSAN is great, a real step forward and perhaps something which will ultimately lower the entry level cost of shared storage whilst also increasing the mobility of data.<br>
+However compared to an Off-The-Shelf Storage Array, VSAN has slightly higher maintenance needs. It has many positive aspects too, such as it’s simplicity of operations and tremendous flexibility.<br>
+So if planning a VSAN it is worth being equipped with this knowledge before hand. Also check the latest VMware pre-validated configurations named ‘Virtual SAN Ready Nodes’ over <a title="VSAN Ready Nodes" href="http://partnerweb.vmware.com/programs/vsan/Virtual%20SAN%20Ready%20Nodes.pdf">here</a>. It may be best to form your solution matching or close to one these.</p>
+
+<p>Now I just need to get a home that has a garage so I can build a kit car or maybe I will just get saving for that Porsche 911 Carrera. Ha, even if I had the cash, my Wife would have something to say about either option!</p>
+
+<div class='tags'>
+<ol>
+<li><a class="tag" href="/storage/">Storage</a></li>
+</ol>
+</div>
+<section class='post-footer'>
+<h1 class='small-h1 post-author-header'>
+<div class='post-author clearfix'>
+<div class='author-avatar'>
+<img src="../images/avatars/steven-johnston.jpg?1439193430" />
+</div>
+<div class='post-author-details'>
+<h1><a href="/steven-johnston">Steven Johnston</a></h1>
+<span class='bio'>Tech lover and scripting addict. Focused on virtualisation, storage and data centre networking solutions. VMware / Cisco / EMC.</span>
+<span class='author-posts-link'>
+<a href="/steven-johnston">View Steven's other posts</a>
+</span>
+</div>
+</div>
+</h1>
+</section>
+<div class='post-nav'>
+<div class='previous-post'>
+<a href="/20140815-enabling-xenapp-administrative-logs/">← Previous</a>
+</div>
+<div class='next-post'>
+<a href="/20140818-automating-powershell-connection-to-office-365/">Next →</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<footer>
+<section class='newsletter'>
+<div class='layout-wrapper' id='mc-signup'>
+<div class='layout-inner'>
+<form action='http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&amp;id=b15b8e54dd' class='validate' id='mc-subscribe-form' method='post' name='mc-embedded-subscribe-form' novalidate='' target='_blank'>
+<div class='form-inputs'>
+<label for='mc-email'>
+<div class='newsletter-title'>
+Subscribe to our mailing list
+</div>
+<input id='mc-email' name='EMAIL' placeholder='Enter your email address…' required='' type='email' value=''>
+</label>
+</div>
+<div class='form-action newsletter-button'>
+<input class='button' name='subscribe' type='submit' value='Subscribe'>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class='footer-info clearfix'>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<span class='about-novosco'>
+<strong>Novosco</strong>
+is a leading provider of Cloud Technologies, Managed Service and Consulting.
+</span>
+<span class='copyright'>
+© 2007-2015 Novosco Ltd
+</span>
+</div>
+</div>
+</section>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-44792610-1', 'novosco.com');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

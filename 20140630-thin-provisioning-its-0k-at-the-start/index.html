@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en' xmlns:fb='http://ogp.me/ns/fb#'>
+<head>
+<link href="../stylesheets/syntax_highlighting.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='text/html;' http-equiv='content-type'>
+<title>Thin provisioning - it's 0K at the start
+ | Novosco Tech Blog</title>
+<meta content='index,follow' name='robots'>
+<meta content='initial-scale=1.0 maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='width=380, maximum-scale=1.0' name='viewport'>
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='../images/touch-icon-iphone.png' rel='apple-touch-icon'>
+<link href='../images/touch-icon-ipad.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='../images/touch-icon-iphone-retina.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='../images/touch-icon-ipad-retina.png' rel='apple-touch-icon' sizes='144x144'>
+<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+<link href="../stylesheets/all.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<!-- OG -->
+<meta content='Novosco Tech Blog' property='og:title'>
+<meta content='website' property='og:type'>
+<meta content='../images/novosco-og-icon.png' property='og:image'>
+<meta content='http://engineering.novosco.com' property='og:url'>
+<meta content='Novosco Tech Blog ' property='og:description'>
+<!-- Twitter -->
+<meta content='summary' name='twitter:card'>
+<meta content='http://engineering.novosco.com' name='twitter:url'>
+<meta content='Novosco Tech Blog' name='twitter:title'>
+<meta content='Novosco Tech Blog ' name='twitter:description'>
+<meta content='../images/novosco-og-icon.png' name='twitter:image'>
+<meta content='@novoscoeng' name='twitter:site'>
+<meta content='@novosco' name='twitter:creator'>
+<meta content='' name='author'>
+<!-- Typekit -->
+<script src="//use.typekit.net/tjm4emr.js" type="text/javascript"></script>
+<script>
+  try{Typekit.load();}catch(e){};
+  
+  window.onload = function() {
+    var menu = document.getElementById('menu-button');
+    var menu_items = document.getElementById('menu-items');
+  
+    function toggleMenu(){
+      if (menu_items.style.display == "block") {
+        menu_items.style.display = 'none';
+      } else {
+        menu_items.style.display = 'block';
+      }
+    };
+  
+    menu.addEventListener('click', function() {
+      toggleMenu()
+    }, false);
+  };
+</script>
+
+</head>
+<body class='20140630-thin-provisioning-its-0k-at-the-start 20140630-thin-provisioning-its-0k-at-the-start_index'>
+<header>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<a href="/"><span class='logo'>Novosco Tech Blog</span></a>
+<div class='header-nav'>
+<nav>
+<a href='#' id='menu-button'>
+MENU
+<img src='/images/menu-triangle.png' width='11px'>
+</a>
+<ul id='menu-items'>
+<li>
+<a href="http://www.novosco.com/">Home</a>
+</li>
+<li>
+<a class="active" href="http://cio.novosco.com/">CIO Blog</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+
+<div class='container'>
+<div id='post-main'>
+<article class='post-header'>
+<h1 class='article-header'>
+<a href="/20140630-thin-provisioning-its-0k-at-the-start/">Thin provisioning - it's 0K at the start</a>
+</h1>
+<div class='post-meta'>
+<div class='post-avatar'>
+<img src="../images/avatars/james-montgomery.jpg?1439193430" />
+</div>
+<div class='post-meta-text'>
+<span>By <a href="/james-montgomery">James Montgomery</a> on</span>
+<time>30 June 2014</time>
+</div>
+</div>
+
+<div class='body'>
+<p>It probably says a lot about me that I find the title funny. This post is about thin provisioning - but in reality its all about money.</p>
+
+<p></p>
+
+<h1>Thin provisioning is lying</h1>
+
+<p>Thin provisioning is promising something that you don&rsquo;t have - but will have by the time its needed. It&rsquo;s that simple.</p>
+
+<p><img src="http://tech.novosco.com/images/jamesmontgomery/thinprov14/01_IOU.PNG" /></p>
+
+<p>In monetary terms thin provisioning is no more than an IOU.</p>
+
+<h2>Why is thin provisioning all about money?</h2>
+
+<p>Generally speaking thin provisioning is about getting more out of less - its normally a value orientated proposition to maximise the usage of scarce resource. Traditionally this is a function operated within the storage infrastructure - however it can be found as a native function of hypervisors and guest OSes alike.</p>
+
+<p>Storage is interesting as it is often treated as a scarce resource to provision and at the same time a zero-cost resource to consume. Why is this?</p>
+
+<p>This problem exists because the resource is often seen as paid for and wasted unless provisioned. If I&rsquo;m only consuming half of my storage the effective cost is 2X.</p>
+
+<h2>How much does my storage cost?</h2>
+
+<p>For this simple example I have put together a fictitious 20TB storage system consisting of 1TB disks. For the sake of simplicity I&rsquo;ve assumed a 1TB disk has 1TB usable (that&rsquo;s another kettle of fish). </p>
+
+<p>2 disks are used to hot spare. 12 of the usable 14TB is provisioned as 6x2TB LUNs (2TB is kept back for array operations such as replication or free space for a rainy day). These are effectively design decisions as you could certainly rationalise less (or more hot spares) and the 2TB LUNs could easily be 4TB LUNs instead.</p>
+
+<p><img src="http://tech.novosco.com/images/jamesmontgomery/thinprov14/Storage_Costs_1.png" /></p>
+
+<p>In thus example the cost of the raw storage is £X/TB. The effective cost of a usable TB to the application is actually closer to 2X in this example. This assumes no more than 90% utilisation at the various levels of provisioning that I&rsquo;ve illustrated.</p>
+
+<h2>Comparing raw and usable costs is like comparing apples with apple juice</h2>
+
+<p>You can consider the cost differential of raw versus usable as an <strong>availability tax</strong>. It is a tunable cost in line with your appetite for risk. You could make it cheaper by reducing the level of data protection at the RAID level - or you could have fewer hot spare disk to cover disk failure scenarios.</p>
+
+<p>As systems rarely run at 90% utilisation (due to the potential of running out of space and causing an outage) there is often storage allocated to cover months or even years of potential growth.</p>
+
+<p>One might note that there&rsquo;s no explicit availability tax in the layers above RAID - (LUN provision, VMFS, Guest file system). </p>
+
+<p>This is where thin provisioning typically enters the fray.</p>
+
+<h2>Storage allocation - thick provision</h2>
+
+<p>Application 1 and Application 2 each require 1TB of usable storage for the next 3 years. Each application owner will be charged 10% of the storage costs since we have about 10TB usable in total.</p>
+
+<p><img src="http://tech.novosco.com/images/jamesmontgomery/thinprov14/Storage_Costs_2.png" /></p>
+
+<p>The application owners may protest. We only need that storage assigned - we don&rsquo;t actually need it all initially. Couldn&rsquo;t you thin provision it and charge us what we actually use?</p>
+
+<h2>Storage allocation - with thin provisioning</h2>
+
+<p>Thin provisioning appears to solve a problem here. We can assign some of the &ldquo;scarce&rdquo; resource to the application owners and only charge them what they use - this appears to lower the cost of the application to the business. Everyone&rsquo;s happy, right?</p>
+
+<p>With thin provisioning the storage allocation may be portrayed as at least initially:</p>
+
+<p><img src="http://tech.novosco.com/images/jamesmontgomery/thinprov14/Storage_Costs_3a.png" /></p>
+
+<p>In actual fact its more like this:
+<img src="http://tech.novosco.com/images/jamesmontgomery/thinprov14/Storage_Costs_3b.png" /></p>
+
+<p>The &ldquo;free&rdquo; space will decrease over time as on the on disk usage of Application 1 and Application 2 increase. In this scenario however you haven&rsquo;t achieved any saving. The underlying physical capacity remains under utilised and the storage promised equals the storage available. You may as well have thick provisioned.</p>
+
+<p>This is a waste of everyone&rsquo;s time unless there is further provision. Enter application 3:</p>
+
+<p><img src="http://tech.novosco.com/images/jamesmontgomery/thinprov14/Storage_Costs_3c.png" /></p>
+
+<p>You have achieved a provision of application 3 without the requirement of physical storage provision - but at the cost of risk. There is now a capacity race. You must provision physical capacity before you use all of the &ldquo;free&rdquo; space.</p>
+
+<p>Depending on your appetite for risk you may over commit by any degree:</p>
+
+<p><img src="http://tech.novosco.com/images/jamesmontgomery/thinprov14/Storage_Costs_3d.png" /></p>
+
+<h2>Monetary debt has interest. Technical debt is no different.</h2>
+
+<p>Understanding monetary debt is relatively simple. You borrow an amount of money and repay it plus some percentage. The interest is used to service the loan and provide profit to then lender who assumes the risk of loaning you the money.</p>
+
+<p>Technical debt is a little harder to understand. In the case of thin provisioning you will take on the following debt:</p>
+
+<ul>
+<li>Periodic capacity review and report.</li>
+<li>Training of application owners to understand where thin provisioning exists and to implement processes to communicate with the storage team where high disk writing is expected (such as a DB copy or restore).</li>
+<li>Understanding the present lead time of delivery of storage expansion and costs.</li>
+</ul>
+
+<h2>Is thin provisioning bad?</h2>
+
+<p>No. Thin provisioning is a tool that can be used to enable IT to provision infrastructure at business speeds.</p>
+
+<p>The challenge is deciding on the appropriate use of the technology and matching your operations with any risk or complexity you introduce.</p>
+
+<!---
+Version 1b
+-->
+
+<div class='tags'>
+<ol>
+<li><a class="tag" href="/storage/">Storage</a></li>
+</ol>
+</div>
+<section class='post-footer'>
+<h1 class='small-h1 post-author-header'>
+<div class='post-author clearfix'>
+<div class='author-avatar'>
+<img src="../images/avatars/james-montgomery.jpg?1439193430" />
+</div>
+<div class='post-author-details'>
+<h1><a href="/james-montgomery">James Montgomery</a></h1>
+<span class='bio'>A passionate and sometimes obsessive problem solver who rants about predictable failures. Hates exceptions. Often found near coffee.</span>
+<span class='author-posts-link'>
+<a href="/james-montgomery">View James's other posts</a>
+</span>
+</div>
+</div>
+</h1>
+</section>
+<div class='post-nav'>
+<div class='previous-post'>
+<a href="/20140627-nas-or-not/">← Previous</a>
+</div>
+<div class='next-post'>
+<a href="/20140702-vplex-virtual-edition-vplexve-in-the-real-world/">Next →</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<footer>
+<section class='newsletter'>
+<div class='layout-wrapper' id='mc-signup'>
+<div class='layout-inner'>
+<form action='http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&amp;id=b15b8e54dd' class='validate' id='mc-subscribe-form' method='post' name='mc-embedded-subscribe-form' novalidate='' target='_blank'>
+<div class='form-inputs'>
+<label for='mc-email'>
+<div class='newsletter-title'>
+Subscribe to our mailing list
+</div>
+<input id='mc-email' name='EMAIL' placeholder='Enter your email address…' required='' type='email' value=''>
+</label>
+</div>
+<div class='form-action newsletter-button'>
+<input class='button' name='subscribe' type='submit' value='Subscribe'>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class='footer-info clearfix'>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<span class='about-novosco'>
+<strong>Novosco</strong>
+is a leading provider of Cloud Technologies, Managed Service and Consulting.
+</span>
+<span class='copyright'>
+© 2007-2015 Novosco Ltd
+</span>
+</div>
+</div>
+</section>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-44792610-1', 'novosco.com');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

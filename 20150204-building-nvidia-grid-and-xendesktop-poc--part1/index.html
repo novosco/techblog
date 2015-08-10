@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en' xmlns:fb='http://ogp.me/ns/fb#'>
+<head>
+<link href="../stylesheets/syntax_highlighting.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='text/html;' http-equiv='content-type'>
+<title>Building NVidia GRID and XenDesktop POC – Part1
+ | Novosco Tech Blog</title>
+<meta content='index,follow' name='robots'>
+<meta content='initial-scale=1.0 maximum-scale=1.0 user-scalable=no' name='viewport'>
+<meta content='width=380, maximum-scale=1.0' name='viewport'>
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='../images/touch-icon-iphone.png' rel='apple-touch-icon'>
+<link href='../images/touch-icon-ipad.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='../images/touch-icon-iphone-retina.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='../images/touch-icon-ipad-retina.png' rel='apple-touch-icon' sizes='144x144'>
+<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+<link href="../stylesheets/all.css?1439193430" media="screen" rel="stylesheet" type="text/css" />
+<!-- OG -->
+<meta content='Novosco Tech Blog' property='og:title'>
+<meta content='website' property='og:type'>
+<meta content='../images/novosco-og-icon.png' property='og:image'>
+<meta content='http://engineering.novosco.com' property='og:url'>
+<meta content='Novosco Tech Blog ' property='og:description'>
+<!-- Twitter -->
+<meta content='summary' name='twitter:card'>
+<meta content='http://engineering.novosco.com' name='twitter:url'>
+<meta content='Novosco Tech Blog' name='twitter:title'>
+<meta content='Novosco Tech Blog ' name='twitter:description'>
+<meta content='../images/novosco-og-icon.png' name='twitter:image'>
+<meta content='@novoscoeng' name='twitter:site'>
+<meta content='@novosco' name='twitter:creator'>
+<meta content='' name='author'>
+<!-- Typekit -->
+<script src="//use.typekit.net/tjm4emr.js" type="text/javascript"></script>
+<script>
+  try{Typekit.load();}catch(e){};
+  
+  window.onload = function() {
+    var menu = document.getElementById('menu-button');
+    var menu_items = document.getElementById('menu-items');
+  
+    function toggleMenu(){
+      if (menu_items.style.display == "block") {
+        menu_items.style.display = 'none';
+      } else {
+        menu_items.style.display = 'block';
+      }
+    };
+  
+    menu.addEventListener('click', function() {
+      toggleMenu()
+    }, false);
+  };
+</script>
+
+</head>
+<body class='20150204-building-nvidia-grid-and-xendesktop-poc--part1 20150204-building-nvidia-grid-and-xendesktop-poc--part1_index'>
+<header>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<a href="/"><span class='logo'>Novosco Tech Blog</span></a>
+<div class='header-nav'>
+<nav>
+<a href='#' id='menu-button'>
+MENU
+<img src='/images/menu-triangle.png' width='11px'>
+</a>
+<ul id='menu-items'>
+<li>
+<a href="http://www.novosco.com/">Home</a>
+</li>
+<li>
+<a class="active" href="http://cio.novosco.com/">CIO Blog</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+
+<div class='container'>
+<div id='post-main'>
+<article class='post-header'>
+<h1 class='article-header'>
+<a href="/20150204-building-nvidia-grid-and-xendesktop-poc--part1/">Building NVidia GRID and XenDesktop POC – Part1</a>
+</h1>
+<div class='post-meta'>
+<div class='post-avatar'>
+<img src="../images/avatars/colin-rainey.jpg?1439193430" />
+</div>
+<div class='post-meta-text'>
+<span>By <a href="/colin-rainey">Colin Rainey</a> on</span>
+<time> 4 February 2015</time>
+</div>
+</div>
+
+<div class='body'>
+<p>It’s always exciting to get your hands on some new technology that breaks the mold when it comes to deploying VDI and applications on Citrix. For years, using CAD and high end graphics has been a no go area on shared desktops hosted on Presentation Server or XenApp. The best you could probably achieve would be  CAD viewer for some light review work – no chance of full blown Auto-Cad or video editing software. You really needed to keep your big workstation PC or MAC with expensive hardware to do any serious work. More recently though Citrix have been able to connect you into dedicated PCs or blade-PC hosted in you data center with much improved graphics and capabilities for rendering images and video. We have had some success with this in hospital environments where medical staffs can remote in to their desktop and review x-ray and other patient videos from their home PC of tablet.</p>
+
+<p>NVidia GRID and XenDesktop really do change the game. With dedicated Graphics Processing Units that you can allocate to your Windows PCs – the days of using hardware PC or blade PCs are banished. The NVidia cards can be fitted into a server running XenServer 6.2.  A XenServer plugin then allows access to the GPU and the XenDesktop Agent talks to the hardware. The result is quite spectacular! The POC I have been working on recently involves users in India accessing a XenDesktop Windows 7 PC in a server room in Northern Ireland. That’s a looonnng way away to be using a CAD application over a 3G connection. Results?  “Better than a desktop PC” was one user’s feedback.</p>
+
+<p>So here are some tips.</p>
+
+<p>Make sure you have all the cards, cables and components to put in the server. Check you have enough network ports, and switch connections for storage. <img alt="nvidia" src="https://cjrainey.files.wordpress.com/2015/02/nvidia1.jpg?w=300&h=170" /></p>
+
+<p>I was using HP DL380g8 servers with 2 NVidia GRID cards per server. To fit these, you need to order alternative PCI riser cards with cage from HP – and you need two different parts. One has an additional PCI slot, the other has not. The additional PCI slot is critical as you need this to facilitate another PCI card – in my case a HP dual port HBA for connecting to the fiber channel SAN. Without this, you’re pretty stuck with only local storage, unless you’re using iSCSI perhaps.</p>
+
+<p>You’ll also need a set of torque screwdrivers as the cages (that house the NVidia cards) have tiny screws that would be easily damaged if you try to force them loose with something else.</p>
+
+<p>It’s also worth ordering your server with on-board 10GB NICS instead of the standard 1Gb NICS. This will provide better connectivity that the standard 4 port 1Gb NIC card.</p>
+
+<p>To fit these new risers and cage – you need to remove the CPU heat sinks and grab handle on the mother board and replace these with new ones that fit with the cages. If your happy enough to do that, make sure you have an anti-static wrist band and be very careful not to drop any screws into the server.</p>
+
+<p>If you have all the cards, cages and cables – you can do it all in one go instead of having to rack and stack the servers and then come back and have more downtime.</p>
+
+<p>*<em>BIOS *</em>– After installing the cards – go into the BIOS and make sure the on-board graphics card is still the main display card. If your server is set to use the external or extended graphics card as the main one – you won’t be able to see anything on the console, or on the iLO card for remote management.</p>
+
+<p>Then you’re ready to install XenServer 6.2 + Spk1 , and add in the NVidia graphics plugin. Check here –  <a href="https://www.citrix.com/go/private/vgpu.html">https://www.citrix.com/go/private/vgpu.html</a></p>
+
+<p>This needs to be copied to the root folder of the server using WinSCP or similar tool. Once installed, the XenCentre tools should show a new tab for GPU.</p>
+
+<p><strong>RAM</strong> – Make sure your server is fully loaded with as much RAM as you can get. If you’re running a CAD application like Auto-Desk or Creo you’re going to need a minimum of 16 Gb per Windows 7/8 virtual PC. If you need more per PC, you won’t be long running low on resources.</p>
+
+<p>In deploying an initial server for a proof-of-concept, I limited the number of users to six. After building the OS, and installing the NVidia drivers, you then install the XenTools as normal and you’re ready to install whatever software you need. I left this to the customer to do while I created the Machine Catalogs and Delivery groups in Desktop Studio.</p>
+
+<p>More later..</p>
+
+<p>Citrix Reference doc:</p>
+
+<p><a href="https://www.citrix.com/content/dam/citrix/en_us/documents/go/configuring-xenserver-to-use-nvidia-grid.pdf">https://www.citrix.com/content/dam/citrix/en_us/documents/go/configuring-xenserver-to-use-nvidia-grid.pdf</a></p>
+
+<p>NVidia:</p>
+
+<p><a href="http://www.nvidia.com/object/virtual-gpus.html">http://www.nvidia.com/object/virtual-gpus.html</a></p>
+
+<p><a href="http://feeds.wordpress.com/1.0/gocomments/cjrainey.wordpress.com/189/"> <img src="http://feeds.wordpress.com/1.0/comments/cjrainey.wordpress.com/189/" /> </a> <img src="https://pixel.wp.com/b.gif?host=cjrainey.wordpress.com&blog=60326277&post=189&subd=cjrainey&ref=&feed=1" /></p>
+
+<div class='tags'>
+<ol>
+<li><a class="tag" href="/citrix/">Citrix</a></li>
+</ol>
+</div>
+<section class='post-footer'>
+<h1 class='small-h1 post-author-header'>
+<div class='post-author clearfix'>
+<div class='author-avatar'>
+<img src="../images/avatars/colin-rainey.jpg?1439193430" />
+</div>
+<div class='post-author-details'>
+<h1><a href="/colin-rainey">Colin Rainey</a></h1>
+<span class='bio'>Citrix Techie and IT enthusiast, delving into MDM and has been known to listen to the odd 80’s tune.</span>
+<span class='author-posts-link'>
+<a href="/colin-rainey">View Colin's other posts</a>
+</span>
+</div>
+</div>
+</h1>
+</section>
+<div class='post-nav'>
+<div class='previous-post'>
+<a href="/20141027-my-vmworld-europe-2014-experience/">← Previous</a>
+</div>
+<div class='next-post'>
+<a href="/20150704-cloud-file-sharing-with-citrix-sharefile--8211-business-model-and-main-features/">Next →</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<footer>
+<section class='newsletter'>
+<div class='layout-wrapper' id='mc-signup'>
+<div class='layout-inner'>
+<form action='http://novosco.us7.list-manage1.com/subscribe/post?u=9bff1bb397f0ed0fda92caa1a&amp;id=b15b8e54dd' class='validate' id='mc-subscribe-form' method='post' name='mc-embedded-subscribe-form' novalidate='' target='_blank'>
+<div class='form-inputs'>
+<label for='mc-email'>
+<div class='newsletter-title'>
+Subscribe to our mailing list
+</div>
+<input id='mc-email' name='EMAIL' placeholder='Enter your email address…' required='' type='email' value=''>
+</label>
+</div>
+<div class='form-action newsletter-button'>
+<input class='button' name='subscribe' type='submit' value='Subscribe'>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class='footer-info clearfix'>
+<div class='layout-wrapper'>
+<div class='layout-inner'>
+<span class='about-novosco'>
+<strong>Novosco</strong>
+is a leading provider of Cloud Technologies, Managed Service and Consulting.
+</span>
+<span class='copyright'>
+© 2007-2015 Novosco Ltd
+</span>
+</div>
+</div>
+</section>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-44792610-1', 'novosco.com');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
