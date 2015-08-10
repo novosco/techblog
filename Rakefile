@@ -4,8 +4,8 @@ require 'reverse_markdown'
 
 FEEDS = [
   {:author => 'stejoh', :url => 'http://www.neogeek.net/?feed=rss2'},
-  {:author => 'alanmcburney', :url => 'http://everythingsysadmin.wordpress.com/feed/'},
-  {:author => 'rainco', :url => 'http://cjrainey.wordpress.com/feed/'}
+  {:author => 'alanmcburney', :url => 'https://everythingsysadmin.wordpress.com/feed/'},
+  {:author => 'rainco', :url => 'https://cjrainey.wordpress.com/feed/'}
 ]
 
 DONT_SYNC = [
